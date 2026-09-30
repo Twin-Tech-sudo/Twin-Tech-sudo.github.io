@@ -1,0 +1,36 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro'
+import SiteHeader from '../../components/SiteHeader.astro'
+import SiteFooter from '../../components/SiteFooter.astro'
+import { services } from '../../data/site'
+
+export function getStaticPaths() { return services.map(service => ({ params: { slug: service.slug }, props: { service } })) }
+const { service } = Astro.props
+const title = `${service.title} UK | Twin Tech-sudo`
+const schema = {
+  '@context': 'https://schema.org', '@type': 'Service', name: service.title, description: service.description,
+  provider: { '@type': 'Organization', name: 'Twin Tech-sudo', url: 'https://twin-tech-sudo.github.io' },
+  areaServed: { '@type': 'Country', name: 'United Kingdom' },
+  serviceType: service.title,
+}
+---
+<SiteLayout title={title} description={service.description} schema={schema}>
+  <SiteHeader />
+  <main>
+    <section class="service-hero">
+      <div class="service-hero-copy"><span class="page-kicker">// {service.eyebrow.toUpperCase()}</span><span class="giant-index">{service.number}</span><h1>{service.title}</h1><h2>{service.headline}</h2><p>{service.intro}</p><a href="/contact/">Discuss your project <span>↗</span></a></div>
+      <div class="service-machine" aria-hidden="true"><div class="machine-rings"><i></i><i></i><i></i><strong>{service.shortTitle.slice(0, 2).toUpperCase()}</strong></div><div class="machine-label label-a">STRATEGY</div><div class="machine-label label-b">DESIGN</div><div class="machine-label label-c">BUILD</div><div class="machine-status"><i></i> READY TO BUILD</div></div>
+    </section>
+    <section class="page-section capability-section" id="content">
+      <div class="section-intro"><span class="page-kicker">// CAPABILITY</span><h2>What we can <em>create.</em></h2></div>
+      <div class="feature-list">{service.capabilities.map((item: string, index: number) => <div><span>0{index + 1}</span><h3>{item}</h3><i>↗</i></div>)}</div>
+    </section>
+    <section class="dark-panel">
+      <div><span class="page-kicker">// THE OUTCOME</span><h2>Technology should change<br />what the business can <em>do.</em></h2></div>
+      <div class="outcome-grid">{service.outcomes.map((item: string) => <article><i>✓</i><p>{item}</p></article>)}</div>
+    </section>
+    <section class="page-section deliverables"><div class="section-intro"><span class="page-kicker">// WHAT YOU RECEIVE</span><h2>A complete path from<br />decision to <em>delivery.</em></h2></div><ol>{service.deliverables.map((item: string) => <li>{item}</li>)}</ol></section>
+    <section class="keyword-note"><span>Relevant expertise</span>{service.keywords.map((keyword: string) => <b>{keyword}</b>)}</section>
+  </main>
+  <SiteFooter />
+</SiteLayout>

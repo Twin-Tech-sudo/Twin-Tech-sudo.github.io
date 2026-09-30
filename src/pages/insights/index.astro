@@ -1,0 +1,11 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro'
+import SiteHeader from '../../components/SiteHeader.astro'
+import SiteFooter from '../../components/SiteFooter.astro'
+import PageHero from '../../components/PageHero.astro'
+import { articles } from '../../data/site'
+---
+<SiteLayout title="Software Development Insights | Twin Tech-sudo" description="Practical guidance on custom software, web and desktop apps, product planning and responsible AI automation from Twin Tech-sudo.">
+  <SiteHeader /><main><PageHero kicker="INSIGHTS" title="Useful thinking." accent="No filler." intro="Practical guidance for making better product, design and technology decisions before they become expensive." index="03" />
+  <section id="content" class="page-section article-grid">{articles.map((article, index) => <a href={`/insights/${article.slug}/`}><div><span>0{index + 1}</span><b>{article.category}</b></div><h2>{article.title}</h2><p>{article.description}</p><footer><time datetime={article.date}>30 September 2026</time><span>{article.read} →</span></footer></a>)}</section></main><SiteFooter />
+</SiteLayout>

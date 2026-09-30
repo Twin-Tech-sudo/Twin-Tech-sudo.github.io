@@ -1,0 +1,16 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro'
+import SiteHeader from '../../components/SiteHeader.astro'
+import SiteFooter from '../../components/SiteFooter.astro'
+import { projects } from '../../data/site'
+export function getStaticPaths() { return projects.map(project => ({ params: { slug: project.slug }, props: { project } })) }
+const { project } = Astro.props
+---
+<SiteLayout title={`${project.name} Case Study | Twin Tech-sudo`} description={project.summary}>
+  <SiteHeader /><main>
+    <section class="case-hero" style={`--case:${project.colour}`}><div><span class="page-kicker">// {project.category.toUpperCase()}</span><h1>{project.name}</h1><p>{project.summary}</p></div><div class="case-device"><span>PROJECT / LIVE SYSTEM</span><img src={project.logo} alt={`${project.name} logo`} /><i></i><i></i><i></i></div></section>
+    <section class="page-section case-story"><article><span>01 / CHALLENGE</span><h2>The problem</h2><p>{project.challenge}</p></article><article><span>02 / RESPONSE</span><h2>The product direction</h2><p>{project.solution}</p></article></section>
+    <section class="dark-panel case-capabilities"><div><span class="page-kicker">// CAPABILITIES</span><h2>What the work<br /><em>brings together.</em></h2></div><div>{project.capabilities.map((item, index) => <p><span>0{index + 1}</span>{item}</p>)}</div></section>
+    <aside class="evidence-note"><strong>Evidence, not theatre.</strong><p>{project.note}</p></aside>
+  </main><SiteFooter />
+</SiteLayout>

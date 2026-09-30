@@ -1,0 +1,11 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro'
+import SiteHeader from '../../components/SiteHeader.astro'
+import SiteFooter from '../../components/SiteFooter.astro'
+import PageHero from '../../components/PageHero.astro'
+import { projects } from '../../data/site'
+---
+<SiteLayout title="Software Projects & Case Studies | Twin Tech-sudo" description="Explore Twin Tech-sudo software, document intelligence and e-commerce work including BOQExtract and Mack's Packs.">
+  <SiteHeader /><main><PageHero kicker="SELECTED WORK" title="Built to do" accent="real work." intro="Digital products shaped around difficult workflows, useful automation and a confident experience." index="02" />
+  <section id="content" class="page-section work-index">{projects.map((project, index) => <a class="case-card" href={`/work/${project.slug}/`} style={`--case:${project.colour}`}><div class="case-number">0{index + 1}</div><div class="case-display"><div class="display-bar"><i></i><i></i><i></i></div><img src={project.logo} alt={`${project.name} logo`} /><span>{project.category}</span></div><div><span class="page-kicker">// {project.category}</span><h2>{project.name}</h2><p>{project.summary}</p><strong>Read case study →</strong></div></a>)}</section></main><SiteFooter />
+</SiteLayout>

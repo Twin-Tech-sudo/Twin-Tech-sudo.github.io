@@ -7,7 +7,6 @@ import {
   ChevronRight,
   Code2,
   Database,
-  Gauge,
   Laptop,
   Menu,
   MonitorSmartphone,
@@ -18,8 +17,6 @@ import {
   Zap,
 } from 'lucide-react'
 import { loadContent } from './content'
-import type { SiteContent } from './types'
-import Admin from './Admin'
 
 const services = [
   { icon: Blocks, number: '01', title: 'Custom software', text: 'Purpose-built systems, SaaS products and internal tools engineered around how your business actually works.' },
@@ -191,16 +188,7 @@ function App() {
   const [selectedProcess, setSelectedProcess] = useState<number | null>(null)
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('top')
-  const [adminOpen, setAdminOpen] = useState(() => new URLSearchParams(location.search).get('admin') === 'true')
   const year = new Date().getFullYear()
-
-  useEffect(() => {
-    const onKey = (event: KeyboardEvent) => {
-      if ((event.metaKey || event.ctrlKey) && event.shiftKey && event.key.toLowerCase() === 'a') setAdminOpen(true)
-    }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [])
 
   useEffect(() => {
     if (selectedService === null) return
@@ -406,7 +394,7 @@ function App() {
         <footer>
           <a className="brand" href="#top"><img src="/twin-tech-sudo-mark.png" alt="" /><span>Twin Tech<span>-sudo</span></span></a>
           <p>© {year} Twin Tech-sudo. Digital products, built properly.</p>
-          <button onClick={() => setAdminOpen(true)}><Gauge size={15} /> Studio</button>
+          <a className="footer-studio" href="/studio/">Studio</a>
         </footer>
       </div>
       {selectedService !== null && <div className="service-modal" role="dialog" aria-modal="true" aria-labelledby="service-dialog-title" onMouseDown={event => { if (event.target === event.currentTarget) setSelectedService(null) }}>
@@ -445,7 +433,6 @@ function App() {
           </div>
         </div>
       </div>}
-      {adminOpen && <Admin content={content} onClose={() => setAdminOpen(false)} />}
     </>
   )
 }

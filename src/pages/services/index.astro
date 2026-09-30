@@ -1,0 +1,20 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro'
+import SiteHeader from '../../components/SiteHeader.astro'
+import SiteFooter from '../../components/SiteFooter.astro'
+import PageHero from '../../components/PageHero.astro'
+import { services } from '../../data/site'
+---
+<SiteLayout title="Software Development Services UK | Twin Tech-sudo" description="Explore custom software, web, mobile, desktop, website, e-commerce and AI automation services from Twin Tech-sudo in the UK.">
+  <SiteHeader />
+  <main>
+    <PageHero kicker="SOFTWARE DEVELOPMENT SERVICES" title="One studio." accent="Every screen." intro="Strategy, design and engineering for joined-up digital products—from the first sharp problem to a dependable production release." index="07" />
+    <section id="content" class="page-section service-index">
+      <div class="section-intro"><span class="page-kicker">// WHAT WE BUILD</span><h2>Choose the capability.<br />Keep the thinking <em>connected.</em></h2><p>Each service can stand alone or combine into one product engagement. You work directly with the builder, with clear decisions and visible progress throughout.</p></div>
+      <div class="page-card-grid">
+        {services.map(service => <a class="page-card" href={`/services/${service.slug}/`}><span>{service.number}</span><div class="card-pulse"><i></i><b>{service.shortTitle.slice(0, 2).toUpperCase()}</b></div><h3>{service.title}</h3><p>{service.description}</p><strong>Explore capability →</strong></a>)}
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</SiteLayout>

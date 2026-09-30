@@ -31,19 +31,13 @@ export const defaultContent: SiteContent = {
       colour: '#8ca8ff',
     },
   ],
-  testimonials: [
-    {
-      id: 'launch-partner',
-      quote: 'Twin Tech-sudo turns a rough idea into a product that feels considered, capable and ready for the real world.',
-      name: 'Your next client',
-      role: 'Testimonial placeholder — replace in Studio',
-    },
-  ],
+  testimonials: [],
 }
 
 const STORAGE_KEY = 'twin-tech-sudo-content-v1'
 
 export function loadContent(): SiteContent {
+  if (typeof localStorage === 'undefined') return defaultContent
   try {
     const saved = localStorage.getItem(STORAGE_KEY)
     if (!saved) return defaultContent
@@ -59,11 +53,13 @@ export function loadContent(): SiteContent {
 }
 
 export function saveContent(content: SiteContent) {
+  if (typeof window === 'undefined') return
   localStorage.setItem(STORAGE_KEY, JSON.stringify(content))
   window.dispatchEvent(new Event('twin-content-updated'))
 }
 
 export function resetContent() {
+  if (typeof window === 'undefined') return
   localStorage.removeItem(STORAGE_KEY)
   window.dispatchEvent(new Event('twin-content-updated'))
 }

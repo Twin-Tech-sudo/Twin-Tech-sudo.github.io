@@ -1,0 +1,14 @@
+---
+import { services, site } from '../data/site'
+---
+<section class="inner-contact">
+  <span class="page-kicker">// LET'S BUILD SOMETHING USEFUL</span>
+  <h2>Have a problem worth <em>solving?</em></h2>
+  <a href={`mailto:${site.email}?subject=Project enquiry for Twin Tech-sudo`}>{site.email} <span>↘</span></a>
+</section>
+<footer class="inner-footer">
+  <div><a class="brand" href="/"><img src="/twin-tech-sudo-mark.png" alt="" /><span>Twin Tech<span>-sudo</span></span></a><p>Independent software development studio · United Kingdom</p></div>
+  <div><strong>Services</strong>{services.slice(0, 4).map(service => <a href={`/services/${service.slug}/`}>{service.shortTitle}</a>)}</div>
+  <div><strong>Explore</strong><a href="/work/">Selected work</a><a href="/process/">Our process</a><a href="/insights/">Insights</a><a href="/studio/">Studio</a></div>
+  <p>© {new Date().getFullYear()} Twin Tech-sudo</p>
+</footer>

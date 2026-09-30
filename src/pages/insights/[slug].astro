@@ -1,0 +1,33 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro'
+import SiteHeader from '../../components/SiteHeader.astro'
+import SiteFooter from '../../components/SiteFooter.astro'
+import { articles } from '../../data/site'
+export function getStaticPaths() { return articles.map(article => ({ params: { slug: article.slug }, props: { article } })) }
+const { article } = Astro.props
+const copy: Record<string, { intro: string; sections: { title: string; body: string; points?: string[] }[] }> = {
+  'how-to-plan-custom-software': { intro: 'The most expensive software mistakes usually happen before development: the wrong problem, an oversized first release or success that nobody defined. A useful plan reduces those risks without pretending every detail is already known.', sections: [
+    { title: 'Start with the operational constraint', body: 'Describe what people are trying to achieve, where the current workflow fails and what that failure costs. A clear problem creates more room for good solutions than a list of requested screens.' },
+    { title: 'Define the smallest complete outcome', body: 'A first release should complete one valuable journey end to end. It can be narrow, but it should be real enough that users can achieve something and the business can learn.', points: ['Name the primary user and decision', 'Map the current journey and evidence', 'Separate launch-critical needs from later options', 'Choose measures before implementation'] },
+    { title: 'Turn assumptions into tests', body: 'Every plan contains uncertainty. Mark which beliefs are commercial, usability or technical risks, then use prototypes and short engineering investigations to resolve the most dangerous ones early.' },
+    { title: 'Plan for operation, not only launch', body: 'Ownership, support, data protection, analytics and future changes belong in the plan. Good software is a maintained capability, not a one-off handover.' },
+  ]},
+  'web-app-or-desktop-app': { intro: 'The right platform follows the workflow. A browser offers reach and simple deployment; a desktop application offers deeper access to local files, hardware and offline processing. Many products benefit from a deliberate combination.', sections: [
+    { title: 'Choose a web app for reach', body: 'Web applications are strong when people need access from different devices, shared real-time data and frequent product updates without installation.', points: ['Customer and partner portals', 'Shared operational dashboards', 'Subscription software', 'Products needing frictionless access'] },
+    { title: 'Choose desktop for local capability', body: 'Desktop software becomes valuable when the product must process large files locally, work without connectivity, integrate with specialist hardware or remain close to sensitive data.', points: ['Document-heavy processing', 'Offline field or secure environments', 'Deep operating-system integration', 'Sustained local computation'] },
+    { title: 'Consider a connected product', body: 'A desktop client can handle local work while a web platform manages accounts, collaboration and reporting. The split should follow real constraints, not fashion.' },
+    { title: 'Make the decision with evidence', body: 'Prototype the riskiest workflow on likely devices. Test file sizes, connection conditions, update requirements and security boundaries before committing to the architecture.' },
+  ]},
+  'ai-automation-business-case': { intro: 'AI creates value when it changes a measurable workflow—not when it is added as decoration. The strongest opportunities combine repetitive information work, clear review rules and enough volume to matter.', sections: [
+    { title: 'Look for a repeated decision', body: 'Good candidates involve documents, messages or records that people repeatedly classify, extract, compare or route. Measure the current time, error rate and delay before proposing automation.' },
+    { title: 'Separate assistance from authority', body: 'An AI system can prepare evidence, recommend an action or execute it. Higher-impact decisions require stronger controls, review and traceability.', points: ['Define what the system may do', 'Set confidence and escalation rules', 'Keep source evidence accessible', 'Record corrections for evaluation'] },
+    { title: 'Test accuracy on your information', body: 'Generic demonstrations are not production evidence. Build a representative evaluation set, include difficult edge cases and decide the acceptable failure behaviour before integration.' },
+    { title: 'Calculate the complete business case', body: 'Include review time, monitoring, model and infrastructure costs, exception handling and maintenance. A smaller dependable automation often produces more value than an ambitious unreliable one.' },
+  ]},
+}
+const body = copy[article.slug]
+const schema = { '@context': 'https://schema.org', '@type': 'Article', headline: article.title, description: article.description, datePublished: article.date, author: { '@type': 'Organization', name: 'Twin Tech-sudo' } }
+---
+<SiteLayout title={`${article.title} | Twin Tech-sudo`} description={article.description} schema={schema}>
+  <SiteHeader /><main><article class="insight"><header><a href="/insights/">← All insights</a><span class="page-kicker">// {article.category.toUpperCase()}</span><h1>{article.title}</h1><p>{article.description}</p><div><time datetime={article.date}>30 September 2026</time><span>{article.read}</span></div></header><div class="insight-body"><p class="insight-intro">{body.intro}</p>{body.sections.map((section, index) => <section><span>0{index + 1}</span><h2>{section.title}</h2><p>{section.body}</p>{section.points && <ul>{section.points.map(point => <li>{point}</li>)}</ul>}</section>)}</div></article></main><SiteFooter />
+</SiteLayout>

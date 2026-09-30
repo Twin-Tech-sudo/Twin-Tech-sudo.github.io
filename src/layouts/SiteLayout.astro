@@ -1,0 +1,72 @@
+---
+import '../styles.css'
+import '../styles/pages.css'
+import { site } from '../data/site'
+
+interface Props {
+  title?: string
+  description?: string
+  image?: string
+  noindex?: boolean
+  schema?: Record<string, unknown> | Record<string, unknown>[]
+}
+
+const { title = site.defaultTitle, description = site.defaultDescription, image = '/twin-tech-hero.png', noindex = false, schema } = Astro.props
+const canonical = new URL(Astro.url.pathname, site.url)
+const socialImage = new URL(image, site.url)
+const verification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION
+const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID
+const organisation = {
+  '@context': 'https://schema.org', '@type': ['Organization', 'ProfessionalService'], name: site.name, url: site.url,
+  logo: `${site.url}/twin-tech-sudo-mark.png`, email: site.email,
+  areaServed: { '@type': 'Country', name: 'United Kingdom' },
+  knowsAbout: ['Custom software development', 'Web application development', 'Mobile app development', 'Desktop application development', 'Website development', 'E-commerce development', 'AI automation'],
+}
+const jsonLd = schema ? [organisation, ...(Array.isArray(schema) ? schema : [schema])] : [organisation]
+---
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow,max-image-preview:large'} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <meta name="theme-color" content="#0a0b0d" />
+    {verification && <meta name="google-site-verification" content={verification} />}
+    <link rel="icon" href="/twin-tech-sudo-mark.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    {jsonLd.map(item => <script type="application/ld+json" set:html={JSON.stringify(item)} />)}
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+    {gaId && <div class="consent-banner" data-consent-banner hidden><div><strong>Optional analytics</strong><p>Help improve this site with anonymous Google Analytics usage data. Nothing non-essential loads until you accept.</p><a href="/privacy/">Privacy details</a></div><div><button data-consent-reject>Decline</button><button data-consent-accept>Accept analytics</button></div></div>}
+    {gaId && <script is:inline define:vars={{ gaId }}>
+      const key = 'twin-analytics-consent'
+      const banner = document.querySelector('[data-consent-banner]')
+      const loadAnalytics = () => {
+        if (document.querySelector('script[src*="googletagmanager.com/gtag/js"]')) return
+        const script = document.createElement('script'); script.async = true; script.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`; document.head.appendChild(script)
+        window.dataLayer = window.dataLayer || []; window.gtag = function(){ window.dataLayer.push(arguments) }; window.gtag('js', new Date()); window.gtag('config', gaId, { anonymize_ip: true })
+      }
+      const choice = localStorage.getItem(key)
+      if (choice === 'accepted') loadAnalytics()
+      else if (!choice && banner) banner.hidden = false
+      banner?.querySelector('[data-consent-accept]')?.addEventListener('click', () => { localStorage.setItem(key, 'accepted'); banner.hidden = true; loadAnalytics() })
+      banner?.querySelector('[data-consent-reject]')?.addEventListener('click', () => { localStorage.setItem(key, 'declined'); banner.hidden = true })
+    </script>}
+  </body>
+</html>

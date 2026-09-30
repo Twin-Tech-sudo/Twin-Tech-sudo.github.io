@@ -1,0 +1,17 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro'
+import SiteHeader from '../components/SiteHeader.astro'
+import SiteFooter from '../components/SiteFooter.astro'
+import PageHero from '../components/PageHero.astro'
+const phases = [
+  { n: '01', name: 'Find the sharp edge', label: 'Discovery & direction', text: 'We map the real workflow, users, constraints and commercial opportunity. The output is a focused product brief, prioritised scope and a recommendation for the first useful release.', items: ['Stakeholder and user discovery', 'Workflow and assumption mapping', 'Feature prioritisation', 'Success measures'] },
+  { n: '02', name: 'Shape the system', label: 'Product & system design', text: 'Interface, data and architecture move forward together. Working prototypes make feedback concrete and expose expensive mistakes while they are still cheap to change.', items: ['User journeys and prototypes', 'Visual product direction', 'Data and integration design', 'Technical architecture'] },
+  { n: '03', name: 'Build in the open', label: 'Iterative development', text: 'The highest-value product slice is built first, then expanded through working releases. Progress stays inspectable and decisions remain connected to product evidence.', items: ['Frontend and backend engineering', 'Database and integrations', 'Automated quality checks', 'Working product reviews'] },
+  { n: '04', name: 'Launch. Learn. Improve.', label: 'Launch & evolution', text: 'We prepare the release, observe what happens in reality and turn usage into the next set of improvements. Launch is the start of useful evidence.', items: ['Production deployment', 'Analytics and monitoring', 'Documentation and onboarding', 'Improvement roadmap'] },
+]
+---
+<SiteLayout title="Software Development Process | Twin Tech-sudo" description="A clear software development process from product discovery and system design through iterative engineering, launch and ongoing improvement.">
+  <SiteHeader /><main><PageHero kicker="HOW WE WORK" title="Clarity at" accent="every step." intro="No black boxes. Direct collaboration, thoughtful decisions and visible progress from useful idea to dependable product." index="04" />
+    <section id="content" class="page-section process-timeline">{phases.map(phase => <article><div class="phase-visual"><span>{phase.n}</span><div class="phase-core"><i></i><i></i><b>{phase.n}</b></div><small>{phase.label}</small></div><div><span class="page-kicker">// PHASE {phase.n}</span><h2>{phase.name}</h2><p>{phase.text}</p><ul>{phase.items.map(item => <li>+ {item}</li>)}</ul></div></article>)}</section>
+  </main><SiteFooter />
+</SiteLayout>

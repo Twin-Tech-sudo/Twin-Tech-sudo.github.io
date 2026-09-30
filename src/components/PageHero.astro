@@ -1,0 +1,12 @@
+---
+interface Props { kicker: string; title: string; accent: string; intro: string; index?: string }
+const { kicker, title, accent, intro, index = 'TT/SUDO' } = Astro.props
+---
+<section class="page-hero">
+  <div class="page-grid" aria-hidden="true"></div>
+  <div class="page-orbit" aria-hidden="true"><i></i><i></i><span>{index}</span></div>
+  <span class="page-kicker">// {kicker}</span>
+  <h1>{title}<br /><em>{accent}</em></h1>
+  <p>{intro}</p>
+  <a href="#content" aria-label="Continue to content">Explore ↓</a>
+</section>
