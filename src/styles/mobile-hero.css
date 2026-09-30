@@ -1,0 +1,46 @@
+@media (max-width: 620px) {
+  .hero {
+    min-height: 900px;
+    padding-top: 112px;
+  }
+
+  .hero-art {
+    border: 1px solid rgba(255, 255, 255, .12);
+    bottom: auto;
+    height: 290px;
+    left: 14px;
+    opacity: 1;
+    overflow: hidden;
+    right: 14px;
+    top: 155px;
+    transform: none !important;
+    width: auto;
+  }
+
+  .hero-art::before {
+    background:
+      linear-gradient(0deg, var(--ink) 0%, rgba(13, 15, 14, .15) 28%, transparent 58%),
+      linear-gradient(90deg, rgba(13, 15, 14, .18), transparent 38%);
+  }
+
+  .hero-art img {
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
+    width: 100%;
+  }
+
+  .hero h1 {
+    margin: 320px 0 40px;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-art {
+    height: 270px;
+  }
+
+  .hero h1 {
+    margin-top: 300px;
+  }
+}
