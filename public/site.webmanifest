@@ -1,0 +1,9 @@
+{
+  "name": "Twin Tech-sudo",
+  "short_name": "TT-sudo",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d0f0e",
+  "theme_color": "#c7ff17",
+  "icons": [{ "src": "/twin-tech-sudo-mark.png", "sizes": "1254x1254", "type": "image/png" }]
+}

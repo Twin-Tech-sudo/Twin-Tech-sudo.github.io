@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 180" role="img" aria-labelledby="title desc">
+  <title id="title">BOQ Extract</title>
+  <desc id="desc">BOQ Extract precision construction intelligence wordmark</desc>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#34d399"/>
+      <stop offset="1" stop-color="#a3e635"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(10 20)">
+    <rect width="140" height="140" rx="28" fill="#0c1512"/>
+    <path d="M36 35h42c23 0 36 12 36 29 0 10-5 18-14 23 12 5 18 13 18 24 0 20-15 30-40 30H36V35zm24 21v22h17c9 0 14-4 14-11s-5-11-14-11H60zm0 42v22h20c10 0 15-4 15-11s-5-11-15-11H60z" fill="url(#g)"/>
+    <path d="M111 31l10 10m0-10l-10 10" stroke="#f5f7f2" stroke-width="3" stroke-linecap="round" opacity=".75"/>
+  </g>
+  <g fill="#f5f7f2" font-family="Arial, Helvetica, sans-serif">
+    <text x="178" y="94" font-size="67" font-weight="800" letter-spacing="-3">BOQ Extract</text>
+    <circle cx="602" cy="83" r="7" fill="#34d399"/>
+    <text x="182" y="126" font-size="13" font-weight="600" letter-spacing="4" fill="#8fa49b">CONSTRUCTION INTELLIGENCE</text>
+  </g>
+</svg>
