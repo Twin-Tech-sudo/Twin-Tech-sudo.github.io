@@ -26,6 +26,7 @@ export default function Studio() {
   const [enquiryCount, setEnquiryCount] = useState(0)
   const [releaseCount, setReleaseCount] = useState(0)
   const [notice, setNotice] = useState('')
+  const [needsMfa, setNeedsMfa] = useState(false)
 
   useEffect(() => {
     if (!supabase) return
@@ -36,6 +37,9 @@ export default function Studio() {
 
   useEffect(() => {
     if (!session || !supabase) return
+    supabase.auth.mfa.getAuthenticatorAssuranceLevel().then(({ data }) => {
+      setNeedsMfa(data?.currentLevel === 'aal1' && data.nextLevel === 'aal2')
+    })
     Promise.all([
       supabase.from('site_records').select('*').order('updated_at', { ascending: false }),
       supabase.from('enquiries').select('*', { count: 'exact', head: true }),
@@ -49,6 +53,7 @@ export default function Studio() {
   if (!supabaseConfigured) return <SetupState />
   if (loading) return <div className="studio-state"><LoaderCircle className="spin" /><p>Opening Twin Studio…</p></div>
   if (!session) return <Login />
+  if (needsMfa) return <MfaChallenge onVerified={() => setNeedsMfa(false)} />
 
   const filtered = records.filter(record => record.kind === kindForTab[tab])
   const flash = (message: string) => { setNotice(message); window.setTimeout(() => setNotice(''), 2500) }
@@ -106,6 +111,27 @@ function Login() {
   return <div className="studio-login"><div className="login-visual"><img src="/twin-tech-sudo-mark.png" alt="" /><span>CONTENT / PROJECTS / SEO / RELEASES</span><h1>Control the whole<br /><em>studio.</em></h1><div className="login-orbit"><i/><i/><b>TT</b></div></div><form onSubmit={submit}><span>// SECURE OWNER ACCESS</span><h2>Welcome back.</h2><p>Sign in with the owner account configured in Supabase.</p><label>Email address<input required type="email" value={email} onChange={e => setEmail(e.target.value)} /></label><label>Password<input required type="password" value={password} onChange={e => setPassword(e.target.value)} /></label>{message && <small>{message}</small>}<button>Open Studio ↗</button><a href="/">← Return to website</a></form></div>
 }
 
+function MfaChallenge({ onVerified }: { onVerified: () => void }) {
+  const [factorId, setFactorId] = useState(''); const [code, setCode] = useState(''); const [message, setMessage] = useState('Loading authenticator…')
+  useEffect(() => {
+    supabase?.auth.mfa.listFactors().then(({ data, error }) => {
+      const factor = data?.totp.find(item => item.status === 'verified')
+      if (error || !factor) setMessage(error?.message ?? 'No verified authenticator was found.')
+      else { setFactorId(factor.id); setMessage('') }
+    })
+  }, [])
+  const verify = async (event: React.SyntheticEvent<HTMLFormElement>) => {
+    event.preventDefault(); if (!factorId || !supabase) return
+    setMessage('Verifying…')
+    const { data: challenge, error: challengeError } = await supabase.auth.mfa.challenge({ factorId })
+    if (challengeError) return setMessage(challengeError.message)
+    const { error } = await supabase.auth.mfa.verify({ factorId, challengeId: challenge.id, code })
+    if (error) return setMessage(error.message)
+    onVerified()
+  }
+  return <div className="studio-login"><div className="login-visual"><img src="/twin-tech-sudo-mark.png" alt=""/><span>SECOND FACTOR / OWNER SECURITY</span><h1>One more<br/><em>check.</em></h1><div className="login-orbit"><i/><i/><b>2FA</b></div></div><form onSubmit={verify}><span>// AUTHENTICATOR REQUIRED</span><h2>Verify it’s you.</h2><p>Enter the six-digit code from your authenticator app.</p><label>Authentication code<input required inputMode="numeric" autoComplete="one-time-code" pattern="[0-9]{6}" maxLength={6} value={code} onChange={e => setCode(e.target.value.replace(/\D/g, ''))}/></label>{message && <small>{message}</small>}<button disabled={!factorId || code.length !== 6}>Verify and open Studio ↗</button><button type="button" className="text-button" onClick={() => supabase?.auth.signOut()}>Sign out</button></form></div>
+}
+
 function SetupState() { return <div className="studio-setup"><img src="/twin-tech-sudo-mark.png" alt="" /><span>// STUDIO SETUP REQUIRED</span><h1>Secure dashboard foundation <em>ready.</em></h1><p>Add a free Supabase project and configure <code>PUBLIC_SUPABASE_URL</code> and <code>PUBLIC_SUPABASE_PUBLISHABLE_KEY</code>. Then run the included database migration and create the owner account with MFA.</p><div><ShieldCheck /><span><b>No public fallback PIN</b><small>The dashboard stays locked until real authentication exists.</small></span></div><a href="/">← Return to website</a></div> }
 
 function Overview({ records, enquiries, releases, setTab }: { records: StudioRecord[]; enquiries: number; releases: number; setTab: (tab: Tab) => void }) {
@@ -127,5 +153,17 @@ function EnquiryPanel() { const [items, setItems] = useState<Record<string, stri
 function SeoPanel({ records }: { records: StudioRecord[] }) { const incomplete = records.filter(item => !item.data.seo_title || !item.data.meta_description); return <SimplePanel icon={<Search/>} title="SEO centre" copy="Technical foundations ship automatically. This view flags managed content that needs search metadata."><div className="seo-score"><strong>{records.length ? Math.round(((records.length - incomplete.length) / records.length) * 100) : 100}</strong><span>/100<br/>metadata coverage</span></div><div className="check-list"><p><CheckCircle2/> Static crawlable HTML</p><p><CheckCircle2/> Canonical URLs and sitemap</p><p><CheckCircle2/> Structured service and article data</p><p className={incomplete.length ? 'warning' : ''}><ShieldCheck/> {incomplete.length} managed record(s) missing metadata</p></div></SimplePanel> }
 function AnalyticsPanel() { return <SimplePanel icon={<BarChart3/>} title="Analytics" copy="GA4 and Search Console summaries will populate after their IDs are added to repository secrets and the scheduled import runs."><div className="analytics-placeholder"><BarChart3/><div><b>Connect measurement after consent setup</b><p>The public site does not load non-essential analytics before consent.</p></div></div></SimplePanel> }
 function ReleasesPanel() { const [items, setItems] = useState<Record<string,string>[]>([]); useEffect(() => { supabase?.from('releases').select('*').order('created_at', { ascending: false }).then(({ data }) => setItems((data ?? []) as Record<string,string>[])) }, []); return <SimplePanel icon={<Rocket/>} title="Releases" copy="Every publish creates an immutable snapshot and deployment reference for safe rollback.">{items.length ? items.map((item, i) => <div className="release-row" key={String(item.id ?? i)}><Rocket/><div><b>{item.label || 'Website release'}</b><small>{new Date(item.created_at).toLocaleString('en-GB')} · {item.status}</small></div></div>) : <div className="empty-inline">The first published change will create release 001.</div>}</SimplePanel> }
-function SettingsPanel({ email, flash }: { email: string; flash: (x:string) => void }) { const [factor, setFactor] = useState(''); const enable = async () => { const { data, error } = await supabase!.auth.mfa.enroll({ factorType: 'totp', friendlyName: 'Twin Studio' }); if (error) return flash(error.message); setFactor(data.totp.qr_code) }; return <SimplePanel icon={<Settings/>} title="Security & settings" copy="Owner access is protected by Supabase Auth and row-level security."><div className="settings-lines"><div><span>Signed in as</span><b>{email}</b></div><div><span>Multi-factor authentication</span><button onClick={enable}>Set up authenticator</button></div>{factor && <div className="mfa-setup"><img src={factor} alt="Authenticator QR code"/><p>Scan this code in your authenticator app, then complete verification in your Supabase account security flow.</p></div>}</div></SimplePanel> }
+function SettingsPanel({ email, flash }: { email: string; flash: (x:string) => void }) {
+  const [enrollment, setEnrollment] = useState<{ id: string; qr: string } | null>(null); const [code, setCode] = useState('')
+  const enable = async () => { const { data, error } = await supabase!.auth.mfa.enroll({ factorType: 'totp', friendlyName: 'Twin Studio' }); if (error) return flash(error.message); setEnrollment({ id: data.id, qr: data.totp.qr_code }) }
+  const verify = async () => {
+    if (!enrollment || !supabase || code.length !== 6) return
+    const { data: challenge, error: challengeError } = await supabase.auth.mfa.challenge({ factorId: enrollment.id })
+    if (challengeError) return flash(challengeError.message)
+    const { error } = await supabase.auth.mfa.verify({ factorId: enrollment.id, challengeId: challenge.id, code })
+    if (error) return flash(error.message)
+    setEnrollment(null); setCode(''); flash('Authenticator verified and MFA enabled')
+  }
+  return <SimplePanel icon={<Settings/>} title="Security & settings" copy="Owner access is protected by Supabase Auth and row-level security."><div className="settings-lines"><div><span>Signed in as</span><b>{email}</b></div><div><span>Multi-factor authentication</span><button onClick={enable}>Set up authenticator</button></div>{enrollment && <div className="mfa-setup"><img src={enrollment.qr} alt="Authenticator QR code"/><div><p>Scan this QR code with Google Authenticator, Microsoft Authenticator, Authy or another TOTP app.</p><label>Six-digit code<input inputMode="numeric" autoComplete="one-time-code" pattern="[0-9]{6}" maxLength={6} value={code} onChange={e => setCode(e.target.value.replace(/\D/g, ''))}/></label><button onClick={verify} disabled={code.length !== 6}>Verify and enable MFA</button></div></div>}</div></SimplePanel>
+}
 function SimplePanel({ icon, title, copy, children }: { icon: React.ReactNode; title: string; copy: string; children?: React.ReactNode }) { return <div className="studio-content"><section className="studio-panel simple-panel"><header>{icon}<div><span>// TWIN STUDIO</span><h2>{title}</h2><p>{copy}</p></div></header>{children}</section></div> }
