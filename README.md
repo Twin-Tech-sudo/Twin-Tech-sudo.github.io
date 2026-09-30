@@ -44,7 +44,7 @@ The public site works without Supabase. The Studio remains securely locked until
 2. Run `supabase/migrations/001_studio.sql` in its SQL editor.
 3. Create the owner user in Supabase Authentication.
 4. Insert that user's UUID into `public.profiles` as documented at the bottom of the migration.
-5. Enrol and verify TOTP MFA from Studio settings, then run `supabase/migrations/002_require_mfa.sql` to require MFA for private data.
+5. Enable TOTP MFA in Supabase and enrol the owner from Studio settings.
 6. Copy `.env.example` to `.env` and set `PUBLIC_SUPABASE_URL` and `PUBLIC_SUPABASE_PUBLISHABLE_KEY`.
 7. Deploy `supabase/functions/publish` and add its documented secrets: `SUPABASE_SERVICE_ROLE_KEY`, `GITHUB_OWNER`, `GITHUB_REPO`, and `GITHUB_DEPLOY_TOKEN`.
 8. Add the two public Supabase values as GitHub Actions repository secrets with the same names.
