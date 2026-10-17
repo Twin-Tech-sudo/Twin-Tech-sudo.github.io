@@ -286,7 +286,7 @@ function App() {
             <div className="hero-signal"><span /> Independent digital product studio · UK</div>
             <h1><span>Ideas, shaped.</span><br /><em>Products, built.</em></h1>
             <div className="hero-bottom">
-              <p>Twin Tech-sudo brings product strategy, distinctive design and serious engineering together to create software people want to use.</p>
+              <p>Twin Tech-sudo brings product strategy, distinctive design and serious engineering together to create software for businesses, founders and teams across industries.</p>
               <div className="hero-actions"><a href="#studio" className="hero-primary">Explore the studio <ArrowRight size={17} /></a><a href="#work" className="round-link" aria-label="View selected work"><ArrowDownRight size={25} /></a></div>
             </div>
             <div className="hero-marquee" aria-label="Our capabilities">
@@ -298,7 +298,7 @@ function App() {
             <div className="starter-offer-copy">
               <span className="eyebrow">// ONE CONNECTED STUDIO</span>
               <h2>Think.<br /><em>Make. Ship.</em></h2>
-              <p>We work across the whole product journey, turning an ambitious idea or stubborn business problem into a clear, useful and dependable digital product.</p>
+              <p>We work across industries and the whole product journey—from a new SaaS idea to an internal platform, customer app, desktop tool, website or intelligent automation.</p>
               <a href="/about/">Meet Twin Tech-sudo <ArrowRight size={17} /></a>
             </div>
             <div className="starter-offer-grid">
@@ -386,7 +386,7 @@ function App() {
             <div className="about-copy">
               <span className="eyebrow">// WHY TWIN TECH-SUDO</span>
               <h2>Senior thinking.<br />Builder <em>energy.</em></h2>
-              <p className="lead">Twin Tech-sudo is a hands-on UK digital product studio for founders and businesses that value momentum, craft and honest technical thinking.</p>
+              <p className="lead">Twin Tech-sudo is a hands-on UK digital product studio building all kinds of software for founders, growing businesses and established teams across industries.</p>
               <p>You work directly with the person shaping and building your product. That means tighter feedback, fewer hand-offs and technology choices made for your actual goals—not a sales deck.</p>
               <div className="principles">
                 <span><Check size={16} /> Product thinking included</span><span><Check size={16} /> Built for maintainability</span><span><Check size={16} /> Plain-English communication</span><span><Check size={16} /> Ownership after launch</span>

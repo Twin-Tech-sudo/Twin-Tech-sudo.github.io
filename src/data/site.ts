@@ -84,16 +84,6 @@ export const services: Service[] = [
     deliverables: ['Automation opportunity assessment', 'Prototype and accuracy evaluation', 'Production integrations', 'Monitoring and review controls'],
     keywords: ['AI automation UK', 'business process automation', 'AI software development company'],
   },
-  {
-    slug: 'construction-document-automation', number: '08', title: 'Construction document automation', shortTitle: 'Construction automation',
-    description: 'Review-first software for UK construction teams that need to extract, check and act on information locked inside complex project documents.',
-    eyebrow: 'Specialist studio capability', headline: 'Turn project documents into controlled, reviewable workflows.',
-    intro: 'As one specialist area within the studio, we help estimators, quantity surveyors, contractors and project teams explore where software can reduce repetitive document handling without hiding the source evidence.',
-    capabilities: ['Bills of quantities and schedule workflows', 'Document intake and classification', 'Structured data extraction', 'Human review and exception handling', 'Audit trails and source evidence', 'Exports and system integrations'],
-    outcomes: ['Reduce repeated copying and re-keying', 'Make exceptions easier to find and review', 'Keep a traceable link to source documents', 'Create a practical route from prototype to production'],
-    deliverables: ['Current-workflow and document map', 'Automation opportunity and risk assessment', 'Review-first prototype or technical proof', 'Prioritised delivery roadmap'],
-    keywords: ['construction document automation UK', 'construction document management software', 'bill of quantities automation'],
-  },
 ]
 
 export const projects = [
@@ -116,10 +106,10 @@ export const projects = [
 ]
 
 export const articles = [
-  { slug: 'construction-document-automation-first-workflow', title: 'Construction document automation: choosing the first workflow', description: 'A practical way to find a construction document process worth testing, without committing to a large software build too early.', date: '2026-10-17', read: '7 min read', category: 'Construction technology' },
   { slug: 'how-to-plan-custom-software', title: 'How to plan custom software without wasting the first build', description: 'A practical framework for defining the problem, scope and evidence a successful first release needs.', date: '2026-09-30', read: '7 min read', category: 'Product strategy' },
   { slug: 'web-app-or-desktop-app', title: 'Web app or desktop app: which fits your workflow?', description: 'The real trade-offs between browser reach, offline work, local files, performance and deployment.', date: '2026-09-30', read: '6 min read', category: 'Technology decisions' },
   { slug: 'ai-automation-business-case', title: 'Where AI automation creates a real business case', description: 'How to identify repetitive work worth automating while keeping accuracy, evidence and oversight intact.', date: '2026-09-30', read: '8 min read', category: 'AI & automation' },
+  { slug: 'construction-document-automation-first-workflow', title: 'Construction document automation: choosing the first workflow', description: 'A practical way to find a construction document process worth testing, without committing to a large software build too early.', date: '2026-10-17', read: '7 min read', category: 'Construction technology' },
 ]
 
 export const nav = [
@@ -139,5 +129,5 @@ export const site = {
   registeredOffice: import.meta.env.PUBLIC_REGISTERED_OFFICE || '',
   jurisdiction: import.meta.env.PUBLIC_COMPANY_JURISDICTION || 'England and Wales',
   defaultTitle: 'Twin Tech-sudo | UK Digital Product & Software Studio',
-  defaultDescription: 'Twin Tech-sudo is a UK digital product studio combining strategy, design and engineering to create custom software, web, mobile, desktop and AI products.',
+  defaultDescription: 'Twin Tech-sudo is a UK digital product studio creating custom software, SaaS, web applications, mobile apps, desktop software, websites, e-commerce and AI products across industries.',
 }

@@ -21,7 +21,6 @@ const pathParts = Astro.url.pathname.split('/').filter(Boolean)
 const labelOverrides: Record<string, string> = {
   insights: 'Insights', services: 'Services', work: 'Work', about: 'About',
   contact: 'Contact', process: 'Process', privacy: 'Privacy', cookies: 'Cookies', terms: 'Terms',
-  'workflow-review': 'Workflow Clarity Review',
 }
 const breadcrumb = pathParts.length ? {
   '@context': 'https://schema.org',
@@ -41,7 +40,7 @@ const organisation = {
   logo: `${site.url}/twin-tech-sudo-mark-256.png`,
   ...(site.email ? { email: site.email, contactPoint: { '@type': 'ContactPoint', email: site.email, contactType: 'sales', availableLanguage: 'English' } } : {}),
   areaServed: { '@type': 'Country', name: 'United Kingdom' },
-  knowsAbout: ['Digital product strategy', 'Experience design', 'Custom software development', 'Web application development', 'Mobile application development', 'Desktop application development', 'AI automation', 'Construction document automation'],
+  knowsAbout: ['Digital product strategy', 'Experience design', 'Custom software development', 'SaaS development', 'Web application development', 'Mobile application development', 'Desktop application development', 'Website development', 'E-commerce development', 'AI automation'],
 }
 const website = { '@context': 'https://schema.org', '@type': 'WebSite', '@id': `${site.url}/#website`, name: site.name, url: site.url, publisher: { '@id': `${site.url}/#organisation` } }
 const jsonLd = [organisation, website, ...(breadcrumb ? [breadcrumb] : []), ...(schema ? (Array.isArray(schema) ? schema : [schema]) : [])]

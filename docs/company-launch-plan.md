@@ -8,7 +8,7 @@ Owner checklist for forming and launching a UK software business. Website engine
 - [ ] Decide the exact legal name, trading name, product names, spelling and punctuation.
 - [ ] Acquire the primary `.co.uk`, `.com` if available, common misspellings and matching social handles before the trade mark application becomes public.
 - [ ] Activate and test `hello@twintech-sudo.co.uk`; do not direct enquiries to it until DNS and mail delivery pass.
-- [x] Choose the initial commercial structure. The site leads with Twin Tech-sudo as a digital product studio; the Workflow Clarity Review and construction automation remain a specialist campaign and proof area rather than the company identity. Validate individual campaigns through interviews before spending materially on promotion.
+- [x] Choose the initial commercial structure. The site leads with Twin Tech-sudo as an all-software digital product studio. Individual industries appear only through relevant work and editorial content, not as the company identity.
 
 ## Trade mark workstream
 
@@ -83,7 +83,7 @@ Current official filing fees must be checked on the day of filing. At 17 October
 
 ## Evidence-led marketing
 
-- [x] Establish a clear studio-level proposition and keep specialist audiences in dedicated landing pages. Implemented on 17 October 2026 with studio-led homepage copy plus a separate workflow-review page, construction service page and supporting article.
+- [x] Establish a clear studio-level proposition. Implemented on 17 October 2026 with studio-led homepage copy and seven broad software capabilities; sector experience remains in case studies and supporting articles.
 - [ ] Publish a real founder profile and experience evidence.
 - [ ] Keep owned products and concepts clearly labelled; do not present illustrative interface figures as measured outcomes.
 - [ ] Publish case studies only with permission and distinguish scope, evidence and results.
