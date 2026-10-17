@@ -96,7 +96,7 @@ export const projects = [
     note: 'BOQExtract is an evolving Twin Tech-sudo product. Performance claims are intentionally withheld until validated production evidence is available.',
   },
   {
-    slug: 'macks-packs', name: "Mack's Packs", category: 'E-commerce experience', logo: '/macks-packs-logo.png', colour: '#8ca8ff',
+    slug: 'macks-packs', name: "Mack's Packs", category: 'E-commerce experience', logo: '/macks-packs-logo.webp', colour: '#8ca8ff',
     summary: 'A focused digital storefront concept built around collectible trading cards, clear inventory and a direct path to purchase.',
     challenge: 'Collectible products need strong visual identity, quick catalogue scanning and enough product detail to make a confident buying decision.',
     solution: 'The experience joins bold brand presentation with clear product structure and commerce journeys designed to remove uncertainty from browsing to checkout.',

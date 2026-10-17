@@ -6,5 +6,5 @@
   "display": "standalone",
   "background_color": "#0d0f0e",
   "theme_color": "#c7ff17",
-  "icons": [{ "src": "/twin-tech-sudo-mark.png", "sizes": "1254x1254", "type": "image/png" }]
+  "icons": [{ "src": "/twin-tech-sudo-mark-256.png", "sizes": "256x256", "type": "image/png" }]
 }

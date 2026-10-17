@@ -26,7 +26,7 @@ export const defaultContent: SiteContent = {
       summary: 'A fast, focused storefront built around collectible trading cards, live inventory and a frictionless path to purchase.',
       outcome: 'Brand, commerce and operations in one build',
       tags: ['E-commerce', 'Web design', 'Automation'],
-      logo: '/macks-packs-logo.png',
+      logo: '/macks-packs-logo.webp',
       featured: true,
       colour: '#8ca8ff',
     },

@@ -8,7 +8,7 @@ const analyticsEnabled = Boolean(import.meta.env.PUBLIC_GA_MEASUREMENT_ID)
   <a href={`mailto:${site.email}?subject=Project enquiry for Twin Tech-sudo`}>{site.email} <span>↘</span></a>
 </section>
 <footer class="inner-footer">
-  <div><a class="brand" href="/"><img src="/twin-tech-sudo-mark.png" alt="" /><span>Twin Tech<span>-sudo</span></span></a><p>Independent software development studio · United Kingdom</p></div>
+  <div><a class="brand" href="/"><img src="/twin-tech-sudo-mark-256.webp" width="256" height="256" alt="" /><span>Twin Tech<span>-sudo</span></span></a><p>Independent software development studio · United Kingdom</p></div>
   <div><strong>Services</strong>{services.slice(0, 4).map(service => <a href={`/services/${service.slug}/`}>{service.shortTitle}</a>)}</div>
   <div><strong>Explore</strong><a href="/work/">Selected work</a><a href="/process/">Our process</a><a href="/about/">About</a><a href="/insights/">Insights</a><a href="/contact/">Contact</a></div>
   <div><strong>Legal</strong><a href="/privacy/">Privacy notice</a><a href="/cookies/">Cookie notice</a><a href="/terms/">Website terms</a>{analyticsEnabled && <button type="button" class="cookie-settings" data-cookie-settings>Cookie settings</button>}</div>

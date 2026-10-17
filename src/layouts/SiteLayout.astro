@@ -12,7 +12,7 @@ interface Props {
   schema?: Record<string, unknown> | Record<string, unknown>[]
 }
 
-const { title = site.defaultTitle, description = site.defaultDescription, image = '/twin-tech-hero.png', noindex = false, schema } = Astro.props
+const { title = site.defaultTitle, description = site.defaultDescription, image = '/twin-tech-social.webp', noindex = false, schema } = Astro.props
 const canonical = new URL(Astro.url.pathname, site.url)
 const socialImage = new URL(image, site.url)
 const verification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION
@@ -37,7 +37,7 @@ const breadcrumb = pathParts.length ? {
 const organisation = {
   '@context': 'https://schema.org', '@type': ['Organization', 'ProfessionalService'], '@id': `${site.url}/#organisation`,
   name: site.name, ...(site.legalName ? { legalName: site.legalName } : {}), url: site.url,
-  logo: `${site.url}/twin-tech-sudo-mark.png`, email: site.email,
+  logo: `${site.url}/twin-tech-sudo-mark-256.png`, email: site.email,
   contactPoint: { '@type': 'ContactPoint', email: site.email, contactType: 'sales', availableLanguage: 'English' },
   areaServed: { '@type': 'Country', name: 'United Kingdom' },
   knowsAbout: ['Custom software development', 'Web application development', 'Mobile app development', 'Desktop application development', 'Website development', 'E-commerce development', 'AI automation'],
@@ -67,7 +67,7 @@ const jsonLd = [organisation, website, ...(breadcrumb ? [breadcrumb] : []), ...(
     <meta name="twitter:image" content={socialImage} />
     <meta name="theme-color" content="#0a0b0d" />
     {verification && <meta name="google-site-verification" content={verification} />}
-    <link rel="icon" href="/twin-tech-sudo-mark.png" />
+    <link rel="icon" type="image/png" sizes="256x256" href="/twin-tech-sudo-mark-256.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="alternate" type="application/rss+xml" title="Twin Tech-sudo Insights" href="/rss.xml" />
     {jsonLd.map(item => <script type="application/ld+json" set:html={JSON.stringify(item)} />)}

@@ -3,7 +3,7 @@ import { nav } from '../data/site'
 const path = Astro.url.pathname
 ---
 <header class="inner-header">
-  <a class="brand" href="/" aria-label="Twin Tech-sudo home"><img src="/twin-tech-sudo-mark.png" alt="" /><span>Twin Tech<span>-sudo</span></span></a>
+  <a class="brand" href="/" aria-label="Twin Tech-sudo home"><img src="/twin-tech-sudo-mark-256.webp" width="256" height="256" alt="" /><span>Twin Tech<span>-sudo</span></span></a>
   <nav aria-label="Main navigation">
     {nav.map(item => <a class={path.startsWith(item.href) ? 'active' : ''} href={item.href}>{item.label}</a>)}
     <a class="inner-cta" href="/contact/">Start a project ↘</a>

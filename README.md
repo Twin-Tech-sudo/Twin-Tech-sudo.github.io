@@ -11,6 +11,8 @@ Standalone, multi-page marketing site and secure content Studio for Twin Tech-su
 - Three long-form search articles plus RSS
 - Per-page titles, descriptions, canonicals, social cards and structured data
 - Generated sitemap and crawl rules; `/studio/` is excluded and `noindex`
+- Privacy, cookie and website-terms pages with consent-gated analytics
+- Optional public company particulars controlled through deployment variables
 - Supabase Auth, row-level security, media storage, draft records and immutable release foundations
 - GitHub Pages deployment on every `main` push or Studio workflow dispatch
 
@@ -62,6 +64,18 @@ After launch:
 3. Create GA4, implement the consent UI before loading it, then set `PUBLIC_GA_MEASUREMENT_ID`.
 4. Replace the provisional contact email only after its mailbox exists.
 5. Add genuine testimonials and measured case-study outcomes as evidence becomes available.
+
+Before switching to a custom domain, set the following GitHub Actions repository variables and rebuild:
+
+- `PUBLIC_SITE_URL` — final HTTPS origin, without a trailing slash
+- `PUBLIC_LEGAL_NAME`
+- `PUBLIC_COMPANY_NUMBER`
+- `PUBLIC_REGISTERED_OFFICE`
+- `PUBLIC_COMPANY_JURISDICTION`
+
+Keep `PUBLIC_SITE_URL` on the GitHub Pages origin until DNS, HTTPS and redirect behaviour are verified. The generated canonical URLs, sitemap, robots file, RSS feed and structured data all use this value.
+
+The legal pages are implementation-ready drafts, not a substitute for review against the company's actual processing, contracts and legal identity. Complete the owner actions in `docs/company-launch-plan.md` before commercial launch.
 
 No ranking, revenue, client or performance claims are fabricated. The initial articles target real buying questions rather than keyword stuffing.
 

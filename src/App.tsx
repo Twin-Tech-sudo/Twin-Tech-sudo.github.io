@@ -126,7 +126,7 @@ const processDetails = [
 
 function ServiceGraphic({ index }: { index: number }) {
   if (index === 0) return <div className="service-graphic system-graphic" aria-hidden="true">
-    <div className="system-core"><img src="/twin-tech-sudo-mark.png" alt="" /><span>CORE</span></div>
+    <div className="system-core"><img src="/twin-tech-sudo-mark-256.webp" width="256" height="256" alt="" /><span>CORE</span></div>
     <div className="system-node node-a"><i />INPUT</div><div className="system-node node-b"><i />LOGIC</div><div className="system-node node-c"><i />DATA</div><div className="system-node node-d"><i />OUTPUT</div>
     <svg viewBox="0 0 400 210" preserveAspectRatio="none"><path d="M76 40 C150 40 120 103 198 103"/><path d="M76 170 C150 170 120 108 198 108"/><path d="M325 40 C250 40 280 103 202 103"/><path d="M325 170 C250 170 280 108 202 108"/></svg>
     <b className="system-status"><i /> SYSTEM ONLINE</b>
@@ -248,7 +248,7 @@ function App() {
       <div className="site-shell">
         <header className={`nav-wrap ${scrolled ? 'nav-scrolled' : ''}`}>
           <a className="brand" href="/" aria-label="Twin Tech-sudo home">
-            <img src="/twin-tech-sudo-mark.png" alt="" />
+            <img src="/twin-tech-sudo-mark-256.webp" width="256" height="256" alt="" />
             <span>Twin Tech<span>-sudo</span></span>
           </a>
           <nav className={menuOpen ? 'nav-links open' : 'nav-links'} aria-label="Main navigation">
@@ -277,7 +277,7 @@ function App() {
           <section className="hero section-pad" ref={heroRef} onPointerMove={moveHero}>
             <div className="hero-grid" aria-hidden="true" />
             <div className="hero-art" aria-hidden="true">
-              <img src="/twin-tech-hero.png" alt="" />
+              <img src="/twin-tech-hero.webp" width="1600" height="901" fetchPriority="high" alt="" />
               <div className="art-coordinate coordinate-one"><b>01</b><span>THINK</span></div>
               <div className="art-coordinate coordinate-two"><b>02</b><span>MAKE</span></div>
               <div className="art-coordinate coordinate-three"><b>03</b><span>SHIP</span></div>
@@ -317,7 +317,7 @@ function App() {
           </section>
 
           <section className="graphic-break" aria-label="Twin Tech-sudo design philosophy">
-            <div className="graphic-break-mark"><img src="/twin-tech-sudo-mark.png" alt="" /></div>
+            <div className="graphic-break-mark"><img src="/twin-tech-sudo-mark-256.webp" width="256" height="256" alt="" /></div>
             <div className="graphic-break-copy"><span>STRATEGY</span><i>/</i><span>DESIGN</span><i>/</i><span>CODE</span><i>/</i><span>LAUNCH</span></div>
             <p>One continuous line from<br />ambition to working product.</p>
           </section>
@@ -335,7 +335,7 @@ function App() {
                     <div className={`project-visual project-visual-${index % 2}`}>
                       <div className="window-chrome"><span /><span /><span /><b>{project.category}</b></div>
                       <div className="project-ui">
-                        <div className="ui-side"><img src="/twin-tech-sudo-mark.png" alt="" /><i /><i /><i /></div>
+                        <div className="ui-side"><img src="/twin-tech-sudo-mark-256.webp" width="256" height="256" alt="" /><i /><i /><i /></div>
                         <div className="ui-main"><small>PROJECT / {project.name.toUpperCase()}</small>{project.logo && <img className={`project-brand-logo project-brand-logo-${index}`} src={project.logo} alt={`${project.name} logo`} />}<strong>{project.outcome}</strong><div className="ui-metric"><span>PRODUCT VIEW</span><b>{index === 0 ? 'REVIEW' : 'CLEAR'}</b><i>{index === 0 ? 'evidence first' : 'catalogue journey'}</i></div><div className="ui-chart"><span /><span /><span /><span /><span /></div><div className="ui-cursor"><ArrowDownRight /></div></div>
                       </div>
                     </div>
@@ -394,7 +394,7 @@ function App() {
         </main>
 
         <footer>
-          <a className="brand" href="/"><img src="/twin-tech-sudo-mark.png" alt="" /><span>Twin Tech<span>-sudo</span></span></a>
+          <a className="brand" href="/"><img src="/twin-tech-sudo-mark-256.webp" width="256" height="256" alt="" /><span>Twin Tech<span>-sudo</span></span></a>
           <p>© {year} Twin Tech-sudo. Digital products, built properly.</p>
           <nav className="home-footer-links" aria-label="Footer"><a href="/services/">Services</a><a href="/work/">Work</a><a href="/about/">About</a><a href="/insights/">Insights</a><a href="/contact/">Contact</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav>
         </footer>
