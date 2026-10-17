@@ -1,0 +1,15 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro'
+import SiteHeader from '../components/SiteHeader.astro'
+import SiteFooter from '../components/SiteFooter.astro'
+const analyticsEnabled = Boolean(import.meta.env.PUBLIC_GA_MEASUREMENT_ID)
+---
+<SiteLayout title="Cookie Notice | Twin Tech-sudo" description="Information about essential storage and optional analytics cookies used by Twin Tech-sudo.">
+  <SiteHeader /><main><article class="insight legal-page"><header><span class="page-kicker">// COOKIES</span><h1>Cookie notice</h1><p>Your choices about storage and optional website analytics.</p><div><time datetime="2026-10-17">Last updated 17 October 2026</time></div></header><div class="insight-body">
+    <p class="insight-intro">We use essential browser storage for your cookie preference. Optional Google Analytics runs only if you accept it.</p>
+    <section><span>01</span><h2>Essential preference storage</h2><p><code>twin-analytics-consent</code> records whether you accepted or declined optional analytics. It prevents the site repeatedly asking the same question. This storage is used only for your requested privacy preference.</p></section>
+    <section><span>02</span><h2>Optional analytics</h2><p>If enabled and accepted, Google Analytics may set identifiers including <code>_ga</code> and related measurement cookies so we can understand visits, page use and broad technical performance. Google acts as an analytics provider. We do not load these analytics before a positive choice.</p>{!analyticsEnabled && <p><strong>Current status:</strong> optional analytics is not configured in this deployment.</p>}</section>
+    <section><span>03</span><h2>Change your choice</h2><p>You can reopen the controls at any time. Rejecting prevents future analytics loading on subsequent pages; you can also delete existing cookies through your browser.</p>{analyticsEnabled && <button type="button" class="inline-cookie-settings" data-cookie-settings>Open cookie settings</button>}</section>
+    <section><span>04</span><h2>More information</h2><p>See our <a href="/privacy/">privacy notice</a> for information about purposes, recipients, retention and your data protection rights.</p></section>
+  </div></article></main><SiteFooter />
+</SiteLayout>

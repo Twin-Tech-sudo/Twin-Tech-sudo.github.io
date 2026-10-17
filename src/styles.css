@@ -214,6 +214,9 @@ h1 em, h2 em { color: var(--acid); font-style: normal; }
 footer { background: var(--ink); color: white; min-height: 115px; padding: 0 max(5vw, 26px); display: flex; align-items: center; justify-content: space-between; gap: 25px; }
 footer p { color: #747975; font-size: 11px; }
 footer button { border: 0; background: transparent; color: #a3a8a4; display: flex; gap: 7px; align-items: center; cursor: pointer; font-size: 11px; }
+.home-footer-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px 16px; max-width: 440px; }
+.home-footer-links a { color: #a3a8a4; font-size: 10px; }
+.home-footer-links a:hover { color: var(--acid); }
 
 /* Studio */
 .admin-overlay { position: fixed; inset: 0; z-index: 100; background: rgba(5,7,6,.88); backdrop-filter: blur(18px); display: grid; place-items: center; padding: 22px; }
@@ -268,6 +271,8 @@ details .form-grid { border-top: 1px solid #dfe0d8; padding: 24px; }.form-grid .
 .danger-zone { margin-top: 16px; padding: 24px; border: 1px solid #e0caca; background: #f8f2f0; display: flex; align-items: center; justify-content: space-between; }.danger-zone h3 { margin: 0; font-size: 14px; }.danger-zone p { margin: 5px 0 0; font-size: 10px; color: #887f7b; }.danger-zone button { color: #a42b2b; border-color: #dcc3c3; }
 
 @media (max-width: 900px) {
+  footer { padding-top: 25px; padding-bottom: 25px; flex-wrap: wrap; }
+  .home-footer-links { width: 100%; justify-content: flex-start; }
   .nav-wrap { height: 72px; }.menu-button { display: block; z-index: 2; }.nav-links { position: fixed; inset: 0; background: var(--ink); flex-direction: column; justify-content: center; font-size: 24px; opacity: 0; pointer-events: none; transition: .25s; }.nav-links.open { opacity: 1; pointer-events: auto; }.nav-links .nav-cta { font-size: 14px; margin-top: 20px; }
   .hero { min-height: 700px; }.hero-art { width: 94vw; right: -24vw; opacity: .82; }.hero h1 { margin-top: auto; font-size: clamp(62px, 11vw, 100px); }.hero-bottom { padding-bottom: 30px; }.hero-bottom p { max-width: 440px; }.round-link { width: 48px; height: 48px; }.hero-primary { height: 48px; }.art-badge { display: none; }
   .section-heading { grid-template-columns: 1fr; }.section-heading > p { margin-top: 35px; }

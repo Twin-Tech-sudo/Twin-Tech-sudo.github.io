@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /studio/
-
-Sitemap: https://twin-tech-sudo.github.io/sitemap-index.xml

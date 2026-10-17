@@ -3,13 +3,14 @@ import SiteLayout from '../../layouts/SiteLayout.astro'
 import SiteHeader from '../../components/SiteHeader.astro'
 import SiteFooter from '../../components/SiteFooter.astro'
 import { services } from '../../data/site'
+import { site } from '../../data/site'
 
 export function getStaticPaths() { return services.map(service => ({ params: { slug: service.slug }, props: { service } })) }
 const { service } = Astro.props
 const title = `${service.title} UK | Twin Tech-sudo`
 const schema = {
   '@context': 'https://schema.org', '@type': 'Service', name: service.title, description: service.description,
-  provider: { '@type': 'Organization', name: 'Twin Tech-sudo', url: 'https://twin-tech-sudo.github.io' },
+  provider: { '@id': `${site.url}/#organisation` },
   areaServed: { '@type': 'Country', name: 'United Kingdom' },
   serviceType: service.title,
 }

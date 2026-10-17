@@ -19,12 +19,12 @@ import {
 import { loadContent } from './content'
 
 const services = [
-  { icon: Blocks, number: '01', title: 'Custom software', text: 'Purpose-built systems, SaaS products and internal tools engineered around how your business actually works.' },
-  { icon: Code2, number: '02', title: 'Web applications', text: 'Fast, scalable web apps that turn complicated workflows into simple, intuitive experiences.' },
-  { icon: Smartphone, number: '03', title: 'Mobile apps', text: 'Polished iOS and Android experiences designed for real users, real devices and long-term growth.' },
-  { icon: Laptop, number: '04', title: 'Desktop apps', text: 'Reliable Windows and cross-platform desktop software, from focused utilities to full operational platforms.' },
-  { icon: MonitorSmartphone, number: '05', title: 'Websites & commerce', text: 'High-performing websites and storefronts with strong creative direction, SEO foundations and measurable intent.' },
-  { icon: Database, number: '06', title: 'Automation & AI', text: 'Practical AI integrations and workflow automation that remove repetition and create a genuine operating advantage.' },
+  { slug: 'custom-software-development', icon: Blocks, number: '01', title: 'Custom software', text: 'Purpose-built systems, SaaS products and internal tools engineered around how your business actually works.' },
+  { slug: 'web-application-development', icon: Code2, number: '02', title: 'Web applications', text: 'Fast, scalable web apps that turn complicated workflows into simple, intuitive experiences.' },
+  { slug: 'mobile-app-development', icon: Smartphone, number: '03', title: 'Mobile apps', text: 'Polished iOS and Android experiences designed for real users, real devices and long-term growth.' },
+  { slug: 'desktop-app-development', icon: Laptop, number: '04', title: 'Desktop apps', text: 'Reliable Windows and cross-platform desktop software, from focused utilities to full operational platforms.' },
+  { slug: 'website-development', icon: MonitorSmartphone, number: '05', title: 'Websites & commerce', text: 'High-performing websites and storefronts with strong creative direction, SEO foundations and measurable intent.' },
+  { slug: 'ai-automation', icon: Database, number: '06', title: 'Automation & AI', text: 'Practical AI integrations and workflow automation that remove repetition and create a genuine operating advantage.' },
 ]
 
 const serviceDetails = [
@@ -247,16 +247,17 @@ function App() {
     <>
       <div className="site-shell">
         <header className={`nav-wrap ${scrolled ? 'nav-scrolled' : ''}`}>
-          <a className="brand" href="#top" aria-label="Twin Tech-sudo home">
+          <a className="brand" href="/" aria-label="Twin Tech-sudo home">
             <img src="/twin-tech-sudo-mark.png" alt="" />
             <span>Twin Tech<span>-sudo</span></span>
           </a>
           <nav className={menuOpen ? 'nav-links open' : 'nav-links'} aria-label="Main navigation">
-            <a className={activeSection === 'services' ? 'active' : ''} href="#services" onClick={() => setMenuOpen(false)}>Services</a>
-            <a className={activeSection === 'work' ? 'active' : ''} href="#work" onClick={() => setMenuOpen(false)}>Work</a>
-            <a className={activeSection === 'process' ? 'active' : ''} href="#process" onClick={() => setMenuOpen(false)}>Process</a>
-            <a className={activeSection === 'about' ? 'active' : ''} href="#about" onClick={() => setMenuOpen(false)}>About</a>
-            <a className="nav-cta" href="#contact" onClick={() => setMenuOpen(false)}>Start a project <ArrowDownRight size={16} /></a>
+            <a href="/services/" onClick={() => setMenuOpen(false)}>Services</a>
+            <a href="/work/" onClick={() => setMenuOpen(false)}>Work</a>
+            <a href="/process/" onClick={() => setMenuOpen(false)}>Process</a>
+            <a href="/about/" onClick={() => setMenuOpen(false)}>About</a>
+            <a href="/insights/" onClick={() => setMenuOpen(false)}>Insights</a>
+            <a className="nav-cta" href="/contact/" onClick={() => setMenuOpen(false)}>Start a project <ArrowDownRight size={16} /></a>
           </nav>
           <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
             {menuOpen ? <X /> : <Menu />}
@@ -299,12 +300,12 @@ function App() {
               <p>From the first line of strategy to the final production build, Twin Tech-sudo creates joined-up digital products without the agency sprawl.</p>
             </div>
             <div className="service-grid">
-              {services.map(({ icon: Icon, number, title, text }, index) => (
-                <article className={`service-card service-card-${index}`} key={title} role="button" tabIndex={0} aria-label={`Explore ${title}`} onClick={() => setSelectedService(index)} onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setSelectedService(index) } }}>
+              {services.map(({ slug, icon: Icon, number, title, text }, index) => (
+                <a className={`service-card service-card-${index}`} key={title} href={`/services/${slug}/`} aria-label={`Explore ${title}`}>
                   <div className="service-top"><span>{number}</span><Icon size={25} strokeWidth={1.7} /></div>
                   <ServiceGraphic index={index} />
                   <h3>{title}</h3><p>{text}</p><span className="service-explore">Explore capability <ArrowRight /></span><ChevronRight className="service-arrow" />
-                </article>
+                </a>
               ))}
             </div>
             <div className="proof-strip">
@@ -335,13 +336,14 @@ function App() {
                       <div className="window-chrome"><span /><span /><span /><b>{project.category}</b></div>
                       <div className="project-ui">
                         <div className="ui-side"><img src="/twin-tech-sudo-mark.png" alt="" /><i /><i /><i /></div>
-                        <div className="ui-main"><small>PROJECT / {project.name.toUpperCase()}</small>{project.logo && <img className={`project-brand-logo project-brand-logo-${index}`} src={project.logo} alt={`${project.name} logo`} />}<strong>{project.outcome}</strong><div className="ui-metric"><span>LIVE SYSTEM</span><b>{index === 0 ? '98.4' : '24/7'}</b><i>{index === 0 ? '% confidence' : 'always selling'}</i></div><div className="ui-chart"><span /><span /><span /><span /><span /></div><div className="ui-cursor"><ArrowDownRight /></div></div>
+                        <div className="ui-main"><small>PROJECT / {project.name.toUpperCase()}</small>{project.logo && <img className={`project-brand-logo project-brand-logo-${index}`} src={project.logo} alt={`${project.name} logo`} />}<strong>{project.outcome}</strong><div className="ui-metric"><span>PRODUCT VIEW</span><b>{index === 0 ? 'REVIEW' : 'CLEAR'}</b><i>{index === 0 ? 'evidence first' : 'catalogue journey'}</i></div><div className="ui-chart"><span /><span /><span /><span /><span /></div><div className="ui-cursor"><ArrowDownRight /></div></div>
                       </div>
                     </div>
                     <div className="project-copy">
                       <span className="project-category">{project.category}</span>
                       {project.logo ? <img className={`project-copy-logo project-copy-logo-${index}`} src={project.logo} alt={`${project.name} logo`} /> : <h3>{project.name}</h3>}<p>{project.summary}</p>
                       <div className="tags">{project.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
+                      <a href={`/work/${project.id}/`}>Read case study <ArrowRight size={17} /></a>
                       {project.url && <a href={project.url} target="_blank" rel="noreferrer">View project <ArrowRight size={17} /></a>}
                     </div>
                   </article>
@@ -360,7 +362,7 @@ function App() {
               <p>No black boxes. No theatre. Just direct collaboration, thoughtful decisions and steady progress from useful idea to dependable product.</p>
             </div>
             <div className="process-grid">
-              {approach.map(([number, title, text], index) => <article className={`process-card process-card-${index}`} key={number} role="button" tabIndex={0} aria-label={`Explore ${title}`} onClick={() => setSelectedProcess(index)} onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setSelectedProcess(index) } }}><div className="process-number"><span>{number}</span><b>STEP</b></div><div className="process-dot" /><ProcessGraphic index={index}/><h3>{title}</h3><p>{text}</p><span className="process-explore">See this phase <ArrowRight /></span></article>)}
+              {approach.map(([number, title, text], index) => <a className={`process-card process-card-${index}`} key={number} href={`/process/#phase-${number}`} aria-label={`Explore ${title}`}><div className="process-number"><span>{number}</span><b>STEP</b></div><div className="process-dot" /><ProcessGraphic index={index}/><h3>{title}</h3><p>{text}</p><span className="process-explore">See this phase <ArrowRight /></span></a>)}
             </div>
           </section>
 
@@ -392,9 +394,9 @@ function App() {
         </main>
 
         <footer>
-          <a className="brand" href="#top"><img src="/twin-tech-sudo-mark.png" alt="" /><span>Twin Tech<span>-sudo</span></span></a>
+          <a className="brand" href="/"><img src="/twin-tech-sudo-mark.png" alt="" /><span>Twin Tech<span>-sudo</span></span></a>
           <p>© {year} Twin Tech-sudo. Digital products, built properly.</p>
-          <a className="footer-studio" href="/studio/">Studio</a>
+          <nav className="home-footer-links" aria-label="Footer"><a href="/services/">Services</a><a href="/work/">Work</a><a href="/about/">About</a><a href="/insights/">Insights</a><a href="/contact/">Contact</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav>
         </footer>
       </div>
       {selectedService !== null && <div className="service-modal" role="dialog" aria-modal="true" aria-labelledby="service-dialog-title" onMouseDown={event => { if (event.target === event.currentTarget) setSelectedService(null) }}>

@@ -2,6 +2,7 @@
   "name": "Twin Tech-sudo",
   "short_name": "TT-sudo",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#0d0f0e",
   "theme_color": "#c7ff17",

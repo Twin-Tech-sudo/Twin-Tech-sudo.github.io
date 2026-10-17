@@ -1,0 +1,19 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro'
+import SiteHeader from '../components/SiteHeader.astro'
+import SiteFooter from '../components/SiteFooter.astro'
+import { site } from '../data/site'
+const operator = site.legalName || site.name
+---
+<SiteLayout title="Website Terms | Twin Tech-sudo" description="Terms governing use of the Twin Tech-sudo public website.">
+  <SiteHeader /><main><article class="insight legal-page"><header><span class="page-kicker">// WEBSITE TERMS</span><h1>Website terms</h1><p>Terms for using this public marketing website.</p><div><time datetime="2026-10-17">Last updated 17 October 2026</time></div></header><div class="insight-body">
+    <p class="insight-intro">This website is operated by {operator}. By using it, you agree to these terms.</p>
+    <section><span>01</span><h2>Website information</h2><p>Content is provided for general information and to describe possible services. It is not legal, financial or professional advice and is not a binding offer. Project scope, price, responsibilities and acceptance criteria are agreed separately in writing.</p></section>
+    <section><span>02</span><h2>Portfolio and product status</h2><p>Case studies may describe owned products, concepts or work in development as labelled on the relevant page. Illustrative interface elements are not performance, revenue, accuracy or availability guarantees.</p></section>
+    <section><span>03</span><h2>Intellectual property</h2><p>Unless otherwise stated, the website design, copy, graphics and first-party code are owned by or licensed to {operator}. You may view pages for ordinary personal or business evaluation, but may not reproduce, sell or misrepresent the material without permission.</p></section>
+    <section><span>04</span><h2>Acceptable use</h2><p>Do not attempt to disrupt the site, bypass access controls, introduce malicious code, scrape it at a harmful rate or use its content unlawfully. Responsible security reports can be sent to <a href={`mailto:${site.email}`}>{site.email}</a>.</p></section>
+    <section><span>05</span><h2>Availability and external links</h2><p>We may change or withdraw content without notice. External links are provided for convenience; we do not control third-party content or availability.</p></section>
+    <section><span>06</span><h2>Liability</h2><p>Nothing in these terms excludes liability that cannot lawfully be excluded. Subject to that, we are not responsible for loss caused by reliance on general website content or by interruptions outside our reasonable control.</p></section>
+    <section><span>07</span><h2>Law and contact</h2><p>These terms are governed by the law applicable where the operator is established, and relevant courts have jurisdiction. Questions can be sent to <a href={`mailto:${site.email}`}>{site.email}</a>.</p></section>
+  </div></article></main><SiteFooter />
+</SiteLayout>

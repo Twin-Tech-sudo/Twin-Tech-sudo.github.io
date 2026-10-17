@@ -12,6 +12,6 @@ const phases = [
 ---
 <SiteLayout title="Software Development Process | Twin Tech-sudo" description="A clear software development process from product discovery and system design through iterative engineering, launch and ongoing improvement.">
   <SiteHeader /><main><PageHero kicker="HOW WE WORK" title="Clarity at" accent="every step." intro="No black boxes. Direct collaboration, thoughtful decisions and visible progress from useful idea to dependable product." index="04" />
-    <section id="content" class="page-section process-timeline">{phases.map(phase => <article><div class="phase-visual"><span>{phase.n}</span><div class="phase-core"><i></i><i></i><b>{phase.n}</b></div><small>{phase.label}</small></div><div><span class="page-kicker">// PHASE {phase.n}</span><h2>{phase.name}</h2><p>{phase.text}</p><ul>{phase.items.map(item => <li>+ {item}</li>)}</ul></div></article>)}</section>
+    <section id="content" class="page-section process-timeline">{phases.map(phase => <article id={`phase-${phase.n}`}><div class="phase-visual"><span>{phase.n}</span><div class="phase-core"><i></i><i></i><b>{phase.n}</b></div><small>{phase.label}</small></div><div><span class="page-kicker">// PHASE {phase.n}</span><h2>{phase.name}</h2><p>{phase.text}</p><ul>{phase.items.map(item => <li>+ {item}</li>)}</ul></div></article>)}</section>
   </main><SiteFooter />
 </SiteLayout>

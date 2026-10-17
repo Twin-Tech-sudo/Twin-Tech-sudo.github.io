@@ -121,8 +121,12 @@ export const nav = [
 
 export const site = {
   name: 'Twin Tech-sudo',
-  url: 'https://twin-tech-sudo.github.io',
+  url: import.meta.env.PUBLIC_SITE_URL || 'https://twin-tech-sudo.github.io',
   email: 'hello@twintech-sudo.co.uk',
+  legalName: import.meta.env.PUBLIC_LEGAL_NAME || '',
+  companyNumber: import.meta.env.PUBLIC_COMPANY_NUMBER || '',
+  registeredOffice: import.meta.env.PUBLIC_REGISTERED_OFFICE || '',
+  jurisdiction: import.meta.env.PUBLIC_COMPANY_JURISDICTION || 'England and Wales',
   defaultTitle: 'Twin Tech-sudo | UK Software, Web & App Development',
   defaultDescription: 'UK software development studio creating custom software, web applications, mobile apps, desktop apps, websites, e-commerce and practical AI automation.',
 }
