@@ -4,7 +4,7 @@ export const defaultContent: SiteContent = {
   settings: {
     email: '',
     phone: '',
-    availability: 'Preparing the first workflow partnerships',
+    availability: 'New studio enquiries opening soon',
     location: 'United Kingdom · working worldwide',
   },
   projects: [

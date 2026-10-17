@@ -15,17 +15,7 @@ export type Service = {
 
 export const services: Service[] = [
   {
-    slug: 'construction-document-automation', number: '01', title: 'Construction document automation', shortTitle: 'Construction automation',
-    description: 'Review-first software for UK construction teams that need to extract, check and act on information locked inside complex project documents.',
-    eyebrow: 'Built for document-heavy construction work', headline: 'Turn project documents into controlled, reviewable workflows.',
-    intro: 'We help estimators, quantity surveyors, contractors and specialist teams explore where software can reduce repetitive document handling without hiding the source evidence. The first step is a focused workflow review, followed by a prototype or build only where the case is strong.',
-    capabilities: ['Bills of quantities and schedule workflows', 'Document intake and classification', 'Structured data extraction', 'Human review and exception handling', 'Audit trails and source evidence', 'Exports and system integrations'],
-    outcomes: ['Reduce repeated copying and re-keying', 'Make exceptions easier to find and review', 'Keep a traceable link to source documents', 'Create a practical route from prototype to production'],
-    deliverables: ['Current-workflow and document map', 'Automation opportunity and risk assessment', 'Review-first prototype or technical proof', 'Prioritised delivery roadmap'],
-    keywords: ['construction document automation UK', 'construction document management software', 'bill of quantities automation'],
-  },
-  {
-    slug: 'custom-software-development', number: '02', title: 'Custom software development', shortTitle: 'Custom software',
+    slug: 'custom-software-development', number: '01', title: 'Custom software development', shortTitle: 'Custom software',
     description: 'Purpose-built systems, SaaS products and internal tools engineered around how your UK business actually works.',
     eyebrow: 'Systems built around you', headline: 'Turn the way you work into a competitive advantage.',
     intro: 'When off-the-shelf software forces your team into workarounds, we design the system around the business. Twin Tech-sudo creates secure, maintainable software that joins complex operations into one controlled platform.',
@@ -35,7 +25,7 @@ export const services: Service[] = [
     keywords: ['custom software development UK', 'bespoke software developers', 'business software development'],
   },
   {
-    slug: 'web-application-development', number: '03', title: 'Web application development', shortTitle: 'Web applications',
+    slug: 'web-application-development', number: '02', title: 'Web application development', shortTitle: 'Web applications',
     description: 'Fast, scalable web applications that turn complicated workflows into clear, intuitive digital experiences.',
     eyebrow: 'Powerful in any browser', headline: 'Make difficult work feel remarkably simple.',
     intro: 'We build browser-based products for customers, teams and partners. Every screen is focused on the next useful decision, backed by dependable architecture and accessible interaction design.',
@@ -45,7 +35,7 @@ export const services: Service[] = [
     keywords: ['web application development UK', 'web app developers', 'SaaS development company UK'],
   },
   {
-    slug: 'mobile-app-development', number: '04', title: 'Mobile app development', shortTitle: 'Mobile apps',
+    slug: 'mobile-app-development', number: '03', title: 'Mobile app development', shortTitle: 'Mobile apps',
     description: 'Polished iOS and Android applications designed for real users, real devices and long-term growth.',
     eyebrow: 'Products in their pocket', headline: 'Create an app people choose to keep using.',
     intro: 'We design mobile products for small screens, inconsistent connections and people on the move. The result feels focused and at home on iOS and Android.',
@@ -55,7 +45,7 @@ export const services: Service[] = [
     keywords: ['mobile app development UK', 'iOS app developers UK', 'Android app development company'],
   },
   {
-    slug: 'desktop-app-development', number: '05', title: 'Desktop app development', shortTitle: 'Desktop apps',
+    slug: 'desktop-app-development', number: '04', title: 'Desktop app development', shortTitle: 'Desktop apps',
     description: 'Reliable Windows and cross-platform desktop software, from focused utilities to operational platforms.',
     eyebrow: 'Serious software, installed', headline: 'Bring demanding workflows closer to the machine.',
     intro: 'For products that require deeper file access, offline resilience, specialist hardware or intensive processing, we build polished desktop applications that feel native and dependable.',
@@ -65,7 +55,7 @@ export const services: Service[] = [
     keywords: ['desktop application development UK', 'Windows app developers', 'cross-platform desktop software'],
   },
   {
-    slug: 'website-development', number: '06', title: 'Website design and development', shortTitle: 'Websites',
+    slug: 'website-development', number: '05', title: 'Website design and development', shortTitle: 'Websites',
     description: 'Distinctive, high-performing websites with strong creative direction, SEO foundations and measurable intent.',
     eyebrow: 'Attention into action', headline: 'Build a website that earns its place in the business.',
     intro: 'We combine brand-led creative direction with accessibility, speed, technical SEO and a frictionless route to action. Every element has a commercial purpose.',
@@ -75,7 +65,7 @@ export const services: Service[] = [
     keywords: ['website development UK', 'web design company UK', 'SEO website development'],
   },
   {
-    slug: 'ecommerce-development', number: '07', title: 'E-commerce development', shortTitle: 'E-commerce',
+    slug: 'ecommerce-development', number: '06', title: 'E-commerce development', shortTitle: 'E-commerce',
     description: 'Fast, considered online stores that connect brand, catalogue, checkout and day-to-day operations.',
     eyebrow: 'Commerce without friction', headline: 'Turn product interest into confident purchases.',
     intro: 'We create storefronts that feel distinctive while keeping discovery, payment and fulfilment simple. The technology supports the operation behind the shop, not only the shop window.',
@@ -85,7 +75,7 @@ export const services: Service[] = [
     keywords: ['ecommerce development UK', 'online store developers', 'custom ecommerce website'],
   },
   {
-    slug: 'ai-automation', number: '08', title: 'AI and workflow automation', shortTitle: 'AI & automation',
+    slug: 'ai-automation', number: '07', title: 'AI and workflow automation', shortTitle: 'AI & automation',
     description: 'Practical AI integrations and workflow automation that remove repetition while keeping people in control.',
     eyebrow: 'Automation with a job to do', headline: 'Use AI where it creates measurable leverage.',
     intro: 'We apply automation to specific operational bottlenecks. The goal is a governed, explainable workflow that saves time, improves consistency and routes important decisions to people.',
@@ -93,6 +83,16 @@ export const services: Service[] = [
     outcomes: ['Remove repetitive handling', 'Process information at greater scale', 'Surface exceptions earlier', 'Retain evidence behind decisions'],
     deliverables: ['Automation opportunity assessment', 'Prototype and accuracy evaluation', 'Production integrations', 'Monitoring and review controls'],
     keywords: ['AI automation UK', 'business process automation', 'AI software development company'],
+  },
+  {
+    slug: 'construction-document-automation', number: '08', title: 'Construction document automation', shortTitle: 'Construction automation',
+    description: 'Review-first software for UK construction teams that need to extract, check and act on information locked inside complex project documents.',
+    eyebrow: 'Specialist studio capability', headline: 'Turn project documents into controlled, reviewable workflows.',
+    intro: 'As one specialist area within the studio, we help estimators, quantity surveyors, contractors and project teams explore where software can reduce repetitive document handling without hiding the source evidence.',
+    capabilities: ['Bills of quantities and schedule workflows', 'Document intake and classification', 'Structured data extraction', 'Human review and exception handling', 'Audit trails and source evidence', 'Exports and system integrations'],
+    outcomes: ['Reduce repeated copying and re-keying', 'Make exceptions easier to find and review', 'Keep a traceable link to source documents', 'Create a practical route from prototype to production'],
+    deliverables: ['Current-workflow and document map', 'Automation opportunity and risk assessment', 'Review-first prototype or technical proof', 'Prioritised delivery roadmap'],
+    keywords: ['construction document automation UK', 'construction document management software', 'bill of quantities automation'],
   },
 ]
 
@@ -123,7 +123,6 @@ export const articles = [
 ]
 
 export const nav = [
-  { href: '/workflow-review/', label: 'Workflow review' },
   { href: '/services/', label: 'Services' },
   { href: '/work/', label: 'Work' },
   { href: '/process/', label: 'Process' },
@@ -139,6 +138,6 @@ export const site = {
   companyNumber: import.meta.env.PUBLIC_COMPANY_NUMBER || '',
   registeredOffice: import.meta.env.PUBLIC_REGISTERED_OFFICE || '',
   jurisdiction: import.meta.env.PUBLIC_COMPANY_JURISDICTION || 'England and Wales',
-  defaultTitle: 'Construction Workflow Software UK | Twin Tech-sudo',
-  defaultDescription: 'Twin Tech-sudo designs review-first software and document automation for UK construction and document-heavy teams, alongside custom web, desktop and AI products.',
+  defaultTitle: 'Twin Tech-sudo | UK Digital Product & Software Studio',
+  defaultDescription: 'Twin Tech-sudo is a UK digital product studio combining strategy, design and engineering to create custom software, web, mobile, desktop and AI products.',
 }

@@ -5,9 +5,9 @@ Standalone, multi-page marketing site and secure content Studio for Twin Tech-su
 ## What ships
 
 - Pre-rendered Astro pages with React islands for the interactive homepage and Studio
-- Eight dedicated UK service landing pages, led by construction document automation
+- Eight dedicated UK service landing pages spanning custom software, apps, websites, AI and specialist construction automation
 - BOQExtract and Mack's Packs case studies with their product logos
-- Workflow Clarity Review, process, about, contact, privacy and custom 404 pages
+- Studio, process, about, contact, privacy, specialist workflow-review and custom 404 pages
 - Four long-form search articles plus RSS
 - Per-page titles, descriptions, canonicals, social cards and structured data
 - Generated sitemap and crawl rules; `/studio/` is excluded and `noindex`

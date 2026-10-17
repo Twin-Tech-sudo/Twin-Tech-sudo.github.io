@@ -3,14 +3,14 @@ import { services, site } from '../data/site'
 const analyticsEnabled = Boolean(import.meta.env.PUBLIC_GA_MEASUREMENT_ID)
 ---
 <section class="inner-contact">
-  <span class="page-kicker">// START BEFORE THE BUILD</span>
-  <h2>One workflow. <em>Start there.</em></h2>
-  <a href="/workflow-review/">Explore the Workflow Clarity Review <span>↘</span></a>
+  <span class="page-kicker">// LET'S MAKE SOMETHING USEFUL</span>
+  <h2>Have an idea worth <em>building?</em></h2>
+  <a href="/contact/">Start a conversation <span>↘</span></a>
 </section>
 <footer class="inner-footer">
-  <div><a class="brand" href="/"><img src="/twin-tech-sudo-mark-256.webp" width="256" height="256" alt="" /><span>Twin Tech<span>-sudo</span></span></a><p>Construction technology and software studio · United Kingdom</p></div>
+  <div><a class="brand" href="/"><img src="/twin-tech-sudo-mark-256.webp" width="256" height="256" alt="" /><span>Twin Tech<span>-sudo</span></span></a><p>Independent digital product and software studio · United Kingdom</p></div>
   <div><strong>Services</strong>{services.slice(0, 4).map(service => <a href={`/services/${service.slug}/`}>{service.shortTitle}</a>)}</div>
-  <div><strong>Explore</strong><a href="/workflow-review/">Workflow review</a><a href="/work/">Selected work</a><a href="/process/">Our process</a><a href="/about/">About</a><a href="/insights/">Insights</a><a href="/contact/">Contact</a></div>
+  <div><strong>Explore</strong><a href="/work/">Selected work</a><a href="/process/">Our process</a><a href="/about/">About the studio</a><a href="/insights/">Insights</a><a href="/contact/">Contact</a></div>
   <div><strong>Legal</strong><a href="/privacy/">Privacy notice</a><a href="/cookies/">Cookie notice</a><a href="/terms/">Website terms</a>{analyticsEnabled && <button type="button" class="cookie-settings" data-cookie-settings>Cookie settings</button>}</div>
   <p>© {new Date().getFullYear()} {site.legalName || site.name}. {site.companyNumber && <>Company no. {site.companyNumber}. Registered in {site.jurisdiction}. {site.registeredOffice && <>Registered office: {site.registeredOffice}.</>}</>}</p>
 </footer>

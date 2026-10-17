@@ -41,7 +41,7 @@ const organisation = {
   logo: `${site.url}/twin-tech-sudo-mark-256.png`,
   ...(site.email ? { email: site.email, contactPoint: { '@type': 'ContactPoint', email: site.email, contactType: 'sales', availableLanguage: 'English' } } : {}),
   areaServed: { '@type': 'Country', name: 'United Kingdom' },
-  knowsAbout: ['Construction document automation', 'Bill of quantities workflows', 'Document intelligence', 'Custom software development', 'Web application development', 'Desktop application development', 'AI automation'],
+  knowsAbout: ['Digital product strategy', 'Experience design', 'Custom software development', 'Web application development', 'Mobile application development', 'Desktop application development', 'AI automation', 'Construction document automation'],
 }
 const website = { '@context': 'https://schema.org', '@type': 'WebSite', '@id': `${site.url}/#website`, name: site.name, url: site.url, publisher: { '@id': `${site.url}/#organisation` } }
 const jsonLd = [organisation, website, ...(breadcrumb ? [breadcrumb] : []), ...(schema ? (Array.isArray(schema) ? schema : [schema]) : [])]
