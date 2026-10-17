@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   ArrowDownRight,
   ArrowRight,
@@ -217,7 +217,7 @@ function App() {
   }, [selectedProcess])
 
   useEffect(() => {
-    const sectionIds = ['top', 'services', 'work', 'process', 'about', 'contact']
+    const sectionIds = ['top', 'offer', 'services', 'work', 'process', 'about', 'contact']
     const updateNavigation = () => {
       setScrolled(window.scrollY > 48)
       const marker = window.scrollY + window.innerHeight * 0.34
@@ -237,8 +237,6 @@ function App() {
     }
   }, [])
 
-  const mailto = useMemo(() => `mailto:${content.settings.email}?subject=Project enquiry for Twin Tech-sudo`, [content.settings.email])
-
   const moveHero = (event: React.PointerEvent<HTMLElement>) => {
     const rect = event.currentTarget.getBoundingClientRect()
     event.currentTarget.style.setProperty('--mx', `${((event.clientX - rect.left) / rect.width - 0.5) * 18}px`)
@@ -254,6 +252,7 @@ function App() {
             <span>Twin Tech<span>-sudo</span></span>
           </a>
           <nav className={menuOpen ? 'nav-links open' : 'nav-links'} aria-label="Main navigation">
+            <a href="/workflow-review/" onClick={() => setMenuOpen(false)}>Workflow review</a>
             <a href="/services/" onClick={() => setMenuOpen(false)}>Services</a>
             <a href="/work/" onClick={() => setMenuOpen(false)}>Work</a>
             <a href="/process/" onClick={() => setMenuOpen(false)}>Process</a>
@@ -269,7 +268,7 @@ function App() {
         <nav className={`page-rail ${scrolled ? 'visible' : ''}`} aria-label="Page sections">
           <span className="rail-line" />
           {[
-            ['top', 'Top'], ['services', 'Services'], ['work', 'Projects'], ['process', 'Process'], ['about', 'About'], ['contact', 'Contact'],
+            ['top', 'Top'], ['offer', 'First step'], ['services', 'Services'], ['work', 'Projects'], ['process', 'Process'], ['about', 'About'], ['contact', 'Contact'],
           ].map(([id, label], index) => <a key={id} className={activeSection === id ? 'active' : ''} href={`#${id}`} aria-label={`Go to ${label}`}><b>0{index}</b><i /><span>{label}</span></a>)}
         </nav>
 
@@ -285,21 +284,36 @@ function App() {
               <div className="art-coordinate coordinate-three"><b>03</b><span>SHIP</span></div>
               <div className="art-badge"><Terminal size={16} /><span>sudo make<br /><b>something real</b></span></div>
             </div>
-            <div className="hero-signal"><span /> Independent software development studio · UK</div>
-            <h1><span>Digital products,</span><br /><em>built different.</em></h1>
+            <div className="hero-signal"><span /> Construction technology & document automation · UK</div>
+            <h1><span>Difficult documents.</span><br /><em>Clearer workflows.</em></h1>
             <div className="hero-bottom">
-              <p>We design and build custom software, web experiences and apps that solve the hard problems — and feel effortless to use.</p>
-              <div className="hero-actions"><a href="#contact" className="hero-primary">Start a project <ArrowRight size={17} /></a><a href="#work" className="round-link" aria-label="View selected work"><ArrowDownRight size={25} /></a></div>
+              <p>We design review-first software for UK construction and document-heavy teams—then build only what the workflow and evidence justify.</p>
+              <div className="hero-actions"><a href="/workflow-review/" className="hero-primary">Start with a workflow review <ArrowRight size={17} /></a><a href="#work" className="round-link" aria-label="View selected work"><ArrowDownRight size={25} /></a></div>
             </div>
             <div className="hero-marquee" aria-label="Our capabilities">
-              <div><span>Custom software</span><i>✦</i><span>Web applications</span><i>✦</i><span>Mobile apps</span><i>✦</i><span>Desktop builds</span><i>✦</i><span>Digital products</span><i>✦</i></div>
+              <div><span>Construction workflows</span><i>✦</i><span>Document intelligence</span><i>✦</i><span>Review-first automation</span><i>✦</i><span>Custom software</span><i>✦</i><span>Evidence-led delivery</span><i>✦</i></div>
+            </div>
+          </section>
+
+          <section className="starter-offer section-pad" id="offer">
+            <div className="starter-offer-copy">
+              <span className="eyebrow">// THE PRACTICAL FIRST STEP</span>
+              <h2>Workflow<br /><em>Clarity Review.</em></h2>
+              <p>Before committing to a product build, choose one repeated document workflow. We map how it works today, identify realistic automation opportunities and define the smallest useful next move.</p>
+              <a href="/workflow-review/">See the starter offer <ArrowRight size={17} /></a>
+            </div>
+            <div className="starter-offer-grid">
+              <article><span>01</span><h3>Map</h3><p>Users, documents, systems and decisions.</p></article>
+              <article><span>02</span><h3>Assess</h3><p>Friction, risk, evidence and automation fit.</p></article>
+              <article><span>03</span><h3>Define</h3><p>One bounded use case and success measure.</p></article>
+              <article><span>04</span><h3>Decide</h3><p>Stop, improve, prototype, pilot or build.</p></article>
             </div>
           </section>
 
           <section className="section-pad services" id="services">
             <div className="section-heading">
-              <div><span className="eyebrow">// WHAT WE BUILD</span><h2>One studio.<br /><em>Every screen.</em></h2></div>
-              <p>From the first line of strategy to the final production build, Twin Tech-sudo creates joined-up digital products without the agency sprawl.</p>
+              <div><span className="eyebrow">// SUPPORTING CAPABILITIES</span><h2>One workflow.<br /><em>The right form.</em></h2></div>
+              <p>When the case for a build is clear, the product can span web, desktop, mobile and practical AI without losing sight of the people doing the work.</p>
             </div>
             <div className="service-grid">
               {services.map(({ slug, icon: Icon, number, title, text }, index) => (
@@ -311,9 +325,9 @@ function App() {
               ))}
             </div>
             <div className="proof-strip">
-              <div><strong>01</strong><span>Partner from idea<br />to production</span></div>
+              <div><strong>01</strong><span>Focused workflow<br />to start with</span></div>
               <div><strong>06</strong><span>Connected digital<br />capabilities</span></div>
-              <div><strong>100%</strong><span>Direct access to<br />the builder</span></div>
+              <div><strong>1:1</strong><span>Direct access to<br />the builder</span></div>
               <div className="proof-symbol"><Zap /><span>Less ceremony.<br />More momentum.</span></div>
             </div>
           </section>
@@ -373,7 +387,7 @@ function App() {
             <div className="about-copy">
               <span className="eyebrow">// WHY TWIN TECH-SUDO</span>
               <h2>Senior thinking.<br />Builder <em>energy.</em></h2>
-              <p className="lead">Twin Tech-sudo is a hands-on UK software development studio for founders and businesses that value momentum, craft and honest technical thinking.</p>
+              <p className="lead">Twin Tech-sudo is a hands-on UK software development studio focused first on construction and other document-heavy operations.</p>
               <p>You work directly with the person shaping and building your product. That means tighter feedback, fewer hand-offs and technology choices made for your actual goals—not a sales deck.</p>
               <div className="principles">
                 <span><Check size={16} /> Product thinking included</span><span><Check size={16} /> Built for maintainability</span><span><Check size={16} /> Plain-English communication</span><span><Check size={16} /> Ownership after launch</span>
@@ -389,8 +403,8 @@ function App() {
 
           <section className="contact section-pad" id="contact">
             <div className="availability"><span /> {content.settings.availability}</div>
-            <h2>Have a problem worth<br /><em>solving?</em></h2>
-            <a className="contact-link" href={mailto}>{content.settings.email}<ArrowDownRight /></a>
+            <h2>One workflow.<br /><em>Start there.</em></h2>
+            <a className="contact-link" href="/workflow-review/">Explore the Workflow Clarity Review<ArrowDownRight /></a>
             <div className="contact-meta"><span>{content.settings.location}</span>{content.settings.phone && <span>{content.settings.phone}</span>}</div>
           </section>
         </main>

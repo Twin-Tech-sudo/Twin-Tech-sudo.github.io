@@ -5,10 +5,10 @@ Standalone, multi-page marketing site and secure content Studio for Twin Tech-su
 ## What ships
 
 - Pre-rendered Astro pages with React islands for the interactive homepage and Studio
-- Seven dedicated UK service landing pages
+- Eight dedicated UK service landing pages, led by construction document automation
 - BOQExtract and Mack's Packs case studies with their product logos
-- Process, about, contact, privacy and custom 404 pages
-- Three long-form search articles plus RSS
+- Workflow Clarity Review, process, about, contact, privacy and custom 404 pages
+- Four long-form search articles plus RSS
 - Per-page titles, descriptions, canonicals, social cards and structured data
 - Generated sitemap and crawl rules; `/studio/` is excluded and `noindex`
 - Privacy, cookie and website-terms pages with consent-gated analytics
@@ -62,7 +62,7 @@ After launch:
 1. Add the site as a URL-prefix property in Google Search Console.
 2. Set `PUBLIC_GOOGLE_SITE_VERIFICATION` and submit `/sitemap-index.xml`.
 3. Create GA4, implement the consent UI before loading it, then set `PUBLIC_GA_MEASUREMENT_ID`.
-4. Replace the provisional contact email only after its mailbox exists.
+4. Set `PUBLIC_CONTACT_EMAIL` only after the mailbox exists and has passed a real send-and-reply test. Until then, the site hides the enquiry form and does not publish an email in structured data.
 5. Add genuine testimonials and measured case-study outcomes as evidence becomes available.
 
 Before switching to a custom domain, set the following GitHub Actions repository variables and rebuild:
@@ -72,6 +72,7 @@ Before switching to a custom domain, set the following GitHub Actions repository
 - `PUBLIC_COMPANY_NUMBER`
 - `PUBLIC_REGISTERED_OFFICE`
 - `PUBLIC_COMPANY_JURISDICTION`
+- `PUBLIC_CONTACT_EMAIL` — a tested public mailbox; leave blank until it works
 
 Keep `PUBLIC_SITE_URL` on the GitHub Pages origin until DNS, HTTPS and redirect behaviour are verified. The generated canonical URLs, sitemap, robots file, RSS feed and structured data all use this value.
 

@@ -8,7 +8,7 @@ Owner checklist for forming and launching a UK software business. Website engine
 - [ ] Decide the exact legal name, trading name, product names, spelling and punctuation.
 - [ ] Acquire the primary `.co.uk`, `.com` if available, common misspellings and matching social handles before the trade mark application becomes public.
 - [ ] Activate and test `hello@twintech-sudo.co.uk`; do not direct enquiries to it until DNS and mail delivery pass.
-- [ ] Choose the first customer segment and primary offer. Keep one primary search/commercial proposition on the homepage and treat other capabilities as supporting services.
+- [x] Choose the initial customer segment and primary offer. The site now leads with UK construction and document-heavy teams and the Workflow Clarity Review; other capabilities are supporting services. Validate this focus through interviews before spending materially on promotion.
 
 ## Trade mark workstream
 
@@ -66,6 +66,7 @@ Current official filing fees must be checked on the day of filing. At 17 October
    - `PUBLIC_COMPANY_NUMBER`
    - `PUBLIC_REGISTERED_OFFICE`
    - `PUBLIC_COMPANY_JURISDICTION`
+   - `PUBLIC_CONTACT_EMAIL` (only after a real send-and-reply test passes)
 5. Rebuild and confirm the custom origin appears in canonicals, Open Graph URLs, JSON-LD, RSS, `robots.txt` and both sitemap files.
 6. Have legal pages reviewed, verify every public claim and obtain permission for every client name, logo, testimonial and result.
 7. Run the production build on Node 22.12+, check all internal links, and test the site on mobile and keyboard-only navigation.
@@ -82,7 +83,7 @@ Current official filing fees must be checked on the day of filing. At 17 October
 
 ## Evidence-led marketing
 
-- [ ] Replace broad positioning with one primary audience/problem/offer once chosen.
+- [x] Replace broad positioning with one primary audience/problem/offer once chosen. Implemented on 17 October 2026 with a dedicated offer page, focused service page and construction automation article.
 - [ ] Publish a real founder profile and experience evidence.
 - [ ] Keep owned products and concepts clearly labelled; do not present illustrative interface figures as measured outcomes.
 - [ ] Publish case studies only with permission and distinguish scope, evidence and results.

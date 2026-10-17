@@ -2,9 +2,9 @@ import type { SiteContent } from './types'
 
 export const defaultContent: SiteContent = {
   settings: {
-    email: 'hello@twintech-sudo.co.uk',
+    email: '',
     phone: '',
-    availability: 'Taking on selected projects for Q4',
+    availability: 'Preparing the first workflow partnerships',
     location: 'United Kingdom · working worldwide',
   },
   projects: [
@@ -34,7 +34,7 @@ export const defaultContent: SiteContent = {
   testimonials: [],
 }
 
-const STORAGE_KEY = 'twin-tech-sudo-content-v1'
+const STORAGE_KEY = 'twin-tech-sudo-content-v2'
 
 export function loadContent(): SiteContent {
   if (typeof localStorage === 'undefined') return defaultContent

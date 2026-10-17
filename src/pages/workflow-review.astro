@@ -1,0 +1,56 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro'
+import SiteHeader from '../components/SiteHeader.astro'
+import SiteFooter from '../components/SiteFooter.astro'
+import { site } from '../data/site'
+
+const subject = encodeURIComponent('Workflow Clarity Review enquiry')
+const body = encodeURIComponent('Name:\nOrganisation:\n\nThe document-heavy workflow we want to improve:\n\nWhat happens today:\n\nWhere time, errors or delays occur:\n\nWhat a useful outcome would look like:\n')
+const enquiryUrl = site.email ? `mailto:${site.email}?subject=${subject}&body=${body}` : '#prepare'
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Workflow Clarity Review',
+  description: 'A focused review for UK construction and document-heavy teams to map one workflow, assess automation opportunities and define a practical next step.',
+  provider: { '@id': `${site.url}/#organisation` },
+  areaServed: { '@type': 'Country', name: 'United Kingdom' },
+  serviceType: 'Software discovery and workflow automation assessment',
+}
+---
+<SiteLayout title="Workflow Automation Review for Construction Teams | Twin Tech-sudo" description="Map one construction or document-heavy workflow, identify realistic automation opportunities and leave with a focused next-step plan." schema={schema}>
+  <SiteHeader />
+  <main class="review-page">
+    <section class="review-hero">
+      <div>
+        <span class="page-kicker">// STARTER OFFER</span>
+        <h1>Workflow clarity<br /><em>before a build.</em></h1>
+        <p>A focused review for UK construction and document-heavy teams. We map one repeated process, examine the documents and decisions inside it, and define the smallest sensible next step.</p>
+        <div class="review-actions"><a class="review-primary" href={enquiryUrl}>{site.email ? 'Ask about a workflow review ↗' : 'Prepare your workflow brief ↓'}</a><a href="#fit">Check whether it fits ↓</a></div>
+      </div>
+      <aside aria-label="Workflow review summary">
+        <span>THE QUESTION</span><strong>Is this workflow worth improving with software?</strong>
+        <ol><li><b>01</b> Map the work</li><li><b>02</b> Find the friction</li><li><b>03</b> Test the opportunity</li><li><b>04</b> Choose the next move</li></ol>
+      </aside>
+    </section>
+
+    <section class="page-section review-fit" id="fit">
+      <div class="section-intro"><span class="page-kicker">// A GOOD FIRST STEP</span><h2>Useful when the problem is<br />clearer than the <em>solution.</em></h2></div>
+      <div class="review-fit-grid">
+        <article><span>GOOD FIT</span><ul><li>People repeatedly read, copy, compare or re-key documents</li><li>Important information lives across PDFs, spreadsheets and emails</li><li>Exceptions and evidence need human review</li><li>You need confidence before funding a larger build</li></ul></article>
+        <article><span>NOT YET</span><ul><li>There is no named workflow owner or user</li><li>No representative documents can be shared safely</li><li>The goal is simply to “add AI” without a defined task</li><li>A standard off-the-shelf tool already solves the problem well</li></ul></article>
+      </div>
+    </section>
+
+    <section class="dark-panel review-output">
+      <div><span class="page-kicker">// WHAT THE REVIEW PRODUCES</span><h2>A decision pack—not<br />a vague <em>workshop.</em></h2><p>The scope is agreed before work starts. No development is implied unless the evidence supports it and you choose to continue.</p></div>
+      <div class="review-output-list"><article><b>01</b><h3>Current-workflow map</h3><p>People, documents, systems, decisions and hand-offs in one understandable view.</p></article><article><b>02</b><h3>Opportunity and risk notes</h3><p>Where software may help, what must remain human-controlled and what needs testing.</p></article><article><b>03</b><h3>First-use-case definition</h3><p>A bounded workflow, representative inputs and an evidence-based success measure.</p></article><article><b>04</b><h3>Recommended next step</h3><p>A clear stop, process change, prototype, pilot or build recommendation.</p></article></div>
+    </section>
+
+    <section class="page-section review-prepare" id="prepare">
+      <div class="section-intro"><span class="page-kicker">// PREPARE WITHOUT SPENDING</span><h2>Bring evidence from<br />the real <em>workflow.</em></h2><p>You can prepare this before making contact. Do not send confidential, personal or commercially sensitive documents by ordinary email.</p></div>
+      <ol><li><span>01</span><div><h3>Name one repeated task</h3><p>Describe where it begins, who does it and the output they need.</p></div></li><li><span>02</span><div><h3>Collect safe examples</h3><p>Gather a small representative set with sensitive information removed.</p></div></li><li><span>03</span><div><h3>Record today’s effort</h3><p>Note handling time, waiting, corrections and the exceptions people catch.</p></div></li><li><span>04</span><div><h3>Define a useful result</h3><p>Choose a measurable improvement without assuming what technology delivers it.</p></div></li></ol>
+      <div class="review-final"><p>{site.email ? 'Ready to describe the workflow?' : 'Enquiries will open when the contact channel is ready.'}</p>{site.email ? <a href={enquiryUrl}>Open a prepared enquiry ↗</a> : <a href="/insights/construction-document-automation-first-workflow/">Read the first-workflow guide →</a>}<small>{site.email ? 'This opens your email app. The website does not store your message.' : 'For now, use the four steps above to prepare a safe, non-confidential brief.'}</small></div>
+    </section>
+  </main>
+  <SiteFooter />
+</SiteLayout>
