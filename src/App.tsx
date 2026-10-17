@@ -85,6 +85,8 @@ const approach = [
   ['04', 'Launch. Learn. Improve.', 'A controlled release, real feedback and a clear route from first version to lasting product.'],
 ]
 
+const analyticsEnabled = Boolean(import.meta.env.PUBLIC_GA_MEASUREMENT_ID)
+
 const processDetails = [
   {
     label: 'DISCOVERY & DIRECTION',
@@ -132,7 +134,7 @@ function ServiceGraphic({ index }: { index: number }) {
     <b className="system-status"><i /> SYSTEM ONLINE</b>
   </div>
   if (index === 1) return <div className="service-graphic browser-graphic" aria-hidden="true">
-    <div className="mini-browser"><div className="mini-chrome"><i/><i/><i/><span>app.twin</span></div><div className="mini-layout"><aside><b/><i/><i/><i/></aside><main><small>LIVE OVERVIEW</small><strong>2.4k</strong><div className="mini-bars"><i/><i/><i/><i/><i/></div></main></div></div>
+    <div className="mini-browser"><div className="mini-chrome"><i/><i/><i/><span>app.twin</span></div><div className="mini-layout"><aside><b/><i/><i/><i/></aside><main><small>WORKFLOW VIEW</small><strong>READY</strong><div className="mini-bars"><i/><i/><i/><i/><i/></div></main></div></div>
     <span className="live-pill"><i/> LIVE</span>
   </div>
   if (index === 2) return <div className="service-graphic mobile-graphic" aria-hidden="true">
@@ -163,10 +165,10 @@ function ProcessGraphic({ index }: { index: number }) {
     <div className="blueprint-window"><header><i/><i/><i/><span>PRODUCT.SYSTEM</span></header><main><aside><b/><b/><b/></aside><div className="blueprint-canvas"><span className="bp-block bp-one"/><span className="bp-block bp-two"/><span className="bp-block bp-three"/><svg viewBox="0 0 220 110"><path d="M48 28h42v50h45m0 0h37V34"/></svg></div></main></div><div className="measure-line"><i/><span>240 PX</span><i/></div>
   </div>
   if (index === 2) return <div className="process-graphic build-graphic" aria-hidden="true">
-    <div className="code-window"><div><span>twin@studio</span><b>~/build</b></div><p><i>$</i> sudo make product</p><p><i>✓</i> interface compiled</p><p><i>✓</i> systems connected</p><p className="code-current"><i>›</i> shipping iteration_04<span>_</span></p></div><div className="build-progress"><span/><b>84%</b></div>
+    <div className="code-window"><div><span>twin@studio</span><b>~/build</b></div><p><i>$</i> sudo make product</p><p><i>✓</i> interface compiled</p><p><i>✓</i> systems connected</p><p className="code-current"><i>›</i> shipping iteration_04<span>_</span></p></div><div className="build-progress"><span/><b>BUILD</b></div>
   </div>
   return <div className="process-graphic launch-graphic" aria-hidden="true">
-    <div className="launch-orbit orbit-a"/><div className="launch-orbit orbit-b"/><div className="launch-core"><ArrowRight/><span>LIVE</span></div><div className="launch-metric metric-a"><span>USERS</span><b>↑ 42%</b></div><div className="launch-metric metric-b"><span>UPTIME</span><b>99.9</b></div><div className="launch-ping ping-a"/><div className="launch-ping ping-b"/>
+    <div className="launch-orbit orbit-a"/><div className="launch-orbit orbit-b"/><div className="launch-core"><ArrowRight/><span>LIVE</span></div><div className="launch-metric metric-a"><span>FEEDBACK</span><b>ACTIVE</b></div><div className="launch-metric metric-b"><span>RELEASE</span><b>READY</b></div><div className="launch-ping ping-a"/><div className="launch-ping ping-b"/>
   </div>
 }
 
@@ -396,7 +398,7 @@ function App() {
         <footer>
           <a className="brand" href="/"><img src="/twin-tech-sudo-mark-256.webp" width="256" height="256" alt="" /><span>Twin Tech<span>-sudo</span></span></a>
           <p>© {year} Twin Tech-sudo. Digital products, built properly.</p>
-          <nav className="home-footer-links" aria-label="Footer"><a href="/services/">Services</a><a href="/work/">Work</a><a href="/about/">About</a><a href="/insights/">Insights</a><a href="/contact/">Contact</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav>
+          <nav className="home-footer-links" aria-label="Footer"><a href="/services/">Services</a><a href="/work/">Work</a><a href="/about/">About</a><a href="/insights/">Insights</a><a href="/contact/">Contact</a><a href="/privacy/">Privacy</a><a href="/cookies/">Cookies</a><a href="/terms/">Terms</a>{analyticsEnabled && <button type="button" data-cookie-settings>Cookie settings</button>}</nav>
         </footer>
       </div>
       {selectedService !== null && <div className="service-modal" role="dialog" aria-modal="true" aria-labelledby="service-dialog-title" onMouseDown={event => { if (event.target === event.currentTarget) setSelectedService(null) }}>
