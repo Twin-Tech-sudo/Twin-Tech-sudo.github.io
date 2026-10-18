@@ -50,3 +50,6 @@
 .case-capabilities .compact-accordion{border-top:1px solid #373d38}
 .case-capabilities .compact-accordion details>p{margin:0;padding:0 55px 28px;border:0;display:block;font:400 13px/1.75 Manrope;color:#aeb4af}
 @media(max-width:620px){.compact-accordion summary{grid-template-columns:36px 1fr 32px;gap:8px;padding:0}.compact-accordion summary>b{font-size:0}.compact-accordion summary em{display:none!important}.compact-accordion details>p,.case-capabilities .compact-accordion details>p{padding-left:44px;padding-right:10px}}
+
+/* About-page studio line: one expandable path from idea to operation. */
+.about-story{align-items:start}.about-story .studio-line-intro{max-width:540px;margin:30px 0 0}.about-accordion{align-self:start}.about-accordion .feature-detail>p{color:#454942;font-size:14px;line-height:1.8;margin:0}.about-accordion .feature-detail li{font-size:11px;line-height:1.5;color:#4d514a}
