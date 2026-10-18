@@ -24,7 +24,7 @@ const schema = {
     </section>
     <section class="page-section capability-section" id="content">
       <div class="section-intro"><span class="page-kicker">// CAPABILITY</span><h2>What we can <em>create.</em></h2></div>
-      <div class="feature-list">{service.capabilities.map((item: string, index: number) => <div><span>0{index + 1}</span><h3>{item}</h3><i>↗</i></div>)}</div>
+      <div class="feature-list">{service.capabilities.map((item: { title: string; detail: string; includes: string[] }, index: number) => <details><summary><span>0{index + 1}</span><h3>{item.title}</h3><i aria-hidden="true">+</i></summary><div class="feature-detail"><p>{item.detail}</p><div><b>Typical scope</b><ul>{item.includes.map(include => <li>{include}</li>)}</ul></div></div></details>)}</div>
     </section>
     <section class="dark-panel">
       <div><span class="page-kicker">// THE OUTCOME</span><h2>Technology should change<br />what the business can <em>do.</em></h2></div>
