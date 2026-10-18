@@ -85,8 +85,6 @@ const approach = [
   ['04', 'Launch. Learn. Improve.', 'A controlled release, real feedback and a clear route from first version to lasting product.'],
 ]
 
-const studioLineLabels = ['Strategy', 'Design', 'Code', 'Launch']
-
 const analyticsEnabled = Boolean(import.meta.env.PUBLIC_GA_MEASUREMENT_ID)
 
 const processDetails = [
@@ -190,7 +188,6 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [selectedService, setSelectedService] = useState<number | null>(null)
   const [selectedProcess, setSelectedProcess] = useState<number | null>(null)
-  const [openStudioLine, setOpenStudioLine] = useState(0)
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('top')
   const year = new Date().getFullYear()
@@ -334,29 +331,10 @@ function App() {
             </div>
           </section>
 
-          <section className="graphic-break" aria-labelledby="studio-line-title">
+          <section className="graphic-break" aria-label="Twin Tech-sudo design philosophy">
             <div className="graphic-break-mark"><img src="/twin-tech-sudo-mark-256.webp" width="256" height="256" alt="" /></div>
-            <div className="graphic-break-heading">
-              <span className="eyebrow">// ONE CONNECTED DELIVERY LINE</span>
-              <h2 id="studio-line-title">One continuous line from<br /><em>ambition to working product.</em></h2>
-              <p>Open each stage to see how strategy, design, engineering and launch stay connected.</p>
-            </div>
-            <div className="graphic-break-accordion">
-              {studioLineLabels.map((label, index) => {
-                const isOpen = openStudioLine === index
-                const panelId = `studio-line-panel-${index}`
-                return <article className={isOpen ? 'open' : ''} key={label}>
-                  <button type="button" aria-expanded={isOpen} aria-controls={panelId} onClick={() => setOpenStudioLine(isOpen ? -1 : index)}>
-                    <span>0{index + 1}</span><h3>{label}</h3><b>{isOpen ? 'Collapse' : 'Expand'}<i aria-hidden="true">+</i></b>
-                  </button>
-                  <div id={panelId} hidden={!isOpen}>
-                    <h4>{processDetails[index].headline}</h4>
-                    <p>{processDetails[index].intro}</p>
-                    <ul>{processDetails[index].outputs.map(item => <li key={item}><Check />{item}</li>)}</ul>
-                  </div>
-                </article>
-              })}
-            </div>
+            <div className="graphic-break-copy"><span>STRATEGY</span><i>/</i><span>DESIGN</span><i>/</i><span>CODE</span><i>/</i><span>LAUNCH</span></div>
+            <p>One continuous line from<br />ambition to working product.</p>
           </section>
 
           <section className="work" id="work">
