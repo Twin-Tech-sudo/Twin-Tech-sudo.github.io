@@ -302,10 +302,10 @@ function App() {
               <a href="/about/">Meet Twin Tech-sudo <ArrowRight size={17} /></a>
             </div>
             <div className="starter-offer-grid">
-              <article><span>01</span><h3>Strategy</h3><p>Find the sharp problem and strongest product direction.</p></article>
-              <article><span>02</span><h3>Design</h3><p>Make complex journeys clear, useful and distinctive.</p></article>
-              <article><span>03</span><h3>Engineering</h3><p>Build maintainable software around real constraints.</p></article>
-              <article><span>04</span><h3>Evolution</h3><p>Launch deliberately, learn and keep improving.</p></article>
+              <button type="button" onClick={() => setSelectedProcess(0)} aria-haspopup="dialog" aria-label="Learn more about product strategy"><span>01</span><h3>Strategy</h3><p>Find the sharp problem and strongest product direction.</p><b>Explore strategy <ArrowRight /></b></button>
+              <button type="button" onClick={() => setSelectedProcess(1)} aria-haspopup="dialog" aria-label="Learn more about product and experience design"><span>02</span><h3>Design</h3><p>Make complex journeys clear, useful and distinctive.</p><b>Explore design <ArrowRight /></b></button>
+              <button type="button" onClick={() => setSelectedProcess(2)} aria-haspopup="dialog" aria-label="Learn more about software engineering"><span>03</span><h3>Engineering</h3><p>Build maintainable software around real constraints.</p><b>Explore engineering <ArrowRight /></b></button>
+              <button type="button" onClick={() => setSelectedProcess(3)} aria-haspopup="dialog" aria-label="Learn more about product evolution"><span>04</span><h3>Evolution</h3><p>Launch deliberately, learn and keep improving.</p><b>Explore evolution <ArrowRight /></b></button>
             </div>
           </section>
 
