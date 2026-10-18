@@ -23,14 +23,24 @@ const schema = {
       <div class="service-machine" aria-hidden="true"><div class="machine-rings"><i></i><i></i><i></i><strong>{service.shortTitle.slice(0, 2).toUpperCase()}</strong></div><div class="machine-label label-a">STRATEGY</div><div class="machine-label label-b">DESIGN</div><div class="machine-label label-c">BUILD</div><div class="machine-status"><i></i> READY TO BUILD</div></div>
     </section>
     <section class="page-section capability-section" id="content">
-      <div class="section-intro"><span class="page-kicker">// CAPABILITY</span><h2>What we can <em>create.</em></h2><p>Select any capability to expand the full description and typical scope.</p></div>
+      <div class="section-intro">
+        <span class="page-kicker">// CAPABILITY</span><h2>What we can <em>create.</em></h2><p>Select any capability to expand the full description and typical scope.</p>
+        <div class="capability-visual" aria-hidden="true">
+          <span class="visual-code">TT / SERVICE {service.number}</span>
+          <div class="visual-ring"><i></i><i></i><i></i><b>{service.shortTitle.slice(0, 2).toUpperCase()}</b></div>
+          <span class="visual-node visual-node-a">{service.capabilities[0].title.split(' ')[0].toUpperCase()}</span>
+          <span class="visual-node visual-node-b">{service.capabilities[1].title.split(' ')[0].toUpperCase()}</span>
+          <span class="visual-node visual-node-c">{service.capabilities[2].title.split(' ')[0].toUpperCase()}</span>
+          <span class="visual-status"><i></i> CAPABILITY MAP / ACTIVE</span>
+        </div>
+      </div>
       <div class="feature-list">{service.capabilities.map((item: { title: string; detail: string; includes: string[] }, index: number) => <details name="service-capability" open={index === 0}><summary><span>0{index + 1}</span><h3>{item.title}</h3><b class="feature-toggle"><em class="show-label">Expand details</em><em class="hide-label">Collapse details</em><i aria-hidden="true">+</i></b></summary><div class="feature-detail"><p>{item.detail}</p><div><b>Typical scope</b><ul>{item.includes.map(include => <li>{include}</li>)}</ul></div></div></details>)}</div>
     </section>
     <section class="dark-panel">
       <div><span class="page-kicker">// THE OUTCOME</span><h2>Technology should change<br />what the business can <em>do.</em></h2></div>
       <div class="compact-accordion dark-accordion">{service.outcomes.map((item: { title: string; detail: string }, index: number) => <details name={`outcomes-${service.slug}`} open={index === 0}><summary><span>0{index + 1}</span><h3>{item.title}</h3><b><em class="show-label">Expand</em><em class="hide-label">Collapse</em><i>+</i></b></summary><p>{item.detail}</p></details>)}</div>
     </section>
-    <section class="page-section deliverables"><div class="section-intro"><span class="page-kicker">// WHAT YOU RECEIVE</span><h2>A complete path from<br />decision to <em>delivery.</em></h2><p>Select each delivery area to see what it adds to the engagement.</p></div><div class="compact-accordion light-accordion">{service.deliverables.map((item: { title: string; detail: string }, index: number) => <details name={`deliverables-${service.slug}`} open={index === 0}><summary><span>0{index + 1}</span><h3>{item.title}</h3><b><em class="show-label">Expand</em><em class="hide-label">Collapse</em><i>+</i></b></summary><p>{item.detail}</p></details>)}</div></section>
+    <section class="page-section deliverables"><div class="section-intro"><span class="page-kicker">// WHAT YOU RECEIVE</span><h2>A complete path from<br />decision to <em>delivery.</em></h2><p>Select each delivery area to see what it adds to the engagement.</p><div class="delivery-route" aria-hidden="true"><span><i>01</i>DEFINE</span><b></b><span><i>02</i>DESIGN</span><b></b><span><i>03</i>BUILD</span><b></b><span><i>04</i>SHIP</span></div></div><div class="compact-accordion light-accordion">{service.deliverables.map((item: { title: string; detail: string }, index: number) => <details name={`deliverables-${service.slug}`} open={index === 0}><summary><span>0{index + 1}</span><h3>{item.title}</h3><b><em class="show-label">Expand</em><em class="hide-label">Collapse</em><i>+</i></b></summary><p>{item.detail}</p></details>)}</div></section>
     <section class="keyword-note"><span>Relevant expertise</span>{service.keywords.map((keyword: string) => <b>{keyword}</b>)}</section>
   </main>
   <SiteFooter />
