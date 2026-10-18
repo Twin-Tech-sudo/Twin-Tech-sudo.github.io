@@ -3,43 +3,10 @@ import SiteLayout from '../layouts/SiteLayout.astro'
 import SiteHeader from '../components/SiteHeader.astro'
 import SiteFooter from '../components/SiteFooter.astro'
 import PageHero from '../components/PageHero.astro'
-
-const studioLine = [
-  {
-    title: 'Ambition into product direction',
-    detail: 'We begin by turning the ambition into a specific product problem, a defined audience and a useful outcome. Assumptions are challenged early so effort is directed toward evidence and value rather than an oversized feature list.',
-    includes: ['Commercial goal and success measures', 'Audience and workflow mapping', 'Risks, constraints and assumptions', 'Prioritised first-release scope'],
-  },
-  {
-    title: 'Product direction into experience',
-    detail: 'The product takes shape through its information, journeys and interface. Important interactions are designed and tested before full engineering, making complex work clearer and exposing weak decisions while they are still inexpensive to change.',
-    includes: ['Information and journey design', 'Wireframes and working prototypes', 'Responsive interface system', 'Accessibility and usability decisions'],
-  },
-  {
-    title: 'Experience into dependable software',
-    detail: 'Design and engineering continue as one conversation. The interface, application logic, data and integrations are built together in working releases, so progress remains visible and technical choices stay connected to the product goal.',
-    includes: ['Frontend and backend engineering', 'Data architecture and integrations', 'Security and quality controls', 'Regular reviewable releases'],
-  },
-  {
-    title: 'Working software into lasting value',
-    detail: 'Launch is treated as the beginning of real evidence, not the end of the engagement. The product is prepared for dependable operation, measured against its purpose and left with a clear foundation for ownership and improvement.',
-    includes: ['Production deployment and monitoring', 'Testing and release checks', 'Documentation and knowledge transfer', 'Evidence-led improvement roadmap'],
-  },
-]
 ---
 <SiteLayout title="About Twin Tech-sudo | Independent UK Software Studio" description="Twin Tech-sudo is an independent UK software development studio combining product strategy, interface design and hands-on engineering.">
   <SiteHeader /><main><PageHero kicker="ABOUT TWIN TECH-SUDO" title="Senior thinking." accent="Builder energy." intro="A hands-on UK software development studio for founders and businesses that value momentum, craft and honest technical thinking." index="01" />
-  <section id="content" class="page-section about-story">
-    <div><span class="page-kicker">// THE STUDIO</span><h2>One continuous line from<br />ambition to <em>working product.</em></h2><p class="studio-line-intro">Twin Tech-sudo closes the gap between a polished idea and software that genuinely works in the real world.</p></div>
-    <div class="feature-list about-accordion">{studioLine.map((item, index) => <details name="studio-line" open={index === 0}><summary><span>0{index + 1}</span><h3>{item.title}</h3><b class="feature-toggle"><em class="show-label">Expand details</em><em class="hide-label">Collapse details</em><i aria-hidden="true">+</i></b></summary><div class="feature-detail"><p>{item.detail}</p><div><b>What this includes</b><ul>{item.includes.map(include => <li>{include}</li>)}</ul></div></div></details>)}</div>
-  </section>
+  <section id="content" class="page-section about-story"><div><span class="page-kicker">// THE STUDIO</span><h2>One continuous line from<br />ambition to <em>working product.</em></h2></div><div><p class="large-copy">Twin Tech-sudo exists to close the gap between a polished idea and software that genuinely works in the real world.</p><p>You work directly with the person shaping and building the product. That creates tighter feedback, fewer hand-offs and technology choices made around the actual goal—not a sales deck.</p></div></section>
   <section class="principle-grid"><article><span>01</span><h3>Product thinking included</h3><p>The brief is challenged and sharpened before code turns assumptions into expense.</p></article><article><span>02</span><h3>Build quality visible</h3><p>Working releases, plain-English decisions and evidence replace agency theatre.</p></article><article><span>03</span><h3>Made to be maintained</h3><p>Clear systems, documentation and ownership matter after the first release.</p></article><article><span>04</span><h3>Direct collaboration</h3><p>The person in the conversation is close to the design and the engineering.</p></article></section>
   </main><SiteFooter />
 </SiteLayout>
-<script>
-  const studioItems = document.querySelectorAll<HTMLDetailsElement>('.about-accordion details')
-  studioItems.forEach(item => item.addEventListener('toggle', () => {
-    if (!item.open) return
-    studioItems.forEach(other => { if (other !== item) other.open = false })
-  }))
-</script>
