@@ -7,7 +7,7 @@ export function getStaticPaths() { return projects.map(project => ({ params: { s
 const { project } = Astro.props
 const schema = {
   '@context': 'https://schema.org', '@type': 'CreativeWork', name: project.name,
-  description: project.summary, creator: { '@id': `${site.url}/#organisation` },
+  description: project.summary, url: `${site.url}/work/${project.slug}/`, image: new URL(project.logo, site.url).toString(), creator: { '@id': `${site.url}/#organisation` },
 }
 ---
 <SiteLayout title={`${project.name} Case Study | Twin Tech-sudo`} description={project.summary} schema={schema}>

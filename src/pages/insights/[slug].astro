@@ -2,7 +2,7 @@
 import SiteLayout from '../../layouts/SiteLayout.astro'
 import SiteHeader from '../../components/SiteHeader.astro'
 import SiteFooter from '../../components/SiteFooter.astro'
-import { articles } from '../../data/site'
+import { articles, services, site } from '../../data/site'
 export function getStaticPaths() { return articles.map(article => ({ params: { slug: article.slug }, props: { article } })) }
 const { article } = Astro.props
 const copy: Record<string, { intro: string; sections: { title: string; body: string; points?: string[] }[] }> = {
@@ -32,9 +32,17 @@ const copy: Record<string, { intro: string; sections: { title: string; body: str
   ]},
 }
 const body = copy[article.slug]
+const relatedSlugs: Record<string, string[]> = {
+  'how-to-plan-custom-software': ['custom-software-development', 'web-application-development'],
+  'web-app-or-desktop-app': ['web-application-development', 'desktop-app-development'],
+  'ai-automation-business-case': ['ai-automation', 'custom-software-development'],
+  'construction-document-automation-first-workflow': ['ai-automation', 'custom-software-development'],
+}
+const relatedServices = services.filter(service => relatedSlugs[article.slug]?.includes(service.slug))
 const published = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${article.date}T00:00:00Z`))
-const schema = { '@context': 'https://schema.org', '@type': 'Article', headline: article.title, description: article.description, datePublished: article.date, author: { '@type': 'Organization', name: 'Twin Tech-sudo' } }
+const articleUrl = `${site.url}/insights/${article.slug}/`
+const schema = { '@context': 'https://schema.org', '@type': 'Article', headline: article.title, description: article.description, datePublished: article.date, dateModified: article.date, mainEntityOfPage: articleUrl, image: `${site.url}/twin-tech-social.webp`, author: { '@id': `${site.url}/#organisation` }, publisher: { '@id': `${site.url}/#organisation` }, about: relatedServices.map(service => service.title) }
 ---
-<SiteLayout title={`${article.title}${article.slug === 'how-to-plan-custom-software' ? '' : ' | Twin Tech-sudo'}`} description={article.description} schema={schema}>
-  <SiteHeader /><main><article class="insight"><header><a href="/insights/">← All insights</a><span class="page-kicker">// {article.category.toUpperCase()}</span><h1>{article.title}</h1><p>{article.description}</p><div><time datetime={article.date}>{published}</time><span>{article.read}</span></div></header><div class="insight-body"><p class="insight-intro">{body.intro}</p>{body.sections.map((section, index) => <section><span>0{index + 1}</span><h2>{section.title}</h2><p>{section.body}</p>{section.points && <ul>{section.points.map(point => <li>{point}</li>)}</ul>}</section>)}</div></article></main><SiteFooter />
+<SiteLayout title={article.seoTitle} description={article.description} schema={schema}>
+  <SiteHeader /><main><article class="insight"><header><a href="/insights/">← All insights</a><span class="page-kicker">// {article.category.toUpperCase()}</span><h1>{article.title}</h1><p>{article.description}</p><div><time datetime={article.date}>{published}</time><span>{article.read}</span></div></header><div class="insight-body"><p class="insight-intro">{body.intro}</p>{body.sections.map((section, index) => <section><span>0{index + 1}</span><h2>{section.title}</h2><p>{section.body}</p>{section.points && <ul>{section.points.map(point => <li>{point}</li>)}</ul>}</section>)}<aside class="insight-related"><span>// RELATED EXPERTISE</span><h2>Continue with the relevant capability.</h2><div>{relatedServices.map(service => <a href={`/services/${service.slug}/`}><b>{service.title}</b><small>{service.description}</small><em>Explore →</em></a>)}</div></aside></div></article></main><SiteFooter />
 </SiteLayout>

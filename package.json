@@ -7,7 +7,8 @@
     "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev --port 5180",
     "build": "ASTRO_TELEMETRY_DISABLED=1 astro check && ASTRO_TELEMETRY_DISABLED=1 astro build",
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview --port 5180",
-    "typecheck": "ASTRO_TELEMETRY_DISABLED=1 astro check"
+    "typecheck": "ASTRO_TELEMETRY_DISABLED=1 astro check",
+    "seo:audit": "node scripts/seo-audit.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^7.0.0",

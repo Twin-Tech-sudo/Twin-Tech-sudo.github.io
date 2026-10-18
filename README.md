@@ -35,8 +35,11 @@ Validate a production build with:
 ```bash
 npm run typecheck
 npm run build
+npm run seo:audit
 npm run preview
 ```
+
+The SEO audit runs against `dist/` after a production build. It validates titles, descriptions, canonicals, crawl directives, H1 usage, JSON-LD, sitemap coverage and internal page links.
 
 ## Activate Twin Studio
 

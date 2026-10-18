@@ -2,14 +2,16 @@
 import SiteLayout from '../../layouts/SiteLayout.astro'
 import SiteHeader from '../../components/SiteHeader.astro'
 import SiteFooter from '../../components/SiteFooter.astro'
-import { services } from '../../data/site'
-import { site } from '../../data/site'
+import { services, site } from '../../data/site'
 
 export function getStaticPaths() { return services.map(service => ({ params: { slug: service.slug }, props: { service } })) }
 const { service } = Astro.props
+const serviceIndex = services.findIndex(item => item.slug === service.slug)
+const relatedServices = Array.from({ length: 3 }, (_, offset) => services[(serviceIndex + offset + 1) % services.length])
 const title = `${service.title} UK | Twin Tech-sudo`
 const schema = {
   '@context': 'https://schema.org', '@type': 'Service', name: service.title, description: service.description,
+  url: `${site.url}/services/${service.slug}/`,
   provider: { '@id': `${site.url}/#organisation` },
   areaServed: { '@type': 'Country', name: 'United Kingdom' },
   serviceType: service.title,
@@ -42,6 +44,7 @@ const schema = {
     </section>
     <section class="page-section deliverables"><div class="section-intro"><span class="page-kicker">// WHAT YOU RECEIVE</span><h2>A complete path from<br />decision to <em>delivery.</em></h2><p>Select each delivery area to see what it adds to the engagement.</p><div class="delivery-route" aria-hidden="true"><span><i>01</i>DEFINE</span><b></b><span><i>02</i>DESIGN</span><b></b><span><i>03</i>BUILD</span><b></b><span><i>04</i>SHIP</span></div></div><div class="compact-accordion light-accordion">{service.deliverables.map((item: { title: string; detail: string }, index: number) => <details name={`deliverables-${service.slug}`} open={index === 0}><summary><span>0{index + 1}</span><h3>{item.title}</h3><b><em class="show-label">Expand</em><em class="hide-label">Collapse</em><i>+</i></b></summary><p>{item.detail}</p></details>)}</div></section>
     <section class="keyword-note"><span>Relevant expertise</span>{service.keywords.map((keyword: string) => <b>{keyword}</b>)}</section>
+    <section class="page-section related-services"><div><span class="page-kicker">// RELATED CAPABILITIES</span><h2>Connected expertise for<br /><em>the complete product.</em></h2></div><div class="related-service-grid">{relatedServices.map(item => <a href={`/services/${item.slug}/`}><span>{item.number}</span><h3>{item.title}</h3><p>{item.description}</p><b>Explore service →</b></a>)}</div></section>
   </main>
   <SiteFooter />
 </SiteLayout>

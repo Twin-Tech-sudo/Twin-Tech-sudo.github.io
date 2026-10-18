@@ -21,6 +21,14 @@ const pathParts = Astro.url.pathname.split('/').filter(Boolean)
 const labelOverrides: Record<string, string> = {
   insights: 'Insights', services: 'Services', work: 'Work', about: 'About',
   contact: 'Contact', process: 'Process', privacy: 'Privacy', cookies: 'Cookies', terms: 'Terms',
+  'custom-software-development': 'Custom Software Development',
+  'web-application-development': 'Web Application Development',
+  'mobile-app-development': 'Mobile App Development',
+  'desktop-app-development': 'Desktop App Development',
+  'website-development': 'Website Design and Development',
+  'ecommerce-development': 'E-commerce Development',
+  'ai-automation': 'AI and Workflow Automation',
+  boqextract: 'BOQExtract', 'macks-packs': "Mack's Packs",
 }
 const breadcrumb = pathParts.length ? {
   '@context': 'https://schema.org',

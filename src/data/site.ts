@@ -235,10 +235,10 @@ export const projects = [
 ]
 
 export const articles = [
-  { slug: 'how-to-plan-custom-software', title: 'How to plan custom software without wasting the first build', description: 'A practical framework for defining the problem, scope and evidence a successful first release needs.', date: '2026-09-30', read: '7 min read', category: 'Product strategy' },
-  { slug: 'web-app-or-desktop-app', title: 'Web app or desktop app: which fits your workflow?', description: 'The real trade-offs between browser reach, offline work, local files, performance and deployment.', date: '2026-09-30', read: '6 min read', category: 'Technology decisions' },
-  { slug: 'ai-automation-business-case', title: 'Where AI automation creates a real business case', description: 'How to identify repetitive work worth automating while keeping accuracy, evidence and oversight intact.', date: '2026-09-30', read: '8 min read', category: 'AI & automation' },
-  { slug: 'construction-document-automation-first-workflow', title: 'Construction document automation: choosing the first workflow', description: 'A practical way to find a construction document process worth testing, without committing to a large software build too early.', date: '2026-10-17', read: '7 min read', category: 'Construction technology' },
+  { slug: 'how-to-plan-custom-software', title: 'How to plan custom software without wasting the first build', seoTitle: 'How to Plan Custom Software | Twin Tech-sudo', description: 'A practical framework for defining the problem, scope and evidence a successful first release needs.', date: '2026-09-30', read: '7 min read', category: 'Product strategy' },
+  { slug: 'web-app-or-desktop-app', title: 'Web app or desktop app: which fits your workflow?', seoTitle: 'Web App or Desktop App? A Practical UK Guide', description: 'The real trade-offs between browser reach, offline work, local files, performance and deployment.', date: '2026-09-30', read: '6 min read', category: 'Technology decisions' },
+  { slug: 'ai-automation-business-case', title: 'Where AI automation creates a real business case', seoTitle: 'Building a Real AI Automation Business Case', description: 'How to identify repetitive work worth automating while keeping accuracy, evidence and oversight intact.', date: '2026-09-30', read: '8 min read', category: 'AI & automation' },
+  { slug: 'construction-document-automation-first-workflow', title: 'Construction document automation: choosing the first workflow', seoTitle: 'Construction Document Automation: First Workflow', description: 'A practical way to find a construction document process worth testing, without committing to a large software build too early.', date: '2026-10-17', read: '7 min read', category: 'Construction technology' },
 ]
 
 export const nav = [
@@ -258,5 +258,5 @@ export const site = {
   registeredOffice: import.meta.env.PUBLIC_REGISTERED_OFFICE || '',
   jurisdiction: import.meta.env.PUBLIC_COMPANY_JURISDICTION || 'England and Wales',
   defaultTitle: 'Twin Tech-sudo | UK Digital Product & Software Studio',
-  defaultDescription: 'Twin Tech-sudo is a UK digital product studio creating custom software, SaaS, web applications, mobile apps, desktop software, websites, e-commerce and AI products across industries.',
+  defaultDescription: 'Twin Tech-sudo is a UK digital product studio creating custom software, SaaS, web and mobile apps, desktop tools, websites, commerce and practical AI.',
 }
