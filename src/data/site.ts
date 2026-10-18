@@ -8,8 +8,8 @@ export type Service = {
   headline: string
   intro: string
   capabilities: { title: string; detail: string; includes: string[] }[]
-  outcomes: string[]
-  deliverables: string[]
+  outcomes: { title: string; detail: string }[]
+  deliverables: { title: string; detail: string }[]
   keywords: string[]
 }
 
@@ -27,8 +27,18 @@ export const services: Service[] = [
       { title: 'Role-based workflows', detail: 'We model who can see, create, approve and change information at each stage of a process. Clear permissions and state transitions help teams move work forward confidently while keeping sensitive actions controlled and traceable.', includes: ['Roles, permissions and access boundaries', 'Multi-stage reviews and approvals', 'Assignment, escalation and notifications', 'Decision history and audit trails'] },
       { title: 'Reporting and data intelligence', detail: 'We turn operational data into useful views for the people making decisions. That can range from focused dashboards and scheduled reports to searchable records and governed analytical tools, always tied to a real question rather than decorative charts.', includes: ['Metric and reporting-definition workshops', 'Operational dashboards and drill-down views', 'Scheduled exports and stakeholder reports', 'Data quality, lineage and access controls'] },
     ],
-    outcomes: ['Replace spreadsheets and disconnected tools', 'Reduce administration and avoidable errors', 'Create intellectual property you own', 'Scale without multiplying manual work'],
-    deliverables: ['Product discovery and specification', 'UX and interface design', 'Frontend, backend and database engineering', 'Testing, deployment and documentation'],
+    outcomes: [
+      { title: 'Replace spreadsheets and disconnected tools', detail: 'Bring the records, tasks and decisions that currently move between files and inboxes into one controlled source of truth.' },
+      { title: 'Reduce administration and avoidable errors', detail: 'Use validation, automation and guided workflows to remove repeated entry and catch incomplete or inconsistent information earlier.' },
+      { title: 'Create intellectual property you own', detail: 'Build a product around the organisation’s distinctive process, with documented source code and clear ownership arrangements.' },
+      { title: 'Scale without multiplying manual work', detail: 'Design rules, permissions and automation so increasing customers, records or transactions does not require the same increase in administration.' },
+    ],
+    deliverables: [
+      { title: 'Product discovery and specification', detail: 'A focused definition of users, workflows, priorities, risks and the smallest complete release worth building.' },
+      { title: 'UX and interface design', detail: 'User journeys, wireframes and polished interface designs that make complex work understandable before full development begins.' },
+      { title: 'Frontend, backend and database engineering', detail: 'The working product across interface, application logic, APIs, integrations and a maintainable data model.' },
+      { title: 'Testing, deployment and documentation', detail: 'Quality checks, production release configuration, monitoring and practical documentation for operating and extending the system.' },
+    ],
     keywords: ['custom software development UK', 'bespoke software developers', 'business software development'],
   },
   {
@@ -44,8 +54,18 @@ export const services: Service[] = [
       { title: 'Data visualisation', detail: 'We translate dense or changing information into visual structures that help users compare, investigate and act. The design starts with the decision, then chooses the right chart, table or interactive view.', includes: ['Dashboard information design', 'Interactive charts and tables', 'Filtering and drill-down journeys', 'Exportable and accessible reporting'] },
       { title: 'Subscription and account systems', detail: 'We implement the customer lifecycle around access, plans, billing and account changes, including the operational controls required to support users safely.', includes: ['Registration and onboarding', 'Plans, entitlements and billing events', 'Team invitations and permissions', 'Account support and cancellation flows'] },
     ],
-    outcomes: ['Reach users without an installation', 'Work securely from any device', 'Turn complex data into clear actions', 'Launch quickly and improve continuously'],
-    deliverables: ['Responsive product design', 'Modern frontend engineering', 'APIs, integrations and databases', 'Cloud deployment and monitoring'],
+    outcomes: [
+      { title: 'Reach users without an installation', detail: 'Give customers and teams immediate access through a modern browser while retaining an app-like product experience.' },
+      { title: 'Work securely from any device', detail: 'Protect accounts and information with appropriate identity, permission and session controls across supported screen sizes.' },
+      { title: 'Turn complex data into clear actions', detail: 'Structure dashboards, records and task views around the next useful decision instead of exposing raw system complexity.' },
+      { title: 'Launch quickly and improve continuously', detail: 'Release centrally, observe real use and deliver improvements without requiring every user to install an update.' },
+    ],
+    deliverables: [
+      { title: 'Responsive product design', detail: 'A complete interaction and visual system for the important journeys across desktop, tablet and mobile browsers.' },
+      { title: 'Modern frontend engineering', detail: 'An accessible, performant interface built from maintainable components and connected to real application behaviour.' },
+      { title: 'APIs, integrations and databases', detail: 'Secure server logic, structured data storage and dependable connections to the services the product requires.' },
+      { title: 'Cloud deployment and monitoring', detail: 'Repeatable production releases, environment configuration, health visibility and error monitoring for day-to-day operation.' },
+    ],
     keywords: ['web application development UK', 'web app developers', 'SaaS development company UK'],
   },
   {
@@ -61,8 +81,18 @@ export const services: Service[] = [
       { title: 'Camera, location and device features', detail: 'We use native device capabilities where they remove friction or capture better information, with appropriate permission, privacy and fallback behaviour.', includes: ['Photo, video and document capture', 'Location-aware workflows', 'File sharing and device storage', 'Permission and privacy handling'] },
       { title: 'App Store launch support', detail: 'A mobile product needs more than a build file. We prepare the release materials, privacy declarations, testing tracks and submission process required for a controlled launch.', includes: ['Store listing and asset preparation', 'TestFlight and testing-track setup', 'Privacy and permission declarations', 'Submission and review support'] },
     ],
-    outcomes: ['Put critical workflows in the field', 'Increase customer engagement', 'Capture accurate data at source', 'Maintain one coherent product ecosystem'],
-    deliverables: ['Mobile product strategy', 'Interface and prototype design', 'Cross-platform app engineering', 'Store submission and launch support'],
+    outcomes: [
+      { title: 'Put critical workflows in the field', detail: 'Let people complete important tasks where the work happens, including environments with unreliable connectivity.' },
+      { title: 'Increase customer engagement', detail: 'Create a focused product people can return to for timely information, service and useful actions.' },
+      { title: 'Capture accurate data at source', detail: 'Use guided forms and device capabilities to record information once, close to the event, with validation built in.' },
+      { title: 'Maintain one coherent product ecosystem', detail: 'Connect the mobile experience to shared accounts, APIs and operational systems rather than creating another isolated tool.' },
+    ],
+    deliverables: [
+      { title: 'Mobile product strategy', detail: 'A defined audience, use case, platform approach and release scope based on when mobile provides real value.' },
+      { title: 'Interface and prototype design', detail: 'Testable mobile journeys and polished screen designs shaped for touch, movement and small-screen attention.' },
+      { title: 'Cross-platform app engineering', detail: 'A production application for the agreed platforms, connected securely to its data and supporting services.' },
+      { title: 'Store submission and launch support', detail: 'Testing builds, listing assets, privacy declarations, release configuration and support through store review.' },
+    ],
     keywords: ['mobile app development UK', 'iOS app developers UK', 'Android app development company'],
   },
   {
@@ -78,8 +108,18 @@ export const services: Service[] = [
       { title: 'Background automation', detail: 'Long-running or repeated work can continue safely outside the main interface, with scheduling, progress and recovery designed into the application.', includes: ['Scheduled and queued jobs', 'Background processing services', 'Failure recovery and resumability', 'Logs and operational visibility'] },
       { title: 'Installers, updates and packaging', detail: 'We package the product so it can be installed, updated and supported predictably across the intended environment.', includes: ['Signed installers and packages', 'Controlled automatic updates', 'Versioning and release channels', 'Deployment documentation'] },
     ],
-    outcomes: ['Handle large or sensitive files locally', 'Work reliably without internet access', 'Fit existing desktop workflows', 'Deliver controlled, repeatable releases'],
-    deliverables: ['Workflow and platform assessment', 'Desktop UX design', 'Local processing and integrations', 'Signed installers and update strategy'],
+    outcomes: [
+      { title: 'Handle large or sensitive files locally', detail: 'Process information near the user when file size, privacy or performance makes a browser-only workflow unsuitable.' },
+      { title: 'Work reliably without internet access', detail: 'Keep essential tasks available through local storage and controlled synchronisation instead of assuming permanent connectivity.' },
+      { title: 'Fit existing desktop workflows', detail: 'Integrate with folders, files, hardware and operating-system behaviour already used by the team.' },
+      { title: 'Deliver controlled, repeatable releases', detail: 'Package installation and updates so versions can be tested, distributed and supported predictably.' },
+    ],
+    deliverables: [
+      { title: 'Workflow and platform assessment', detail: 'A recommendation covering operating systems, local requirements, deployment constraints and the right technical approach.' },
+      { title: 'Desktop UX design', detail: 'Detailed journeys and interface designs suited to dense information, keyboard use and long-running professional tasks.' },
+      { title: 'Local processing and integrations', detail: 'The application logic for files, databases, hardware or background work that must run on the device.' },
+      { title: 'Signed installers and update strategy', detail: 'Production packaging, versioning and a controlled route for distributing fixes and improvements.' },
+    ],
     keywords: ['desktop application development UK', 'Windows app developers', 'cross-platform desktop software'],
   },
   {
@@ -95,8 +135,18 @@ export const services: Service[] = [
       { title: 'Analytics and conversion tracking', detail: 'Measurement is planned around useful business actions and implemented with appropriate consent, so the team can learn without collecting data aimlessly.', includes: ['Measurement and event planning', 'Consent-aware analytics setup', 'Conversion and funnel events', 'Reporting and quality checks'] },
       { title: 'Performance optimisation', detail: 'We reduce loading friction across real devices and connections by treating performance as a design and engineering constraint throughout the build.', includes: ['Image and asset optimisation', 'Efficient rendering and delivery', 'Core Web Vitals improvements', 'Production performance testing'] },
     ],
-    outcomes: ['Make a stronger first impression', 'Turn qualified traffic into enquiries', 'Give your team control of content', 'Create a measurable acquisition channel'],
-    deliverables: ['Information architecture and copy direction', 'Visual design system', 'Responsive development', 'SEO, analytics and launch setup'],
+    outcomes: [
+      { title: 'Make a stronger first impression', detail: 'Present the offer with a distinctive, credible experience that reflects the quality and character of the business.' },
+      { title: 'Turn qualified traffic into enquiries', detail: 'Guide relevant visitors from their question to useful proof and a clear next action with less friction.' },
+      { title: 'Give your team control of content', detail: 'Provide a structured publishing experience so routine changes do not require a developer or damage the design.' },
+      { title: 'Create a measurable acquisition channel', detail: 'Connect landing pages, search visibility and consent-aware measurement to understand which activity creates useful demand.' },
+    ],
+    deliverables: [
+      { title: 'Information architecture and copy direction', detail: 'A page and messaging structure organised around audience questions, commercial priorities and search intent.' },
+      { title: 'Visual design system', detail: 'A responsive set of typography, colour, layout and reusable components that gives the site a coherent identity.' },
+      { title: 'Responsive development', detail: 'A fast, accessible implementation that works across current devices and remains maintainable after launch.' },
+      { title: 'SEO, analytics and launch setup', detail: 'Technical search foundations, consent-aware measurement, production checks and a controlled release.' },
+    ],
     keywords: ['website development UK', 'web design company UK', 'SEO website development'],
   },
   {
@@ -112,8 +162,18 @@ export const services: Service[] = [
       { title: 'Search and merchandising', detail: 'We help customers find the right product through useful search, filtering and curated presentation, while giving operators practical merchandising control.', includes: ['Catalogue search and filters', 'Collections and recommendations', 'Promotional merchandising tools', 'No-result and discovery journeys'] },
       { title: 'Commerce analytics', detail: 'Commerce measurement connects acquisition, product interest, checkout and completed orders so decisions are grounded in the full journey.', includes: ['E-commerce event planning', 'Product and funnel reporting', 'Consent-aware tracking', 'Operational performance views'] },
     ],
-    outcomes: ['Improve conversion and trust', 'Make catalogues easier to operate', 'Connect sales with fulfilment', 'Create room for the brand to grow'],
-    deliverables: ['Commerce strategy and UX', 'Storefront implementation', 'Payment and operations integration', 'Tracking, testing and launch'],
+    outcomes: [
+      { title: 'Improve conversion and trust', detail: 'Reduce uncertainty with clear product information, confident interaction design and a dependable path through checkout.' },
+      { title: 'Make catalogues easier to operate', detail: 'Structure products, variants, collections and content so the team can maintain the store efficiently.' },
+      { title: 'Connect sales with fulfilment', detail: 'Move accurate order, payment and inventory information between the storefront and operational systems.' },
+      { title: 'Create room for the brand to grow', detail: 'Build a flexible commerce foundation that can support new campaigns, ranges and customer journeys over time.' },
+    ],
+    deliverables: [
+      { title: 'Commerce strategy and UX', detail: 'A defined customer journey, catalogue structure and operational approach for discovery, purchase and post-order service.' },
+      { title: 'Storefront implementation', detail: 'The responsive shopping experience, product presentation and content tools required to sell effectively.' },
+      { title: 'Payment and operations integration', detail: 'Secure checkout plus the connections needed for stock, tax, shipping, fulfilment and customer communication.' },
+      { title: 'Tracking, testing and launch', detail: 'Commerce measurement, end-to-end transaction testing and a controlled production release.' },
+    ],
     keywords: ['ecommerce development UK', 'online store developers', 'custom ecommerce website'],
   },
   {
@@ -129,8 +189,18 @@ export const services: Service[] = [
       { title: 'Classification and routing', detail: 'Incoming documents, messages or records can be categorised and directed to the right team or workflow, with uncertain cases held for review.', includes: ['Taxonomy and routing-rule design', 'Model or rules-based classification', 'Confidence thresholds', 'Exception queues and audit history'] },
       { title: 'Human-in-the-loop controls', detail: 'Important automation remains accountable by defining what the system may do, when a person must review it and how decisions can be traced or corrected.', includes: ['Approval and escalation rules', 'Evidence beside recommendations', 'Decision and correction logs', 'Quality monitoring and override controls'] },
     ],
-    outcomes: ['Remove repetitive handling', 'Process information at greater scale', 'Surface exceptions earlier', 'Retain evidence behind decisions'],
-    deliverables: ['Automation opportunity assessment', 'Prototype and accuracy evaluation', 'Production integrations', 'Monitoring and review controls'],
+    outcomes: [
+      { title: 'Remove repetitive handling', detail: 'Let software prepare, classify or move routine information so people can focus on judgement and exceptions.' },
+      { title: 'Process information at greater scale', detail: 'Handle increased document, message or record volume without relying on the same increase in manual effort.' },
+      { title: 'Surface exceptions earlier', detail: 'Use rules and confidence signals to direct unusual, incomplete or high-risk cases to the right reviewer.' },
+      { title: 'Retain evidence behind decisions', detail: 'Keep source material, system actions and human corrections connected so important outputs remain reviewable.' },
+    ],
+    deliverables: [
+      { title: 'Automation opportunity assessment', detail: 'A mapped workflow, baseline, risk review and recommendation for where automation is—and is not—worth testing.' },
+      { title: 'Prototype and accuracy evaluation', detail: 'A bounded proof tested against representative information with agreed measures and difficult edge cases.' },
+      { title: 'Production integrations', detail: 'A governed implementation connected to the real systems, identity and operational workflow.' },
+      { title: 'Monitoring and review controls', detail: 'Visibility into quality, failures and exceptions plus the human controls required for accountable operation.' },
+    ],
     keywords: ['AI automation UK', 'business process automation', 'AI software development company'],
   },
 ]
@@ -141,7 +211,12 @@ export const projects = [
     summary: 'A precision document intelligence product designed to turn complex construction files into structured, reviewable commercial data.',
     challenge: 'Construction documents contain valuable commercial information in inconsistent layouts. Manual transcription is slow, difficult to audit and vulnerable to small but costly mistakes.',
     solution: 'The product combines document intake, structured extraction and a review-first interface so people can validate evidence before producing useful outputs.',
-    capabilities: ['Document intelligence', 'Human-in-the-loop review', 'Desktop and web product design', 'Structured exports'],
+    capabilities: [
+      { title: 'Document intelligence', detail: 'The product turns inconsistent construction documents into structured information while keeping outputs connected to their source.' },
+      { title: 'Human-in-the-loop review', detail: 'Reviewers can inspect evidence, resolve uncertainty and approve important information before it moves into a commercial output.' },
+      { title: 'Desktop and web product design', detail: 'Local processing and browser-based workspace patterns are combined around the demands of large files, review and collaboration.' },
+      { title: 'Structured exports', detail: 'Reviewed information can leave the product in controlled formats suitable for downstream analysis and existing business workflows.' },
+    ],
     note: 'BOQExtract is an evolving Twin Tech-sudo product. Performance claims are intentionally withheld until validated production evidence is available.',
   },
   {
@@ -149,7 +224,12 @@ export const projects = [
     summary: 'A focused digital storefront concept built around collectible trading cards, clear inventory and a direct path to purchase.',
     challenge: 'Collectible products need strong visual identity, quick catalogue scanning and enough product detail to make a confident buying decision.',
     solution: 'The experience joins bold brand presentation with clear product structure and commerce journeys designed to remove uncertainty from browsing to checkout.',
-    capabilities: ['E-commerce UX', 'Responsive web design', 'Product catalogue architecture', 'Brand-led interface design'],
+    capabilities: [
+      { title: 'E-commerce UX', detail: 'The buying journey reduces uncertainty from product discovery through basket and checkout, with the important information close to each decision.' },
+      { title: 'Responsive web design', detail: 'Layouts and interactions are shaped to remain clear and distinctive across mobile, tablet and desktop screens.' },
+      { title: 'Product catalogue architecture', detail: 'Products, categories and supporting information are organised so customers can scan, compare and find relevant stock quickly.' },
+      { title: 'Brand-led interface design', detail: 'Colour, typography, imagery and motion create a recognisable storefront without compromising usability or performance.' },
+    ],
     note: 'Project details describe the delivered product scope without inventing unverified revenue or conversion claims.',
   },
 ]

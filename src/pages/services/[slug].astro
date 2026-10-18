@@ -28,17 +28,19 @@ const schema = {
     </section>
     <section class="dark-panel">
       <div><span class="page-kicker">// THE OUTCOME</span><h2>Technology should change<br />what the business can <em>do.</em></h2></div>
-      <div class="outcome-grid">{service.outcomes.map((item: string) => <article><i>✓</i><p>{item}</p></article>)}</div>
+      <div class="compact-accordion dark-accordion">{service.outcomes.map((item: { title: string; detail: string }, index: number) => <details name={`outcomes-${service.slug}`} open={index === 0}><summary><span>0{index + 1}</span><h3>{item.title}</h3><b><em class="show-label">Expand</em><em class="hide-label">Collapse</em><i>+</i></b></summary><p>{item.detail}</p></details>)}</div>
     </section>
-    <section class="page-section deliverables"><div class="section-intro"><span class="page-kicker">// WHAT YOU RECEIVE</span><h2>A complete path from<br />decision to <em>delivery.</em></h2></div><ol>{service.deliverables.map((item: string) => <li>{item}</li>)}</ol></section>
+    <section class="page-section deliverables"><div class="section-intro"><span class="page-kicker">// WHAT YOU RECEIVE</span><h2>A complete path from<br />decision to <em>delivery.</em></h2><p>Select each delivery area to see what it adds to the engagement.</p></div><div class="compact-accordion light-accordion">{service.deliverables.map((item: { title: string; detail: string }, index: number) => <details name={`deliverables-${service.slug}`} open={index === 0}><summary><span>0{index + 1}</span><h3>{item.title}</h3><b><em class="show-label">Expand</em><em class="hide-label">Collapse</em><i>+</i></b></summary><p>{item.detail}</p></details>)}</div></section>
     <section class="keyword-note"><span>Relevant expertise</span>{service.keywords.map((keyword: string) => <b>{keyword}</b>)}</section>
   </main>
   <SiteFooter />
 </SiteLayout>
 <script>
-  const capabilityGroups = document.querySelectorAll<HTMLDetailsElement>('.feature-list details')
-  capabilityGroups.forEach(item => item.addEventListener('toggle', () => {
-    if (!item.open) return
-    capabilityGroups.forEach(other => { if (other !== item) other.open = false })
-  }))
+  document.querySelectorAll<HTMLElement>('.feature-list, .compact-accordion').forEach(group => {
+    const items = group.querySelectorAll<HTMLDetailsElement>('details')
+    items.forEach(item => item.addEventListener('toggle', () => {
+      if (!item.open) return
+      items.forEach(other => { if (other !== item) other.open = false })
+    }))
+  })
 </script>
