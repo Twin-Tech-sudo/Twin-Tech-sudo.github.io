@@ -23,8 +23,8 @@ const schema = {
       <div class="service-machine" aria-hidden="true"><div class="machine-rings"><i></i><i></i><i></i><strong>{service.shortTitle.slice(0, 2).toUpperCase()}</strong></div><div class="machine-label label-a">STRATEGY</div><div class="machine-label label-b">DESIGN</div><div class="machine-label label-c">BUILD</div><div class="machine-status"><i></i> READY TO BUILD</div></div>
     </section>
     <section class="page-section capability-section" id="content">
-      <div class="section-intro"><span class="page-kicker">// CAPABILITY</span><h2>What we can <em>create.</em></h2></div>
-      <div class="feature-list">{service.capabilities.map((item: { title: string; detail: string; includes: string[] }, index: number) => <details><summary><span>0{index + 1}</span><h3>{item.title}</h3><i aria-hidden="true">+</i></summary><div class="feature-detail"><p>{item.detail}</p><div><b>Typical scope</b><ul>{item.includes.map(include => <li>{include}</li>)}</ul></div></div></details>)}</div>
+      <div class="section-intro"><span class="page-kicker">// CAPABILITY</span><h2>What we can <em>create.</em></h2><p>Select any capability to expand the full description and typical scope.</p></div>
+      <div class="feature-list">{service.capabilities.map((item: { title: string; detail: string; includes: string[] }, index: number) => <details name="service-capability" open={index === 0}><summary><span>0{index + 1}</span><h3>{item.title}</h3><b class="feature-toggle"><em class="show-label">Expand details</em><em class="hide-label">Collapse details</em><i aria-hidden="true">+</i></b></summary><div class="feature-detail"><p>{item.detail}</p><div><b>Typical scope</b><ul>{item.includes.map(include => <li>{include}</li>)}</ul></div></div></details>)}</div>
     </section>
     <section class="dark-panel">
       <div><span class="page-kicker">// THE OUTCOME</span><h2>Technology should change<br />what the business can <em>do.</em></h2></div>
@@ -35,3 +35,10 @@ const schema = {
   </main>
   <SiteFooter />
 </SiteLayout>
+<script>
+  const capabilityGroups = document.querySelectorAll<HTMLDetailsElement>('.feature-list details')
+  capabilityGroups.forEach(item => item.addEventListener('toggle', () => {
+    if (!item.open) return
+    capabilityGroups.forEach(other => { if (other !== item) other.open = false })
+  }))
+</script>
