@@ -89,6 +89,17 @@ Launch content and page structure live in `src/data/site.ts`. Studio-managed con
 
 ## Deployment
 
+### Cloudflare hosting (private repo)
+
+The workflow can deploy `dist/` to Cloudflare Workers static assets (`wrangler.jsonc`) instead of GitHub Pages, which lets the repository stay private on a free GitHub plan. Cutover:
+
+1. Add repo secrets `CLOUDFLARE_API_TOKEN` (template "Edit Cloudflare Workers") and `CLOUDFLARE_ACCOUNT_ID`.
+2. Set repo variable `DEPLOY_TARGET=cloudflare` and run the workflow; check the `*.workers.dev` URL.
+3. Uncomment the `routes` in `wrangler.jsonc` for the custom domain, then set `PUBLIC_SITE_URL` to the domain and rebuild.
+4. Verify DNS/HTTPS on the domain, then make the repository private and disable GitHub Pages.
+
+### GitHub Pages
+
 `.github/workflows/deploy.yml` uses Node 22, builds `dist/` and deploys it to GitHub Pages. The canonical site remains:
 
 `https://twin-tech-sudo.github.io/`

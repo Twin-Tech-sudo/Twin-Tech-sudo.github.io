@@ -47,15 +47,28 @@ jobs:
           PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ secrets.PUBLIC_GOOGLE_SITE_VERIFICATION }}
       - name: SEO audit
         run: npm run seo:audit
+      # Hosting target: set the DEPLOY_TARGET repo variable to "cloudflare" to deploy to
+      # Cloudflare (needs CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID secrets).
+      # Anything else keeps the GitHub Pages deployment.
+      - name: Deploy to Cloudflare
+        if: vars.DEPLOY_TARGET == 'cloudflare'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
       - name: Configure Pages
+        if: vars.DEPLOY_TARGET != 'cloudflare'
         uses: actions/configure-pages@v5
       - name: Upload site
+        if: vars.DEPLOY_TARGET != 'cloudflare'
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
       - name: Deploy
+        if: vars.DEPLOY_TARGET != 'cloudflare'
         uses: actions/deploy-pages@v4
         id: deployment
     environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      name: ${{ vars.DEPLOY_TARGET == 'cloudflare' && 'production' || 'github-pages' }}
+      url: ${{ vars.DEPLOY_TARGET == 'cloudflare' && vars.PUBLIC_SITE_URL || steps.deployment.outputs.page_url }}
