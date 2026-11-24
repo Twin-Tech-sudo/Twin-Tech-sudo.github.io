@@ -1,7 +1,6 @@
 ---
-import SiteLayout from '../layouts/SiteLayout.astro'
-import SiteHeader from '../components/SiteHeader.astro'
+import ProductLayout from '../layouts/ProductLayout.astro'
 ---
-<SiteLayout title="Page not found | Twin Tech-sudo" description="The requested page could not be found." noindex={true}>
-  <SiteHeader /><main class="studio-setup"><span>// ERROR 404</span><h1>Wrong route.<br /><em>Useful recovery.</em></h1><p>The page may have moved or the address may be incorrect.</p><a href="/">Return to Twin Tech-sudo →</a></main>
-</SiteLayout>
+<ProductLayout title="Page not found | BOQ Extract" description="The requested page could not be found." noindex={true} cta={false}>
+  <section class="not-found"><span class="kicker" style="justify-self:center">Error 404</span><h1>This sheet isn’t in the pack.</h1><p>The page may have moved, or the address may be wrong.</p><a class="btn btn-dark" href="/">Back to BOQ Extract</a></section>
+</ProductLayout>

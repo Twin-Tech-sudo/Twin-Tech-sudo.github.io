@@ -1,0 +1,43 @@
+---
+import ProductLayout from '../layouts/ProductLayout.astro'
+import PageHead from '../components/PageHead.astro'
+import { coverage, coverageCounts, statusLabel, statusDetail, type CoverageStatus } from '../data/product'
+const pct = (n: number) => `${(n / coverageCounts.total) * 100}%`
+const statuses: CoverageStatus[] = ['measures', 'review', 'roadmap']
+---
+<ProductLayout title="NRM2 Trade Coverage | BOQ Extract" description={`The current status of all ${coverageCounts.total} NRM2 work sections in BOQ Extract: what it measures today, what it flags for review and what is on the roadmap.`}>
+  <PageHead kicker="Trade coverage" title={`All ${coverageCounts.total} NRM2 work sections.`} accent="Published, gaps included." intro="We show exactly what BOQ Extract measures today, what it reads and raises for review, and what is still on the roadmap. Coverage describes capability. It is not an accuracy claim.">
+    <div class="coverage-bar" style="margin-top:36px;max-width:720px" role="img" aria-label={`${coverageCounts.measures} measured, ${coverageCounts.review} read and flagged, ${coverageCounts.roadmap} on the roadmap`}>
+      <i class="m" style={`width:${pct(coverageCounts.measures)}`}></i><i class="r" style={`width:${pct(coverageCounts.review)}`}></i><i class="p" style={`width:${pct(coverageCounts.roadmap)}`}></i>
+    </div>
+    <div class="coverage-legend dark">
+      <span><span class="chip chip-measures">Measures</span> <b>{coverageCounts.measures}</b></span>
+      <span><span class="chip chip-review">Reads and flags</span> <b>{coverageCounts.review}</b></span>
+      <span><span class="chip chip-roadmap">Roadmap</span> <b>{coverageCounts.roadmap}</b></span>
+    </div>
+  </PageHead>
+
+  <section class="section tight alt">
+    <div class="wrap">
+      <div class="cards-3">
+        {statuses.map(status => <article class="card"><span class={`chip chip-${status}`} style="align-self:flex-start">{statusLabel[status]}</span><p>{statusDetail[status]}</p></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cov-groups">
+        {coverage.map(group => <article class="cov-group">
+          <header><span>{group.number}</span><h2 style="font-size:19px">{group.title}</h2></header>
+          <ul>{group.sections.map(section => <li>
+            <span class="name"><small>{section.code}</small>{section.name}</span>
+            <span class={`chip chip-${section.status}`}>{statusLabel[section.status]}</span>
+            {section.reads && <span class="reads">{section.reads}</span>}
+          </li>)}</ul>
+        </article>)}
+      </div>
+      <p class="muted" style="margin-top:32px;max-width:760px;color:var(--muted);font-size:15px">Work-section codes follow BOQ Extract’s NRM2-aligned taxonomy for building and site works. Status reflects the product’s readers today and is updated as coverage grows. Need a trade that’s on the roadmap? <a class="text-link" href="/contact/">Tell us</a>: design partner demand sets the order.</p>
+    </div>
+  </section>
+</ProductLayout>

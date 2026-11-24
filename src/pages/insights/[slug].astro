@@ -1,48 +1,51 @@
 ---
-import SiteLayout from '../../layouts/SiteLayout.astro'
-import SiteHeader from '../../components/SiteHeader.astro'
-import SiteFooter from '../../components/SiteFooter.astro'
-import { articles, services, site } from '../../data/site'
+import ProductLayout from '../../layouts/ProductLayout.astro'
+import { articles, site } from '../../data/site'
 export function getStaticPaths() { return articles.map(article => ({ params: { slug: article.slug }, props: { article } })) }
 const { article } = Astro.props
-const copy: Record<string, { intro: string; sections: { title: string; body: string; points?: string[] }[] }> = {
-  'construction-document-automation-first-workflow': { intro: 'The best first automation is rarely the largest process in the business. It is a repeated, bounded workflow where the inputs, decisions and exceptions can be observed. In construction, document-heavy work often provides exactly that kind of starting point.', sections: [
-    { title: 'Start with one repeated document journey', body: 'Choose a task that happens often enough to matter and can be followed from source document to useful output. Avoid combining every estimating, commercial and project-control process into the first test.', points: ['Name the person doing the work', 'Collect representative source documents', 'Record the current steps and hand-offs', 'Define the output that is actually used'] },
-    { title: 'Measure the work before changing it', body: 'Record handling time, waiting time, rework and the kinds of mistakes people must catch. This creates a baseline for evaluating a prototype without inventing a savings claim.' },
-    { title: 'Keep evidence beside automation', body: 'Extracted information should remain connected to its source. Reviewers need to see where a value came from, identify uncertainty and correct exceptions before data moves downstream.', points: ['Preserve page or section references', 'Flag low-confidence and unusual cases', 'Record corrections and approvals', 'Export only reviewed information where risk requires it'] },
-    { title: 'Use a small proof to decide what happens next', body: 'Test the hardest representative documents with a narrow prototype. The result should support a clear decision: stop, improve the process without custom software, run a deeper pilot or move into a controlled product build.' },
-  ]},
-  'how-to-plan-custom-software': { intro: 'The most expensive software mistakes usually happen before development: the wrong problem, an oversized first release or success that nobody defined. A useful plan reduces those risks without pretending every detail is already known.', sections: [
-    { title: 'Start with the operational constraint', body: 'Describe what people are trying to achieve, where the current workflow fails and what that failure costs. A clear problem creates more room for good solutions than a list of requested screens.' },
-    { title: 'Define the smallest complete outcome', body: 'A first release should complete one valuable journey end to end. It can be narrow, but it should be real enough that users can achieve something and the business can learn.', points: ['Name the primary user and decision', 'Map the current journey and evidence', 'Separate launch-critical needs from later options', 'Choose measures before implementation'] },
-    { title: 'Turn assumptions into tests', body: 'Every plan contains uncertainty. Mark which beliefs are commercial, usability or technical risks, then use prototypes and short engineering investigations to resolve the most dangerous ones early.' },
-    { title: 'Plan for operation, not only launch', body: 'Ownership, support, data protection, analytics and future changes belong in the plan. Good software is a maintained capability, not a one-off handover.' },
-  ]},
-  'web-app-or-desktop-app': { intro: 'The right platform follows the workflow. A browser offers reach and simple deployment; a desktop application offers deeper access to local files, hardware and offline processing. Many products benefit from a deliberate combination.', sections: [
-    { title: 'Choose a web app for reach', body: 'Web applications are strong when people need access from different devices, shared real-time data and frequent product updates without installation.', points: ['Customer and partner portals', 'Shared operational dashboards', 'Subscription software', 'Products needing frictionless access'] },
-    { title: 'Choose desktop for local capability', body: 'Desktop software becomes valuable when the product must process large files locally, work without connectivity, integrate with specialist hardware or remain close to sensitive data.', points: ['Document-heavy processing', 'Offline field or secure environments', 'Deep operating-system integration', 'Sustained local computation'] },
-    { title: 'Consider a connected product', body: 'A desktop client can handle local work while a web platform manages accounts, collaboration and reporting. The split should follow real constraints, not fashion.' },
-    { title: 'Make the decision with evidence', body: 'Prototype the riskiest workflow on likely devices. Test file sizes, connection conditions, update requirements and security boundaries before committing to the architecture.' },
-  ]},
-  'ai-automation-business-case': { intro: 'AI creates value when it changes a measurable workflow—not when it is added as decoration. The strongest opportunities combine repetitive information work, clear review rules and enough volume to matter.', sections: [
-    { title: 'Look for a repeated decision', body: 'Good candidates involve documents, messages or records that people repeatedly classify, extract, compare or route. Measure the current time, error rate and delay before proposing automation.' },
-    { title: 'Separate assistance from authority', body: 'An AI system can prepare evidence, recommend an action or execute it. Higher-impact decisions require stronger controls, review and traceability.', points: ['Define what the system may do', 'Set confidence and escalation rules', 'Keep source evidence accessible', 'Record corrections for evaluation'] },
-    { title: 'Test accuracy on your information', body: 'Generic demonstrations are not production evidence. Build a representative evaluation set, include difficult edge cases and decide the acceptable failure behaviour before integration.' },
-    { title: 'Calculate the complete business case', body: 'Include review time, monitoring, model and infrastructure costs, exception handling and maintenance. A smaller dependable automation often produces more value than an ambitious unreliable one.' },
-  ]},
+type Section = { title: string; body: string[]; points?: string[] }
+const copy: Record<string, { intro: string; sections: Section[] }> = {
+  'evidence-linked-bill-of-quantities': {
+    intro: 'A bill of quantities is a set of claims about a building. Each line says: this much of this thing, measured this way. When a line carries no record of where it came from, the only way to check it is to measure it again, which is exactly the work the bill was meant to save.',
+    sections: [
+      { title: 'The cost of an untraceable quantity', body: ['Most bills are built in spreadsheets and takeoff tools that keep the number and lose the reasoning. That is fine until someone asks. A main contractor queries a subcontractor’s partition total. A client’s QS challenges a variation. A colleague picks up a half-finished takeoff.', 'Each time, the answer is the same: open the drawings and start again. The checking costs nearly as much as the measuring.'] },
+      { title: 'What evidence-linking means', body: ['An evidence-linked line keeps its working attached. At minimum that means the source sheet, the location on that sheet, the schedule row or legend key that defined the item, and the method used to turn the drawing into a quantity.'], points: ['Sheet and revision the quantity was taken from', 'Where on the sheet: grid reference, room or mark', 'The definition: schedule row, partition type key, finish legend', 'The method: centre-line length, net area, count of tagged symbols'] },
+      { title: 'Why it matters more with automation', body: ['When software produces quantities, evidence stops being a nice-to-have. A reviewer cannot sensibly approve hundreds of machine-generated lines on trust. They need to see, for each one, what the software looked at.', 'Evidence also changes what review is. Instead of re-measuring, the surveyor checks the reasoning: is this the right partition type, is this enlargement being counted twice, does the schedule agree with the plan? That is the judgement work surveyors are trained for.'] },
+      { title: 'Judgement calls belong to people', body: ['Some quantities depend on decisions the drawings do not make: formwork to a slab edge that sits on a ground beam, a deduction for deck troughs, which of two conflicting schedules is current. A trustworthy system raises these explicitly, with both sources shown, rather than picking one quietly.'] },
+    ],
+  },
+  'automated-takeoff-nrm2': {
+    intro: 'NRM2 gives UK quantity surveyors a shared structure for measuring building work. For automated takeoff it is also a useful discipline: it says what should be measured, in what unit and in what order, which makes it clear where software can do the work and where a surveyor has to decide.',
+    sections: [
+      { title: 'Work sections give automation a target', body: ['Organising output by work section means an automated draft lands in a shape the surveyor already recognises. It also makes coverage measurable: for each section you can say whether the software measured it, found it but needs help, or doesn’t yet read it.', 'That last category matters. A tool that is silent about a work section can look the same as a tool that found nothing to measure. Coverage should be explicit.'] },
+      { title: 'What software does well', body: ['The repetitive, rule-following parts of measurement suit software best: counting tagged symbols, reading schedules row by row, tracing partition runs by type, summing room areas from finish legends, and following pipe and duct runs by system.'], points: ['Counts from schedules and plan marks', 'Lengths of runs by type or system', 'Areas from room outlines and finish keys', 'Cross-checking plan marks against schedules'] },
+      { title: 'What should stay with the surveyor', body: ['Measurement rules leave room for interpretation, and drawings are often incomplete or contradictory. Software should surface these as questions, not answer them invisibly.'], points: ['Choosing between conflicting sources', 'Deductions and allowances that depend on convention', 'Whether an item is in scope or by others', 'Provisional sums and items with no drawn quantity'] },
+      { title: 'Beyond the UK', body: ['Other countries use their own detailed measurement methods. A tool used internationally should record which standard applies to each project, and leave the local, qualified surveyor to set and certify it, rather than claiming compliance it has not earned.'] },
+    ],
+  },
+  'running-a-takeoff-pilot': {
+    intro: 'Demonstrations of takeoff software are usually run on drawings chosen by the vendor. The only test that tells you whether a tool will work for your business is one run on your own projects, compared with bills you already trust.',
+    sections: [
+      { title: 'Use packs you have already priced', body: ['Pick two or three completed tenders with the bill you produced for each. Those bills are your benchmark. Include at least one awkward pack: poor scans, several practices, services drawings, because that is what real tenders look like.'] },
+      { title: 'Decide what you are measuring before you start', body: ['Agree up front which work sections matter to your business and what tolerance you would accept. Score by work section, not overall: a tool can be excellent on doors and ironmongery and unusable on roof coverings, and an average hides that.'], points: ['Lines found versus lines in your bill', 'Quantity difference per line, within your tolerance', 'Items the tool missed entirely', 'Items it billed that should not be there'] },
+      { title: 'Time the review, not just the run', body: ['Processing speed is rarely the bottleneck. What matters is how long it takes a surveyor to get from the draft to a bill they would sign. Evidence on each line should make that review faster; if checking still means re-measuring, the time saving is mostly illusory.'] },
+      { title: 'Protect your data and your clients’', body: ['Find out where your drawings go. Ask whether processing happens on your machine or a vendor’s servers, whether third-party AI services see the documents, and what is kept after the pilot. Get the answers in writing.'] },
+      { title: 'Ask how accuracy claims were made', body: ['If a vendor quotes an accuracy figure, ask on which projects, which trades, against what benchmark, and who checked it. A claim certified by an independent surveyor on held-out projects means something. A single headline percentage usually does not.'] },
+    ],
+  },
 }
 const body = copy[article.slug]
-const relatedSlugs: Record<string, string[]> = {
-  'how-to-plan-custom-software': ['custom-software-development', 'web-application-development'],
-  'web-app-or-desktop-app': ['web-application-development', 'desktop-app-development'],
-  'ai-automation-business-case': ['ai-automation', 'custom-software-development'],
-  'construction-document-automation-first-workflow': ['ai-automation', 'custom-software-development'],
-}
-const relatedServices = services.filter(service => relatedSlugs[article.slug]?.includes(service.slug))
 const published = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${article.date}T00:00:00Z`))
 const articleUrl = `${site.url}/insights/${article.slug}/`
-const schema = { '@context': 'https://schema.org', '@type': 'Article', headline: article.title, description: article.description, datePublished: article.date, dateModified: article.date, mainEntityOfPage: articleUrl, image: `${site.url}/twin-tech-social.webp`, author: { '@id': `${site.url}/#organisation` }, publisher: { '@id': `${site.url}/#organisation` }, about: relatedServices.map(service => service.title) }
+const schema = { '@context': 'https://schema.org', '@type': 'Article', headline: article.title, description: article.description, datePublished: article.date, dateModified: article.date, mainEntityOfPage: articleUrl, image: `${site.url}/boqextract-social.png`, author: { '@id': `${site.url}/#organisation` }, publisher: { '@id': `${site.url}/#organisation` } }
 ---
-<SiteLayout title={article.seoTitle} description={article.description} schema={schema}>
-  <SiteHeader /><main><article class="insight"><header><a href="/insights/">← All insights</a><span class="page-kicker">// {article.category.toUpperCase()}</span><h1>{article.title}</h1><p>{article.description}</p><div><time datetime={article.date}>{published}</time><span>{article.read}</span></div></header><div class="insight-body"><p class="insight-intro">{body.intro}</p>{body.sections.map((section, index) => <section><span>0{index + 1}</span><h2>{section.title}</h2><p>{section.body}</p>{section.points && <ul>{section.points.map(point => <li>{point}</li>)}</ul>}</section>)}<aside class="insight-related"><span>// RELATED EXPERTISE</span><h2>Continue with the relevant capability.</h2><div>{relatedServices.map(service => <a href={`/services/${service.slug}/`}><b>{service.title}</b><small>{service.description}</small><em>Explore →</em></a>)}</div></aside></div></article></main><SiteFooter />
-</SiteLayout>
+<ProductLayout title={article.seoTitle} description={article.description} schema={schema}>
+  <article class="insight">
+    <header><a href="/insights/">← All insights</a><span class="page-kicker">{article.category.toUpperCase()}</span><h1>{article.title}</h1><p>{article.description}</p><div><time datetime={article.date}>{published}</time><span>{article.read}</span></div></header>
+    <div class="insight-body">
+      <p class="insight-intro">{body.intro}</p>
+      {body.sections.map((section, index) => <section><span>0{index + 1}</span><h2>{section.title}</h2>{section.body.map(paragraph => <p>{paragraph}</p>)}{section.points && <ul>{section.points.map(point => <li>{point}</li>)}</ul>}</section>)}
+      <div class="related"><b>See it on your own drawings.</b><a class="btn btn-acid" href="/pilot/">Explore the pilot programme</a></div>
+    </div>
+  </article>
+</ProductLayout>

@@ -1,0 +1,21 @@
+---
+import '../styles/boq.css'
+import SiteLayout from './SiteLayout.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+
+interface Props {
+  title?: string
+  description?: string
+  noindex?: boolean
+  schema?: Record<string, unknown> | Record<string, unknown>[]
+  cta?: boolean
+}
+const { cta = true, ...rest } = Astro.props
+---
+<SiteLayout {...rest}>
+  <a class="skip" href="#main">Skip to content</a>
+  <Header />
+  <main id="main"><slot /></main>
+  <Footer cta={cta} />
+</SiteLayout>

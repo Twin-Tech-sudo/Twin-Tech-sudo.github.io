@@ -1,0 +1,73 @@
+---
+import ProductLayout from '../layouts/ProductLayout.astro'
+import PageHead from '../components/PageHead.astro'
+import { steps, readsList, formats } from '../data/product'
+---
+<ProductLayout title="How BOQ Extract Works | From Tender Pack to Draft Bill" description="See how BOQ Extract reads a full tender pack, measures into NRM2 work sections and hands your QS an evidence-linked draft bill to review.">
+  <PageHead kicker="How it works" title="From tender pack to reviewable bill." accent="Your QS stays in charge." intro="BOQ Extract does the reading, counting and measuring. Your surveyors do the judging. Here is what happens between loading a pack and exporting a bill." />
+
+  <section class="section light">
+    <div class="wrap">
+      <div class="steps">
+        {steps.map(step => <article class="step"><span class="num">{step.number}</span><h3>{step.title}</h3><p>{step.text}</p></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap split top">
+      <div>
+        <span class="kicker">Step 01–02 · Intake and reading</span>
+        <div class="section-head" style="margin-bottom:0"><h2>Every sheet gets the right reader.</h2>
+        <p>A tender pack is not one document. It is dozens of drawings from different practices, each with its own conventions. BOQ Extract first works out what each sheet is, then routes it to the specialist readers built for that kind of drawing.</p></div>
+      </div>
+      <div class="feature-list">
+        <div><span class="ico">01</span><div><h3>Sheet classification</h3><p>Discipline, drawing type and role (plan, elevation, section, schedule, detail or specification) are identified for every page, along with scale and orientation.</p></div></div>
+        <div><span class="ico">02</span><div><h3>Difficult PDFs handled</h3><p>Sheets with no text layer, text printed as strokes, rotated pages and colour-keyed layouts are read rather than skipped. OCR runs locally when it is needed.</p></div></div>
+        <div><span class="ico">03</span><div><h3>Cross-referencing</h3><p>Plan marks are matched to schedules, room tags to finish legends and symbols to their keys, so a door on a plan and its row in the schedule become one bill line.</p></div></div>
+        <div><span class="ico">04</span><div><h3>Enlargements not double-counted</h3><p>Where a part of one sheet is redrawn at a larger scale on another, the enlargement is kept as evidence rather than billed twice.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><span class="kicker">Inputs</span><h2>What you can load.</h2></div>
+      <div class="reads-grid">
+        {readsList.map(group => <article><h3>{group.title}</h3><ul>{group.items.map(item => <li>{item}</li>)}</ul></article>)}
+      </div>
+      <div class="formats">{formats.map(format => <span>{format}</span>)}</div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="wrap split top">
+      <div>
+        <span class="kicker">Step 03 · Measurement</span>
+        <div class="section-head" style="margin-bottom:0"><h2>A draft bill in the structure <em>you already use.</em></h2>
+        <p>Quantities are organised into NRM2 work sections with units and descriptions, and every line keeps the trail of how it was produced.</p></div>
+      </div>
+      <div class="feature-list">
+        <div><span class="ico">m²</span><div><h3>Lengths, areas, volumes and counts</h3><p>Partition runs by wall type, finish areas by room, slab volumes, pipe and duct runs by system, symbol counts by type, schedule items row by row.</p></div></div>
+        <div><span class="ico">?</span><div><h3>Decisions surfaced</h3><p>When a quantity depends on a measurement convention or a conflict in the drawings, such as a legend that disagrees with a schedule, the question is raised for your QS with both sources shown.</p></div></div>
+        <div><span class="ico">◎</span><div><h3>Coverage you can see</h3><p>A trade matrix shows which work sections were measured, which were found but need review, and which are missing from the pack, so gaps are visible before you price.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split top">
+      <div>
+        <span class="kicker">Step 04 · Review, certify, export</span>
+        <div class="section-head" style="margin-bottom:0"><h2>Built around how a bill gets signed off.</h2>
+        <p>The output is a draft. The workspace is designed to get it from draft to issue with a clear record of who checked what.</p></div>
+      </div>
+      <div class="feature-list">
+        <div><span class="ico">✓</span><div><h3>Review queue</h3><p>Lines needing attention come first, each with the drawing evidence beside it. Accept, correct or query in one place.</p></div></div>
+        <div><span class="ico">2×</span><div><h3>Separate reviewer and certifier</h3><p>The workspace enforces a second pair of eyes: the person who certifies a bill cannot be the person who reviewed it.</p></div></div>
+        <div><span class="ico">⇩</span><div><h3>Excel export with controls</h3><p>Export the reviewed bill to an Excel workbook that carries the locale profile, run details and the status of each line.</p></div></div>
+        <div><span class="ico">◷</span><div><h3>Every run recorded</h3><p>Each run is snapshotted with its settings, so any bill can be traced back to exactly what produced it.</p></div></div>
+      </div>
+    </div>
+  </section>
+</ProductLayout>

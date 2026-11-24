@@ -1,0 +1,71 @@
+---
+// Illustrative product visual: a drawing sheet whose highlighted partition run is the
+// evidence for the selected draft bill line. Figures are illustrative, not project data.
+---
+<figure class="hero-visual" aria-label="Illustration: a partition run highlighted on a floor plan, linked to the draft bill line it produced">
+  <div class="sheet">
+    <div class="sheet-bar"><span>A-101</span><span>Ground floor GA plan</span><span>1:100</span></div>
+    <svg viewBox="0 0 520 340" role="presentation">
+      <defs>
+        <pattern id="hv-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="currentColor" stroke-opacity=".07" /></pattern>
+      </defs>
+      <rect width="520" height="340" fill="url(#hv-grid)" />
+      <!-- grid lines -->
+      <g class="hv-gridlines">
+        <line x1="40" y1="18" x2="40" y2="322" /><line x1="190" y1="18" x2="190" y2="322" /><line x1="340" y1="18" x2="340" y2="322" /><line x1="480" y1="18" x2="480" y2="322" />
+        <circle cx="40" cy="12" r="9" /><circle cx="190" cy="12" r="9" /><circle cx="340" cy="12" r="9" /><circle cx="480" cy="12" r="9" />
+        <text x="40" y="16">C</text><text x="190" y="16">D</text><text x="340" y="16">E</text><text x="480" y="16">F</text>
+      </g>
+      <!-- external walls -->
+      <path class="hv-wall" d="M40 40H480V300H40Z" />
+      <!-- internal partitions -->
+      <path class="hv-part" d="M190 40V140M190 180V300M340 40V120M40 200H150" />
+      <!-- the measured run -->
+      <path class="hv-run" d="M190 160H480" />
+      <path class="hv-run-glow" d="M190 160H480" />
+      <!-- doors -->
+      <g class="hv-door"><path d="M190 140A40 40 0 0 1 230 180" /><line x1="190" y1="140" x2="190" y2="180" /></g>
+      <g class="hv-door"><path d="M340 120A30 30 0 0 0 370 150" /></g>
+      <g class="hv-tags">
+        <rect x="200" y="96" width="34" height="16" rx="3" /><text x="217" y="108">D01</text>
+        <rect x="352" y="76" width="34" height="16" rx="3" /><text x="369" y="88">D02</text>
+      </g>
+      <!-- room tags -->
+      <g class="hv-room"><text x="98" y="110">G.01</text><text x="98" y="124" class="small">RECEPTION</text></g>
+      <g class="hv-room"><text x="262" y="78">G.02</text><text x="262" y="92" class="small">OFFICE</text></g>
+      <g class="hv-room"><text x="410" y="78">G.03</text><text x="410" y="92" class="small">MEETING</text></g>
+      <g class="hv-room"><text x="330" y="236">G.04</text><text x="330" y="250" class="small">OPEN PLAN</text></g>
+      <!-- partition type key -->
+      <g class="hv-key"><rect x="404" y="164" width="26" height="14" rx="3" /><text x="417" y="175">P1</text></g>
+      <!-- evidence marker -->
+      <circle class="hv-pulse" cx="300" cy="160" r="8" />
+      <circle class="hv-dot" cx="300" cy="160" r="4" />
+    </svg>
+  </div>
+  <div class="bill-card">
+    <div class="bill-head"><span>Draft bill</span><span class="mono">08 · Internal walls</span></div>
+    <div class="bill-row active">
+      <span class="mono code">08-010</span>
+      <span class="desc">Partition type P1, 100 mm metal stud, 2 × 12.5 mm board</span>
+      <span class="qty mono">29.00 m</span>
+      <span class="src mono">A-101 · grid D–F/3</span>
+      <span class="chip chip-review">Review</span>
+    </div>
+    <div class="bill-row">
+      <span class="mono code">09-010</span>
+      <span class="desc">Doorset, single leaf, 926 × 2040 mm</span>
+      <span class="qty mono">2 nr</span>
+      <span class="src mono">A-401 · door schedule</span>
+      <span class="chip chip-ok">Accepted</span>
+    </div>
+    <div class="bill-row">
+      <span class="mono code">10-030</span>
+      <span class="desc">Suspended ceiling, 600 × 600 grid</span>
+      <span class="qty mono">112.40 m²</span>
+      <span class="src mono">A-201 · RCP</span>
+      <span class="chip chip-ok">Accepted</span>
+    </div>
+    <div class="bill-foot mono"><span>Evidence linked</span><span>3 / 3 lines</span></div>
+  </div>
+  <figcaption>Illustrative example</figcaption>
+</figure>

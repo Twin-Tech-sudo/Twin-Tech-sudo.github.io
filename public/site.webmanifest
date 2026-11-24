@@ -1,10 +1,10 @@
 {
-  "name": "Twin Tech-sudo",
-  "short_name": "TT-sudo",
+  "name": "BOQ Extract",
+  "short_name": "BOQ Extract",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#0d0f0e",
   "theme_color": "#c7ff17",
-  "icons": [{ "src": "/twin-tech-sudo-mark-256.png", "sizes": "256x256", "type": "image/png" }]
+  "icons": [{ "src": "/boqextract-mark-256.png", "sizes": "256x256", "type": "image/png" }]
 }

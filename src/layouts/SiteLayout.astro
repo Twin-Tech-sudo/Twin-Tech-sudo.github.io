@@ -1,7 +1,4 @@
 ---
-import '../styles.css'
-import '../styles/pages.css'
-import '../styles/mobile-hero.css'
 import { site } from '../data/site'
 
 interface Props {
@@ -12,23 +9,15 @@ interface Props {
   schema?: Record<string, unknown> | Record<string, unknown>[]
 }
 
-const { title = site.defaultTitle, description = site.defaultDescription, image = '/twin-tech-social.webp', noindex = false, schema } = Astro.props
+const { title = site.defaultTitle, description = site.defaultDescription, image = '/boqextract-social.png', noindex = false, schema } = Astro.props
 const canonical = new URL(Astro.url.pathname, site.url)
 const socialImage = new URL(image, site.url)
 const verification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION
 const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID
 const pathParts = Astro.url.pathname.split('/').filter(Boolean)
 const labelOverrides: Record<string, string> = {
-  insights: 'Insights', services: 'Services', work: 'Work', about: 'About',
-  contact: 'Contact', process: 'Process', privacy: 'Privacy', cookies: 'Cookies', terms: 'Terms',
-  'custom-software-development': 'Custom Software Development',
-  'web-application-development': 'Web Application Development',
-  'mobile-app-development': 'Mobile App Development',
-  'desktop-app-development': 'Desktop App Development',
-  'website-development': 'Website Design and Development',
-  'ecommerce-development': 'E-commerce Development',
-  'ai-automation': 'AI and Workflow Automation',
-  boqextract: 'BOQExtract', 'macks-packs': "Mack's Packs",
+  'how-it-works': 'How it works', coverage: 'Coverage', trust: 'Evidence', security: 'Security', pilot: 'Pilot programme',
+  about: 'About', contact: 'Contact', insights: 'Insights', privacy: 'Privacy', cookies: 'Cookies', terms: 'Terms',
 }
 const breadcrumb = pathParts.length ? {
   '@context': 'https://schema.org',
@@ -43,15 +32,21 @@ const breadcrumb = pathParts.length ? {
   ],
 } : null
 const organisation = {
-  '@context': 'https://schema.org', '@type': ['Organization', 'ProfessionalService'], '@id': `${site.url}/#organisation`,
+  '@context': 'https://schema.org', '@type': 'Organization', '@id': `${site.url}/#organisation`,
   name: site.name, ...(site.legalName ? { legalName: site.legalName } : {}), url: site.url,
-  logo: `${site.url}/twin-tech-sudo-mark-256.png`,
+  logo: `${site.url}/boqextract-mark-256.png`,
   ...(site.email ? { email: site.email, contactPoint: { '@type': 'ContactPoint', email: site.email, contactType: 'sales', availableLanguage: 'English' } } : {}),
-  areaServed: { '@type': 'Country', name: 'United Kingdom' },
-  knowsAbout: ['Digital product strategy', 'Experience design', 'Custom software development', 'SaaS development', 'Web application development', 'Mobile application development', 'Desktop application development', 'Website development', 'E-commerce development', 'AI automation'],
+  areaServed: ['United Kingdom', 'Ireland', 'United Arab Emirates', 'Saudi Arabia', 'Qatar'],
+  knowsAbout: ['Quantity takeoff', 'Bill of quantities', 'NRM2', 'Quantity surveying', 'Construction estimating', 'Tender analysis'],
+}
+const software = {
+  '@context': 'https://schema.org', '@type': 'SoftwareApplication', '@id': `${site.url}/#software`,
+  name: site.name, applicationCategory: 'BusinessApplication', applicationSubCategory: 'Quantity takeoff and bill of quantities',
+  operatingSystem: 'Windows 11', publisher: { '@id': `${site.url}/#organisation` },
+  description: site.defaultDescription,
 }
 const website = { '@context': 'https://schema.org', '@type': 'WebSite', '@id': `${site.url}/#website`, name: site.name, url: site.url, publisher: { '@id': `${site.url}/#organisation` } }
-const jsonLd = [organisation, website, ...(breadcrumb ? [breadcrumb] : []), ...(schema ? (Array.isArray(schema) ? schema : [schema]) : [])]
+const jsonLd = [organisation, software, website, ...(breadcrumb ? [breadcrumb] : []), ...(schema ? (Array.isArray(schema) ? schema : [schema]) : [])]
 ---
 <!doctype html>
 <html lang="en-GB">
@@ -73,11 +68,13 @@ const jsonLd = [organisation, website, ...(breadcrumb ? [breadcrumb] : []), ...(
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage} />
-    <meta name="theme-color" content="#0a0b0d" />
+    <meta name="theme-color" content="#0d0f0e" />
     {verification && <meta name="google-site-verification" content={verification} />}
-    <link rel="icon" type="image/png" sizes="256x256" href="/twin-tech-sudo-mark-256.png" />
+    <link rel="icon" type="image/svg+xml" href="/boqextract-mark.svg" />
+    <link rel="icon" type="image/png" sizes="256x256" href="/boqextract-mark-256.png" />
+    <link rel="apple-touch-icon" href="/boqextract-mark-256.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <link rel="alternate" type="application/rss+xml" title="Twin Tech-sudo Insights" href="/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title="BOQ Extract Insights" href="/rss.xml" />
     {jsonLd.map(item => <script type="application/ld+json" set:html={JSON.stringify(item)} />)}
     <slot name="head" />
   </head>
@@ -85,7 +82,7 @@ const jsonLd = [organisation, website, ...(breadcrumb ? [breadcrumb] : []), ...(
     <slot />
     {gaId && <div class="consent-banner" data-consent-banner hidden role="dialog" aria-label="Analytics cookie choices"><div><strong>Optional analytics</strong><p>Help improve this site with Google Analytics usage data. Nothing non-essential loads until you accept.</p><a href="/cookies/">Cookie details</a></div><div><button type="button" data-consent-reject>Decline</button><button type="button" data-consent-accept>Accept analytics</button></div></div>}
     {gaId && <script is:inline define:vars={{ gaId }}>
-      const key = 'twin-analytics-consent'
+      const key = 'boqextract-analytics-consent'
       const banner = document.querySelector('[data-consent-banner]')
       const loadAnalytics = () => {
         if (document.querySelector('script[src*="googletagmanager.com/gtag/js"]')) return

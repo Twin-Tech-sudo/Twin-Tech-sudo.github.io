@@ -1,0 +1,40 @@
+---
+import ProductLayout from '../layouts/ProductLayout.astro'
+import PageHead from '../components/PageHead.astro'
+---
+<ProductLayout title="Security and Data Handling | BOQ Extract" description="BOQ Extract processes tender packs locally on a Windows computer you control. No uploads, no paid AI by default, and clear roles for every user.">
+  <PageHead kicker="Security and data" title="Your clients’ drawings" accent="never leave your building." intro="Tender documents are confidential and often not yours to share. BOQ Extract is built so you never have to: it runs as a desktop application on your own computer, offline." />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cards-3">
+        <article class="card"><span class="tag">Local</span><h3>Processed on your machine</h3><p>Reading, OCR and measurement all run on the Windows computer the software is installed on. There is no upload step and no shared cloud workspace.</p></article>
+        <article class="card"><span class="tag">Offline</span><h3>No paid AI by default</h3><p>The engine needs no external AI service. Optional AI providers are switched off by default, and they stay switched off in pilots.</p></article>
+        <article class="card"><span class="tag">Controlled</span><h3>Named roles and records</h3><p>Admin, operator, reviewer and certifier are separate roles. Decisions are recorded with who made them and when.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap split top">
+      <div class="section-head" style="margin-bottom:0">
+        <span class="kicker">In detail</span>
+        <h2>How data is handled.</h2>
+        <p>The details your IT and information-security teams will ask about.</p>
+      </div>
+      <div class="feature-list">
+        <div><span class="ico">01</span><div><h3>Where data lives</h3><p>Project files and results are stored in the application’s data folder on the local machine, which can be pointed at a drive of your choosing.</p></div></div>
+        <div><span class="ico">02</span><div><h3>Credentials</h3><p>If you choose to enable an optional provider, its keys are stored in Windows Credential Manager, not in plain-text configuration files.</p></div></div>
+        <div><span class="ico">03</span><div><h3>Pilot data</h3><p>Pilot terms set out in writing what is retained, for how long and for what purpose. Anonymised metrics are kept only where you give permission.</p></div></div>
+        <div><span class="ico">04</span><div><h3>Private deployment</h3><p>For organisations that need it, we can deploy into a controlled environment and review data handling with your IT team.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tight">
+    <div class="wrap split">
+      <div class="section-head" style="margin-bottom:0"><span class="kicker">Questions</span><h2>Need a security questionnaire answered?</h2><p>Send it over. We’ll answer it in writing.</p></div>
+      <div><a class="btn btn-dark" href="/contact/">Contact us</a></div>
+    </div>
+  </section>
+</ProductLayout>

@@ -1,0 +1,70 @@
+---
+import ProductLayout from '../layouts/ProductLayout.astro'
+import PageHead from '../components/PageHead.astro'
+---
+<ProductLayout title="Evidence and Accuracy | BOQ Extract" description="How BOQ Extract earns trust: evidence on every line, blind testing on real public tenders and independent QS certification before any accuracy claim.">
+  <PageHead kicker="Evidence and accuracy" title="Trust is earned line by line." accent="So we show our working." intro="Automated takeoff is only useful if you can check it. BOQ Extract is built so that every quantity can be challenged, and so that any accuracy we claim has been proven by someone independent of us." />
+
+  <section class="section">
+    <div class="wrap split top">
+      <div>
+        <span class="kicker">Principle 01</span>
+        <div class="section-head" style="margin-bottom:0"><h2>Evidence on every line.</h2>
+        <p>No quantity enters the draft bill without the sheet, location and method that produced it. If BOQ Extract can’t point to it, it doesn’t bill it. It raises it for review instead.</p></div>
+      </div>
+      <div class="feature-list">
+        <div><span class="ico">↗</span><div><h3>Traceable to the drawing</h3><p>Each line references the source sheet and where on it the quantity was taken, plus the schedule row or legend key that defined the item.</p></div></div>
+        <div><span class="ico">≠</span><div><h3>Conflicts shown, not resolved silently</h3><p>When a plan key and a schedule disagree, both are shown and the decision goes to your QS.</p></div></div>
+        <div><span class="ico">#</span><div><h3>Tied to the exact source files</h3><p>Runs record which source files they used, so evidence stays linked to the documents that were actually issued.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="wrap split top">
+      <div>
+        <span class="kicker">Principle 02</span>
+        <div class="section-head" style="margin-bottom:0"><h2>Tested blind on <em>real tenders.</em></h2>
+        <p>We test against complete, publicly tendered UK projects from different architects and engineers, running the engine exactly as it stood when each pack arrived, before any change made for that pack. Then we compare it with the tender bill.</p></div>
+      </div>
+      <ul class="tick-list">
+        <li>Real packs from several practices: architectural, structural, civils and services drawings, plus specifications</li>
+        <li>Untouched holdout packs kept back so results can’t be tuned to them</li>
+        <li>Every miss recorded and traced to a cause, then fixed in the reader rather than in the data</li>
+        <li>Regression packs re-run after every change, so a fix for one practice’s drawings can’t quietly break another’s</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split top">
+      <div>
+        <span class="kicker">Principle 03</span>
+        <div class="section-head" style="margin-bottom:0"><h2>Independent certification before any claim.</h2>
+        <p>We will only publish an accuracy figure for a work section once an independent, RICS-registered quantity surveyor, with no part in building the product, has certified it against real project evidence.</p></div>
+      </div>
+      <div class="pledge" style="grid-template-columns:1fr">
+        <div>
+          <span class="kicker">What a published claim will require</span>
+          <ul class="tick-list" style="margin-top:20px">
+            <li>Certification by an independent QS, separate from the reviewer</li>
+            <li>Results on held-out projects the engine was never tuned on</li>
+            <li>Scope stated precisely: which work sections, which projects, which tolerance</li>
+            <li>Every certified line linked to its original source documents</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt tight">
+    <div class="wrap split">
+      <div class="section-head" style="margin-bottom:0">
+        <span class="kicker">Where we are</span>
+        <h2>Certification is our next milestone.</h2>
+        <p>Independent certification on a full, real tender comes next. Design partners see the evidence as it is produced and get first access to the results.</p>
+      </div>
+      <div><a class="btn btn-dark" href="/pilot/">Become a design partner</a></div>
+    </div>
+  </section>
+</ProductLayout>

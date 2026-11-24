@@ -1,0 +1,29 @@
+---
+import Brand from './Brand.astro'
+import { site } from '../data/site'
+interface Props { cta?: boolean }
+const { cta = true } = Astro.props
+const analyticsEnabled = Boolean(import.meta.env.PUBLIC_GA_MEASUREMENT_ID)
+---
+{cta && <section class="cta-band">
+  <div class="wrap cta-inner">
+    <div>
+      <span class="kicker">Design partner programme</span>
+      <h2>Test it on a pack <em>you have already priced.</em></h2>
+      <p>Bring a past tender and the bill you produced for it. We run BOQ Extract on your own machine and compare it, line by line, with work you already trust.</p>
+    </div>
+    <div class="cta-actions"><a class="btn btn-acid" href="/pilot/#apply">Apply for a place</a><a class="btn btn-ghost" href="/how-it-works/">See how it works</a></div>
+  </div>
+</section>}
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand"><Brand /><p>Evidence-linked quantity takeoff for quantity surveyors, contractors and specialist subcontractors.</p></div>
+    <div><strong>Product</strong><a href="/how-it-works/">How it works</a><a href="/coverage/">Trade coverage</a><a href="/trust/">Evidence and accuracy</a><a href="/security/">Security and data</a></div>
+    <div><strong>Company</strong><a href="/pilot/">Pilot programme</a><a href="/about/">About</a><a href="/insights/">Insights</a><a href="/contact/">Contact</a></div>
+    <div><strong>Legal</strong><a href="/privacy/">Privacy notice</a><a href="/cookies/">Cookie notice</a><a href="/terms/">Website terms</a>{analyticsEnabled && <button type="button" class="link-button" data-cookie-settings>Cookie settings</button>}</div>
+  </div>
+  <div class="wrap footer-base">
+    <p>© {new Date().getFullYear()} {site.legalName || site.name}.{site.companyNumber && <> Company no. {site.companyNumber}. Registered in {site.jurisdiction}.{site.registeredOffice && <> Registered office: {site.registeredOffice}.</>}</>}</p>
+    <p>BOQ Extract produces draft quantities for review by a qualified quantity surveyor.</p>
+  </div>
+</footer>

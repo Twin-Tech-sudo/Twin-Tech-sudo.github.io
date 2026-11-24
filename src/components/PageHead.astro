@@ -1,0 +1,13 @@
+---
+interface Props { kicker: string; title: string; accent?: string; intro: string }
+const { kicker, title, accent, intro } = Astro.props
+---
+<section class="page-head">
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="kicker">{kicker}</span>
+    <h1>{title}{accent && <><br /><em>{accent}</em></>}</h1>
+    <p class="lede">{intro}</p>
+    <slot />
+  </div>
+</section>

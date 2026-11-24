@@ -1,0 +1,60 @@
+---
+import ProductLayout from '../layouts/ProductLayout.astro'
+import PageHead from '../components/PageHead.astro'
+import EnquiryForm from '../components/EnquiryForm.astro'
+import { pilots, pilotFaqs } from '../data/product'
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: pilotFaqs.map(item => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a } })) }
+---
+<ProductLayout title="Pilot Programme | BOQ Extract" description="Test BOQ Extract on tender packs you have already priced. Free design partner places plus paid pilots from £2,500, run locally on your own machine." schema={faqSchema} cta={false}>
+  <PageHead kicker="Pilot programme" title="Prove it on your own projects." accent="Before you commit." intro="The only fair test of automated takeoff is a pack you’ve already priced. Our pilots run BOQ Extract on your past tenders, on your own machine, and compare the result line by line with the bills you trust." />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="pilot-grid">
+        {pilots.map(pilot => <article class={`pilot${pilot.featured ? ' featured' : ''}`}>
+          {pilot.featured && <span class="badge">{pilot.note}</span>}
+          <h2 style="font-size:20px">{pilot.name}</h2>
+          <div class="price">{pilot.price}</div>
+          {!pilot.featured && <span class="note">{pilot.note}</span>}
+          <p class="summary">{pilot.summary}</p>
+          <ul class="tick-list">{pilot.includes.map(item => <li>{item}</li>)}</ul>
+        </article>)}
+      </div>
+      <p style="margin-top:24px;color:var(--muted);font-size:14.5px;max-width:820px">Pilot output is a review-required draft for evaluation. It is not for pricing a live tender and comes with no accuracy warranty. All prices exclude VAT.</p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap split top">
+      <div class="section-head" style="margin-bottom:0">
+        <span class="kicker">Design partners</span>
+        <h2>What we ask of design partners.</h2>
+        <p>Design partners get early access, influence over the roadmap and first sight of certified results. In return we ask for:</p>
+      </div>
+      <ul class="tick-list">
+        <li>Drawing packs you have the right to share, with the bills you produced for them</li>
+        <li>A named QS to review output, and a second person to act as certifier</li>
+        <li>A Windows 11 computer your organisation controls</li>
+        <li>Scheduled feedback and a short close-out interview</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><span class="kicker">Questions</span><h2>Pilot FAQs</h2></div>
+      <div class="faq">{pilotFaqs.map(item => <details><summary>{item.q}</summary><p>{item.a}</p></details>)}</div>
+    </div>
+  </section>
+
+  <section class="section alt" id="apply">
+    <div class="wrap split top">
+      <div class="section-head" style="margin-bottom:0">
+        <span class="kicker">Apply</span>
+        <h2>Request a pilot place.</h2>
+        <p>Tell us a little about your team and the work you price. We’ll reply to arrange a short call and agree which packs to test.</p>
+      </div>
+      <EnquiryForm interest="Design partner programme" />
+    </div>
+  </section>
+</ProductLayout>

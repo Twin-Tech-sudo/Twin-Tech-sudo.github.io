@@ -1,0 +1,38 @@
+---
+import { site } from '../data/site'
+interface Props { interest?: string }
+const { interest = '' } = Astro.props
+const options = ['Design partner programme', 'Starter pilot', 'Standard pilot', 'Private deployment', 'General enquiry', 'Investment or partnership']
+---
+{site.email ? (
+  <form class="form" data-enquiry data-email={site.email}>
+    <label>Your name<input required name="Name" autocomplete="name" /></label>
+    <label>Work email<input required type="email" name="Email" autocomplete="email" /></label>
+    <label>Organisation<input required name="Organisation" autocomplete="organization" /></label>
+    <label>Country<input name="Country" autocomplete="country-name" /></label>
+    <label>You are a<select name="Organisation type"><option>Specialist subcontractor</option><option>Quantity surveying practice</option><option>Main contractor</option><option>Client or developer</option><option>Other</option></select></label>
+    <label>Interested in<select name="Interested in">{options.map(option => <option selected={option === interest}>{option}</option>)}</select></label>
+    <label class="full">Main trades or work sections <span>Optional</span><input name="Trades" placeholder="e.g. partitions, ceilings, doors and ironmongery" /></label>
+    <label class="full">Anything else we should know <span>Optional</span><textarea name="Message" rows="5" placeholder="Typical project size, how you measure today, what you'd want to test"></textarea></label>
+    <p class="full small">Please don’t include drawings or confidential project details in a first message. We use your details only to reply and discuss BOQ Extract. See the <a href="/privacy/">privacy notice</a>.</p>
+    <button class="btn btn-acid" type="submit">Send enquiry</button>
+    <p class="small" style="align-self:center">Opens your email app with your answers filled in.</p>
+  </form>
+) : (
+  <div class="notice">
+    <span class="kicker">Enquiries opening shortly</span>
+    <h2>Our enquiry line is being set up.</h2>
+    <p>The verified business email address for BOQ Extract will appear here shortly. Please check back soon.</p>
+  </div>
+)}
+<script>
+  document.querySelectorAll<HTMLFormElement>('form[data-enquiry]').forEach(form => {
+    form.addEventListener('submit', event => {
+      event.preventDefault()
+      const data = new FormData(form)
+      const lines = [...data.entries()].filter(([, value]) => String(value).trim()).map(([key, value]) => `${key}: ${value}`)
+      const subject = `BOQ Extract enquiry: ${data.get('Interested in') || 'General'} (${data.get('Organisation') || ''})`
+      window.location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`
+    })
+  })
+</script>

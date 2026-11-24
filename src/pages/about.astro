@@ -1,45 +1,29 @@
 ---
-import SiteLayout from '../layouts/SiteLayout.astro'
-import SiteHeader from '../components/SiteHeader.astro'
-import SiteFooter from '../components/SiteFooter.astro'
-import PageHero from '../components/PageHero.astro'
-
-const principles = [
-  {
-    title: 'Product thinking included',
-    detail: 'The brief is challenged and sharpened before code turns assumptions into expense. We connect the commercial goal, user need and delivery constraints so the first release solves a defined problem instead of simply reproducing an initial feature list.',
-    includes: ['Clarify the outcome and audience', 'Challenge costly assumptions early', 'Prioritise the smallest useful release', 'Define evidence of success'],
-  },
-  {
-    title: 'Build quality visible',
-    detail: 'Working releases, plain-English decisions and evidence replace agency theatre. You can inspect progress throughout the build, understand important trade-offs and see quality demonstrated through the product rather than hidden behind status reports.',
-    includes: ['Frequent working-product reviews', 'Clear technical decisions and trade-offs', 'Testing and release evidence', 'Visible progress against priorities'],
-  },
-  {
-    title: 'Made to be maintained',
-    detail: 'Clear systems, documentation and ownership matter after the first release. Architecture, code and operational choices are made with future change in mind so the product can be understood, supported and extended without avoidable dependency.',
-    includes: ['Readable, structured source code', 'Documented setup and key decisions', 'Reliable deployment and monitoring', 'A practical route for future development'],
-  },
-  {
-    title: 'Direct collaboration',
-    detail: 'The person in the conversation is close to the design and the engineering. That shortens feedback loops, reduces translation between disciplines and keeps product, design and technical decisions connected to the real business objective.',
-    includes: ['Direct access to the builder', 'Fast, focused feedback loops', 'Fewer layers and hand-offs', 'Shared ownership of key decisions'],
-  },
-]
+import ProductLayout from '../layouts/ProductLayout.astro'
+import PageHead from '../components/PageHead.astro'
 ---
-<SiteLayout title="About Twin Tech-sudo | Independent UK Software Studio" description="Twin Tech-sudo is an independent UK software development studio combining product strategy, interface design and hands-on engineering.">
-  <SiteHeader /><main><PageHero kicker="ABOUT TWIN TECH-SUDO" title="Senior thinking." accent="Builder energy." intro="A hands-on UK software development studio for founders and businesses that value momentum, craft and honest technical thinking." index="01" />
-  <section id="content" class="page-section about-story"><div><span class="page-kicker">// THE STUDIO</span><h2>One continuous line from<br />ambition to <em>working product.</em></h2></div><div><p class="large-copy">Twin Tech-sudo exists to close the gap between a polished idea and software that genuinely works in the real world.</p><p>You work directly with the person shaping and building the product. That creates tighter feedback, fewer hand-offs and technology choices made around the actual goal—not a sales deck.</p></div></section>
-  <section class="page-section principle-section" aria-labelledby="principles-title">
-    <div class="principle-section-intro"><span class="page-kicker">// HOW THE STUDIO WORKS</span><h2 id="principles-title">Four principles behind<br /><em>every engagement.</em></h2><p>Select a principle to see what it means in practice.</p></div>
-    <div class="feature-list principle-accordion">{principles.map((item, index) => <details name="studio-principles" open={index === 0}><summary><span>0{index + 1}</span><h3>{item.title}</h3><b class="feature-toggle"><em class="show-label">Expand details</em><em class="hide-label">Collapse details</em><i aria-hidden="true">+</i></b></summary><div class="feature-detail"><p>{item.detail}</p><div><b>In practice</b><ul>{item.includes.map(include => <li>{include}</li>)}</ul></div></div></details>)}</div>
+<ProductLayout title="About BOQ Extract | Why We Built It" description="BOQ Extract is a UK construction technology company building evidence-linked quantity takeoff that quantity surveyors can check and trust.">
+  <PageHead kicker="About" title="Built to give surveyors" accent="their time back." intro="BOQ Extract is a UK construction technology company. We are building software that reads construction drawings the way an experienced surveyor does, and shows its working the way a good surveyor would." />
+
+  <section class="section">
+    <div class="wrap split top">
+      <div class="section-head" style="margin-bottom:0"><span class="kicker">Why</span><h2>The bill of quantities deserves better tools.</h2></div>
+      <div class="prose">
+        <p>Every tender starts the same way: a pack of drawings, a deadline and hours of measuring. The same sheets are counted and scaled again and again by every bidder, and the numbers that come out rarely carry any record of where they came from.</p>
+        <p>We think most of that work can be done by software, but only if the software is honest about what it found, what it measured and what it couldn’t decide. So BOQ Extract was built evidence-first: every quantity tied to its source, every judgement call handed to a person, and no accuracy claim made until someone independent has checked it.</p>
+        <p>We are starting with the UK and NRM2, and with the fit-out trades where the readers are strongest, then expanding trade by trade and country by country with design partners who price this work every day.</p>
+      </div>
+    </div>
   </section>
-  </main><SiteFooter />
-</SiteLayout>
-<script>
-  const principleItems = document.querySelectorAll<HTMLDetailsElement>('.principle-accordion details')
-  principleItems.forEach(item => item.addEventListener('toggle', () => {
-    if (!item.open) return
-    principleItems.forEach(other => { if (other !== item) other.open = false })
-  }))
-</script>
+
+  <section class="section dark">
+    <div class="wrap">
+      <div class="section-head"><span class="kicker">Principles</span><h2>How we work.</h2></div>
+      <div class="cards-3">
+        <article class="card"><span class="tag">01</span><h3>Show the working</h3><p>A quantity without evidence is a guess. Every line in a BOQ Extract bill can be traced to the drawing it came from.</p></article>
+        <article class="card"><span class="tag">02</span><h3>People decide</h3><p>Software measures; qualified surveyors judge, review and certify. The product is designed around that line, not around replacing it.</p></article>
+        <article class="card"><span class="tag">03</span><h3>Prove, then claim</h3><p>We publish what we can do and what we can’t yet, and we only quote accuracy that an independent QS has certified.</p></article>
+      </div>
+    </div>
+  </section>
+</ProductLayout>

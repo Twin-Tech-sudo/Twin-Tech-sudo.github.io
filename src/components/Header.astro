@@ -1,0 +1,25 @@
+---
+import Brand from './Brand.astro'
+import { nav } from '../data/site'
+const path = Astro.url.pathname
+---
+<header class="site-header" data-header>
+  <div class="wrap header-inner">
+    <Brand />
+    <nav id="site-nav" aria-label="Main navigation">
+      {nav.map(item => <a href={item.href} aria-current={path.startsWith(item.href) ? 'page' : undefined}>{item.label}</a>)}
+      <a class="btn btn-acid btn-sm" href="/pilot/#apply">Join the pilot</a>
+    </nav>
+    <button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span class="sr-only">Menu</span></button>
+  </div>
+</header>
+<script>
+  const header = document.querySelector<HTMLElement>('[data-header]')
+  const button = header?.querySelector<HTMLButtonElement>('.menu-toggle')
+  button?.addEventListener('click', () => {
+    const open = header!.classList.toggle('open')
+    button.setAttribute('aria-expanded', String(open))
+  })
+  const onScroll = () => header?.classList.toggle('scrolled', window.scrollY > 12)
+  onScroll(); window.addEventListener('scroll', onScroll, { passive: true })
+</script>
