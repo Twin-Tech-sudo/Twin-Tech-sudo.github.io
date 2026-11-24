@@ -2,16 +2,15 @@
 // Deployed by .github/workflows/deploy.yml when the DEPLOY_TARGET repo variable is "cloudflare".
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "twin-tech-sudo",
+  "name": "boqextract",
   "compatibility_date": "2026-11-01",
   "assets": {
     "directory": "./dist",
     "not_found_handling": "404-page",
     "html_handling": "auto-trailing-slash"
-  }
-  // Once the domain is on Cloudflare, add:
-  // "routes": [
-  //   { "pattern": "www.twintechsudo.com", "custom_domain": true },
-  //   { "pattern": "twintechsudo.com", "custom_domain": true }
-  // ]
+  },
+  "routes": [
+    { "pattern": "www.boqextract.com", "custom_domain": true },
+    { "pattern": "boqextract.com", "custom_domain": true }
+  ]
 }
